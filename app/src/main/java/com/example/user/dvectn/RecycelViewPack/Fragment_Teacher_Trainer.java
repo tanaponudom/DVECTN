@@ -12,10 +12,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.user.dvectn.Fragment.Fragment_login;
-import com.example.user.dvectn.Fragment.Teacher_layout_save;
 import com.example.user.dvectn.Fragment.Teacher_spy_save;
 import com.example.user.dvectn.R;
 
@@ -23,81 +21,84 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by User on 7/3/2561.
+ * Created by User on 8/3/2561.
  */
 
-public class Fragment_Teacher_Recycle extends Fragment implements View.OnClickListener {
-    Bundle bd_tch;
-    String str_tch;
-    List<String> Data_th;
-    List<String> Data_url_th;
-    RecyclerView recyclerView;
-    RecycleViewAdapter recycleViewAdapter;
+public class Fragment_Teacher_Trainer extends Fragment implements View.OnClickListener {
 
-    public static final String TAG_TCH ="TCH";
+    RecyclerView recyclerView2;
+    RecycleViewAdapter2 recycleViewAdapter2;
+    List<String> Data_th;
+    List<Integer> Data_state;
+    Bundle bd_thch;
+    String str_thch;
+
+
+
+    public static final String TAG_TCH1 ="TCH";
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View viewtch = inflater.inflate(R.layout.teacher_layout,container,false);
-        viewtch.findViewById(R.id.btn_th).setOnClickListener(this);
-        viewtch.findViewById(R.id.fab1).setOnClickListener(this);
-        bd_tch = getArguments();
-        str_tch = bd_tch.getString(Fragment_login.TAG_user);
+        View viewtcher = inflater.inflate(R.layout.teacher_fusionjob,container,false);
+        showpuyfah(viewtcher);
+        viewtcher.findViewById(R.id.btn_thnaja).setOnClickListener(this);
+        viewtcher.findViewById(R.id.fab2).setOnClickListener(this);
+        bd_thch = getArguments();
+        str_thch = bd_thch.getString(Fragment_login.TAG_user);
 
-        showdawaefah(viewtch);
 
-
-        FloatingActionButton fab1 = viewtch.findViewById(R.id.fab1);
-        fab1.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton fab3 = viewtcher.findViewById(R.id.fab2);
+        fab3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 switch (view.getId()){
-                    case R.id.fab1:
+                    case R.id.fab2:
                         Bundle bgh = new Bundle();
-                        bgh.putString(TAG_TCH,"147258");
+                        bgh.putString(TAG_TCH1,"147258");
 
                         Snackbar.make(view, "โปรดกรอกข้อมูล", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
 
-                        Teacher_layout_save fragment_Teacher_Recycle = new Teacher_layout_save();
-                        fragment_Teacher_Recycle.setArguments(bgh);
-                        replaceFragment(fragment_Teacher_Recycle,bgh);
+                        Teacher_spy_save fragment_Teacher_Trainer = new Teacher_spy_save();
+                        fragment_Teacher_Trainer.setArguments(bgh);
+                        replaceFragment(fragment_Teacher_Trainer,bgh);
                         break;
                 }
             }
         });
-        return viewtch;
+        return viewtcher;
 
 
 
     }
-    private void showdawaefah(View view) {
-
+    private  void showpuyfah(View view){
 
         Data_th = new ArrayList<>();
-        Data_url_th = new ArrayList<>();
-
+        Data_state = new ArrayList<>();
 
         for (int i = 0; i < 100; i++) {
 
-            Data_th.add("Teacher หิวข้าว");
-            Data_url_th.add("https://images.pexels.com/photos/52710/matterhorn-zermatt-switzerland-snow-52710.jpeg?w=940&h=650&auto=compress&cs=tinysrgb");
+            Data_th.add("HewkawJung");
+                if (i %2 == 0){
+                    Data_state.add(1);
+
+            }else {
+                    Data_state.add(0);
+                }
         }
 
 
-        recyclerView = view.findViewById(R.id.LV_th_1);
+        recyclerView2 = view.findViewById(R.id.LV_thnaja_1);
 
-        recycleViewAdapter = new RecycleViewAdapter(getContext());
-        //Toast.makeText(getContext(), ""+Data_th.size(), Toast.LENGTH_SHORT).show();
+        recycleViewAdapter2 = new RecycleViewAdapter2(getContext());
 
-        recycleViewAdapter.Update_Data(Data_th, Data_url_th);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(recycleViewAdapter);
+        recycleViewAdapter2.Update_teacher_data(Data_th,Data_state);
+        recyclerView2.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView2.setHasFixedSize(true);
+        recyclerView2.setAdapter(recycleViewAdapter2);
+
     }
-
-
     public void replaceFragment(Fragment fragment, Bundle bundle) {
 
         if (bundle != null)
@@ -122,9 +123,9 @@ public class Fragment_Teacher_Recycle extends Fragment implements View.OnClickLi
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.btn_th:
+            case R.id.btn_thnaja:
                 Bundle bg = new Bundle();
-                bg.putString(TAG_TCH,"123458");
+                bg.putString(TAG_TCH1,"123458");
 
                 Fragment_login fragment_login = new Fragment_login();
                 fragment_login.setArguments(bg);
@@ -135,7 +136,7 @@ public class Fragment_Teacher_Recycle extends Fragment implements View.OnClickLi
         }
 
     }
-
-    public class TAG_TCH1 {
-    }
 }
+
+
+

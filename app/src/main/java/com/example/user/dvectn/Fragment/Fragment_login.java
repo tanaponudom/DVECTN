@@ -13,6 +13,7 @@ import android.widget.EditText;
 import com.example.user.dvectn.R;
 import com.example.user.dvectn.RecycelViewPack.Fragment_Student_Recycel;
 import com.example.user.dvectn.RecycelViewPack.Fragment_Teacher_Recycle;
+import com.example.user.dvectn.RecycelViewPack.Fragment_Teacher_Trainer;
 
 /**
  * Created by User on 19/2/2561.
@@ -74,6 +75,14 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
         else  if (str_user.equals("3") && str_pass.equals("3")){
 
             Fragment_Teacher_Recycle sec = new Fragment_Teacher_Recycle();
+            Bundle bundle = new Bundle();
+            bundle.putString(TAG_user,str_user);
+
+            replaceFragment(sec,bundle);
+        }
+        else  if (str_user.equals("4") && str_pass.equals("4")){
+
+            Fragment_Teacher_Trainer sec = new Fragment_Teacher_Trainer();
             Bundle bundle = new Bundle();
             bundle.putString(TAG_user,str_user);
 

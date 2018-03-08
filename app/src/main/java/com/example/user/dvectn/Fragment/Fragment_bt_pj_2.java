@@ -104,8 +104,8 @@ public class Fragment_bt_pj_2 extends Fragment implements View.OnClickListener {
 
 
         if(tmpSpn != null){
-            if (!tmpSpn[0].equals("-") && !tmpSpn[1].equals("-") && !tmpSpn[2].equals("-") && !tmpSpn[3].equals("-") && !tmpSpn[4].equals("-")
-                    && !tmpSpn[5].equals("-") && !tmpSpn[6].equals("-") && !tmpSpn[7].equals("-") ){
+            if (!tmpSpn[0].equals("-") || !tmpSpn[1].equals("-") || !tmpSpn[2].equals("-") || !tmpSpn[3].equals("-") || !tmpSpn[4].equals("-")
+                    || !tmpSpn[5].equals("-") || !tmpSpn[6].equals("-") || !tmpSpn[7].equals("-") ){
                 Toast.makeText(getContext(), ""+tmpSpn[0]
                         +" , "+tmpSpn[1]+" , "+tmpSpn[2]+" , "+tmpSpn[3]+" , "+tmpSpn[4]+" , "+tmpSpn[5]
                         +" , "+tmpSpn[6]+" , "+tmpSpn[7], Toast.LENGTH_SHORT).show();
