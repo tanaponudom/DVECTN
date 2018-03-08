@@ -1,0 +1,48 @@
+<resources>
+    <array name="point">
+        <item>5</item>
+        <item>4</item>
+    </array>
+    <string name="app_name">DVECTN</string>
+    <string name="kimionnawa">เช็คชื่อประจำวัน</string>
+    <string-array name="porn">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <string-array name="test_stu_data">
+        <item>ทดสอบ1</item>
+        <item>ทดสอบ2</item>
+        <item>ทดสอบ3</item>
+        <item>ทดสอบ4</item>
+        <item>ทดสอบ5</item>
+        <item>ทดสอบ6</item>
+        <item>ทดสอบ7</item>
+        <item>ทดสอบ8</item>
+        <item>ทดสอบ9</item>
+    </string-array>
+
+    <string-array name="test_stu_image">
+        <item>  </item>
+        <item>  </item>
+        <item>  </item>
+        <item>  </item>
+        <item>  </item>
+        <item>  </item>
+        <item>  </item>
+        <item>  </item>
+        <item>  </item>
+    </string-array>
+
+    <string-array name="statues">
+        <item>ผ่าน</item>
+        <item>ไม่ผ่าน</item>
+    </string-array>
+
+
+
+    
+</resources>
