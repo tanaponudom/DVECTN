@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.user.dvectn.R;
+import com.example.user.dvectn.RecycelViewPack.Fragment_bt_d1;
 
 
 /**
@@ -74,7 +75,7 @@ public class Fragment_mainapp extends Fragment implements View.OnClickListener {
                Bundle bn = new Bundle();
                bn.putString(TAG_HELL,"1150");
 
-               Fragment_bt_d av_bt_d = new Fragment_bt_d();
+               Fragment_bt_d1 av_bt_d = new Fragment_bt_d1();
                av_bt_d.setArguments(bn);
                replaceFragment(av_bt_d,bn);
                 break;

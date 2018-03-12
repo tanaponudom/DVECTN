@@ -20,7 +20,7 @@ import com.example.user.dvectn.R;
 public class Fragment_bt_pj_5 extends Fragment implements View.OnClickListener {
     Bundle bn;
     String frg;
-    String nameList[] = {"","1","2","3","4","5"};
+    String nameList[] = {"-","1","2","3","4","5"};
     Spinner spn1,spn2,spn3,spn4,spn5,spn6;
     public  static  final String TAG_NANA = "SEVEN";
 
@@ -90,8 +90,21 @@ public class Fragment_bt_pj_5 extends Fragment implements View.OnClickListener {
         String[] tmpSpn = {spn1.getSelectedItem().toString(),spn2.getSelectedItem().toString(),spn3.getSelectedItem().toString(),
                            spn4.getSelectedItem().toString(),spn5.getSelectedItem().toString(),spn6.getSelectedItem().toString(),};
 
-        Toast.makeText(getContext(), ""+tmpSpn[0]+" , "+tmpSpn[1]+" , "+tmpSpn[2]+" , "+tmpSpn[3]+" , "+tmpSpn[4]+" , "+tmpSpn[5], Toast.LENGTH_SHORT).show();
+        if(tmpSpn != null){
+            if (!tmpSpn[0].equals("-") || !tmpSpn[1].equals("-") || !tmpSpn[2].equals("-") || !tmpSpn[3].equals("-") || !tmpSpn[4].equals("-")
+                    || !tmpSpn[5].equals("-") ){
+                Toast.makeText(getContext(), ""+tmpSpn[0]
+                        +" , "+tmpSpn[1]+" , "+tmpSpn[2]+" , "+tmpSpn[3]+" , "+tmpSpn[4]+" , "+tmpSpn[5]
+                        , Toast.LENGTH_SHORT).show();
 
+            }else {
+                Toast.makeText(getContext(),"กรุณากรอกให้ครบ",Toast.LENGTH_SHORT).show();
+            }
+
+
+        }else {
+            Toast.makeText(getContext(), "wrong", Toast.LENGTH_SHORT).show();
+        }
     }
 
 

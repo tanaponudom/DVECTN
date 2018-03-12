@@ -26,7 +26,7 @@ public class Fragment_bt_dd_1 extends Fragment implements View.OnClickListener
 {
     Bundle bn;
     String frg;
-    String nameList[] = {"","1","2","3","4","5"};
+    String nameList[] = {"-","1","2","3","4","5"};
     Button bbb;
     Spinner spn1, spn2 , spn3 , spn4 , spn5 ;
     public  static  final String TAG_HEW3 = "HEW3";
@@ -100,8 +100,20 @@ public class Fragment_bt_dd_1 extends Fragment implements View.OnClickListener
         String[] tmpSpn = {spn1.getSelectedItem().toString(),spn2.getSelectedItem().toString(),spn3.getSelectedItem().toString(),
                 spn4.getSelectedItem().toString(),spn5.getSelectedItem().toString()};
 
-        Toast.makeText(getContext(), ""+tmpSpn[0]+" , "+tmpSpn[1]+" , "+tmpSpn[2]+" , "+tmpSpn[3]+" , "+tmpSpn[4], Toast.LENGTH_SHORT).show();
+        if(tmpSpn != null){
+            if (!tmpSpn[0].equals("-") || !tmpSpn[1].equals("-") || !tmpSpn[2].equals("-") || !tmpSpn[3].equals("-") || !tmpSpn[4].equals("-")
+                    ){
+                Toast.makeText(getContext(), ""+tmpSpn[0]
+                        +" , "+tmpSpn[1]+" , "+tmpSpn[2]+" , "+tmpSpn[3]+" , "+tmpSpn[4]
+                        , Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(getContext(),"กรุณากรอกให้ครบ",Toast.LENGTH_SHORT).show();
+            }
 
+
+        }else {
+            Toast.makeText(getContext(), "wrong", Toast.LENGTH_SHORT).show();
+        }
     }
 
 

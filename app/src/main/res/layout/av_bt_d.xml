@@ -55,7 +55,7 @@
         app:layout_constraintVertical_bias="0.865" />
 
     <Button
-        android:id="@+id/btn1"
+        android:id="@+id/btn3"
         android:layout_width="wrap_content"
         android:layout_height="52dp"
         android:layout_marginBottom="8dp"
@@ -70,7 +70,7 @@
         app:layout_constraintVertical_bias="0.979" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/review_d"
         android:layout_width="369dp"
         android:layout_height="0dp"
         android:layout_marginBottom="128dp"

@@ -26,7 +26,7 @@ public class Fragment_bt_dd_2 extends Fragment implements View.OnClickListener
 {
     Bundle bn;
     String frg;
-    String nameList[] = {"","1","2","3","4","5"};
+    String nameList[] = {"-","1","2","3","4","5"};
     Spinner spin1, spin2 , spin3 , spin4 , spin5 , spin6 , spin7 , spin8 ;
     public  static  final String TAG_HEW4 = "HEW4";
 
@@ -110,8 +110,20 @@ public class Fragment_bt_dd_2 extends Fragment implements View.OnClickListener
                 spin4.getSelectedItem().toString(),spin5.getSelectedItem().toString(),spin6.getSelectedItem().toString(),
                 spin7.getSelectedItem().toString(),spin8.getSelectedItem().toString()};
 
-        Toast.makeText(getContext(), ""+tmpSpn[0]+" , "+tmpSpn[1]+" , "+tmpSpn[2]+" , "+tmpSpn[3]+" , "+tmpSpn[4]+" , "+tmpSpn[5]+" , "+tmpSpn[6]+" , "+tmpSpn[7], Toast.LENGTH_SHORT).show();
+        if(tmpSpn != null){
+            if (!tmpSpn[0].equals("-") || !tmpSpn[1].equals("-") || !tmpSpn[2].equals("-") || !tmpSpn[3].equals("-") || !tmpSpn[4].equals("-")
+                    || !tmpSpn[5].equals("-") || !tmpSpn[6].equals("-") || !tmpSpn[7].equals("-") ){
+                Toast.makeText(getContext(), ""+tmpSpn[0]
+                        +" , "+tmpSpn[1]+" , "+tmpSpn[2]+" , "+tmpSpn[3]+" , "+tmpSpn[4]+" , "+tmpSpn[5]
+                        +" , "+tmpSpn[6]+" , "+tmpSpn[7], Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(getContext(),"กรุณากรอกให้ครบ",Toast.LENGTH_SHORT).show();
+            }
 
+
+        }else {
+            Toast.makeText(getContext(), "wrong", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
