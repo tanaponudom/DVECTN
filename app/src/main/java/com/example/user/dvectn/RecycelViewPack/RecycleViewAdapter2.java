@@ -24,6 +24,7 @@ public class RecycleViewAdapter2 extends RecyclerView.Adapter<RecycleViewAdapter
     List<String> thData;
     List<Integer> State;
 
+
     public RecycleViewAdapter2(Context context){
 
         this.context = context;
@@ -61,6 +62,8 @@ public class RecycleViewAdapter2 extends RecyclerView.Adapter<RecycleViewAdapter
 
         }
     }
+
+
 
     @Override
     public int getItemCount(){return thData.size();}

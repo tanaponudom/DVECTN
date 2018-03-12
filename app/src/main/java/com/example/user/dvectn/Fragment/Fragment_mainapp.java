@@ -48,6 +48,8 @@ public class Fragment_mainapp extends Fragment implements View.OnClickListener {
 
 
     }
+
+
     public void replaceFragment(Fragment fragment, Bundle bundle) {
 
         if (bundle != null)
@@ -84,7 +86,7 @@ public class Fragment_mainapp extends Fragment implements View.OnClickListener {
                 Bundle bn1 = new Bundle();
                 bn1.putString(TAG_HELL,"1150");
 
-                Fragment_bt_pd av_bt_pd = new Fragment_bt_pd();
+                com.example.user.dvectn.Fragment.Fragment_bt_pd1 av_bt_pd = new com.example.user.dvectn.Fragment.Fragment_bt_pd1();
                 av_bt_pd.setArguments(bn1);
                 replaceFragment(av_bt_pd,bn1);
                 break;

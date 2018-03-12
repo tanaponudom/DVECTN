@@ -23,7 +23,7 @@ import java.util.List;
  * Created by User on 9/3/2561.
  */
 
-public class Fragment_bt_d1 extends Fragment implements View.OnClickListener{
+public class Fragment_bt_d1 extends Fragment implements View.OnClickListener  {
     RecyclerView recyclerView5;
     RecycleViewAdapter3 recycleViewAdapter5;
     List<String> Data_name;
@@ -123,3 +123,4 @@ public class Fragment_bt_d1 extends Fragment implements View.OnClickListener{
 
     }
 }
+

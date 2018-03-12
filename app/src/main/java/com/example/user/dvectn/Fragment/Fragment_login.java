@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,9 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
         view.findViewById(R.id.btn_login).setOnClickListener(this);
         et_user = view.findViewById(R.id.et_user);
         et_pass = view.findViewById(R.id.et_pass);
+
+
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
 
         return view;
 

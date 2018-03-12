@@ -28,11 +28,10 @@ public class RecycleViewAdapter3 extends RecyclerView.Adapter<RecycleViewAdapter
         this.contex = context;
     }
 
-    public void DataStudent(List<String> classlist, List<String> namelist, List<Integer> numlist) {
+    public void DataStudent(List<String> namelist, List<String> classlist, List<Integer> numlist) {
 
-
-        this.classlist = classlist;
         this.namelist = namelist;
+        this.classlist = classlist;
         this.numlist = numlist;
 
 
@@ -51,8 +50,8 @@ public class RecycleViewAdapter3 extends RecyclerView.Adapter<RecycleViewAdapter
     public void onBindViewHolder(RecycleViewAdapter3.MyHoder holder, int position) {
 
 
-        holder.tx_1.setText(classlist.get(position));
-        holder.tx_2.setText(namelist.get(position));
+        holder.tx_1.setText(namelist.get(position));
+        holder.tx_2.setText(classlist.get(position));
         holder.tx_3.setText(""+numlist.get(position));
 
 
@@ -73,9 +72,9 @@ public class RecycleViewAdapter3 extends RecyclerView.Adapter<RecycleViewAdapter
 
             super(itemView);
 
-            tx_1 =itemView.findViewById(R.id.tw_classlist);
-            tx_2 =itemView.findViewById(R.id.tw_numberlist);
-            tx_3 =itemView.findViewById(R.id.tw_namlist);
+            tx_1 =itemView.findViewById(R.id.tw_namlist);
+            tx_2 =itemView.findViewById(R.id.tw_classlist);
+            tx_3 =itemView.findViewById(R.id.tw_numberlist);
 
             this.context = context;
         }
