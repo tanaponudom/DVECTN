@@ -24,7 +24,7 @@ import java.util.List;
  * Created by User on 8/3/2561.
  */
 
-public class Fragment_Teacher_Trainer extends Fragment implements View.OnClickListener {
+public class Fragment_Teacher_Trainer extends Fragment {
 
     RecyclerView recyclerView2;
     RecycleViewAdapter2 recycleViewAdapter2;
@@ -42,8 +42,7 @@ public class Fragment_Teacher_Trainer extends Fragment implements View.OnClickLi
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View viewtcher = inflater.inflate(R.layout.teacher_fusionjob,container,false);
         showpuyfah(viewtcher);
-        viewtcher.findViewById(R.id.btn_thnaja).setOnClickListener(this);
-        viewtcher.findViewById(R.id.fab2).setOnClickListener(this);
+
         bd_thch = getArguments();
         str_thch = bd_thch.getString(Fragment_login.TAG_user);
 
@@ -99,43 +98,21 @@ public class Fragment_Teacher_Trainer extends Fragment implements View.OnClickLi
         recyclerView2.setAdapter(recycleViewAdapter2);
 
     }
+
+
     public void replaceFragment(Fragment fragment, Bundle bundle) {
 
         if (bundle != null)
             fragment.setArguments(bundle);
 
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Fragment oldFragment = fragmentManager.findFragmentByTag(fragment.getClass().getName());
+        FragmentTransaction frgTran = fragmentManager.beginTransaction();
+        frgTran.replace(R.id.content,fragment).addToBackStack(null).commit();
 
-        //if oldFragment already exits in fragmentManager use it
-        if (oldFragment != null) {
-            fragment = oldFragment;
-        }
 
-        fragmentTransaction.replace(R.id.content, fragment, fragment.getClass().getName());
-
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-
-        fragmentTransaction.commit();
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.btn_thnaja:
-                Bundle bg = new Bundle();
-                bg.putString(TAG_TCH1,"123458");
 
-                Fragment_login fragment_login = new Fragment_login();
-                fragment_login.setArguments(bg);
-                replaceFragment(fragment_login,bg);
-                break;
-
-
-        }
-
-    }
 }
 
 

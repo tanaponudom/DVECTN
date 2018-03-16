@@ -61,14 +61,14 @@ public class Fragment_bt_dd_1 extends Fragment implements View.OnClickListener
         ArrayAdapter adapter4 = new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_item,nameList);
         spn5.setAdapter(adapter4);
 
-
-
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("ด้านคุณลักษณะอันพึงประสงค์");
 
         if(bn != null);
         {
             frg = bn.getString(Fragment_bt_dd.TAG_KAWNA);
         }
-        view.findViewById(R.id.btn6).setOnClickListener(this);
+
         view.findViewById(R.id.bbbtn1).setOnClickListener(this);
         return view;
     }
@@ -80,19 +80,10 @@ public class Fragment_bt_dd_1 extends Fragment implements View.OnClickListener
             fragment.setArguments(bundle);
 
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Fragment oldFragment = fragmentManager.findFragmentByTag(fragment.getClass().getName());
+        FragmentTransaction frgTran = fragmentManager.beginTransaction();
+        frgTran.replace(R.id.content,fragment).addToBackStack(null).commit();
 
-        //if oldFragment already exits in fragmentManager use it
-        if (oldFragment != null) {
-            fragment = oldFragment;
-        }
 
-        fragmentTransaction.replace(R.id.content, fragment, fragment.getClass().getName());
-
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-
-        fragmentTransaction.commit();
     }
 
 
@@ -120,14 +111,6 @@ public class Fragment_bt_dd_1 extends Fragment implements View.OnClickListener
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.btn6:
-                Bundle bn = new Bundle();
-                bn.putString(TAG_HEW3,"7894");
-
-                Fragment_bt_dd av_bt_dd = new Fragment_bt_dd();
-                av_bt_dd.setArguments(bn);
-                replaceFragment(av_bt_dd,bn);
-                break;
             case  R.id.bbbtn1:
 
                 senddata ();

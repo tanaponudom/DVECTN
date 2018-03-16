@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -24,7 +25,7 @@ import java.util.List;
  * Created by User on 7/3/2561.
  */
 
-public class Fragment_Student_Recycel extends Fragment implements View.OnClickListener {
+public class Fragment_Student_Recycel extends Fragment {
     RecyclerView recyclerView;
     RecycleViewAdapter recycleViewAdapter;
     List<String> Data_St;
@@ -39,11 +40,11 @@ public class Fragment_Student_Recycel extends Fragment implements View.OnClickLi
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View viewtt = inflater.inflate(R.layout.student_page, container, false);
         showdawae(viewtt);
-        viewtt.findViewById(R.id.btn_bl).setOnClickListener(this);
-        viewtt.findViewById(R.id.fab).setOnClickListener(this);
         bn_se = getArguments();
         frg_st = bn_se.getString(Fragment_login.TAG_user);
 
+
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
 
         FloatingActionButton fab = viewtt.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -101,33 +102,12 @@ public class Fragment_Student_Recycel extends Fragment implements View.OnClickLi
             fragment.setArguments(bundle);
 
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Fragment oldFragment = fragmentManager.findFragmentByTag(fragment.getClass().getName());
+        FragmentTransaction frgTran = fragmentManager.beginTransaction();
+        frgTran.replace(R.id.content,fragment).addToBackStack(null).commit();
 
-        //if oldFragment already exits in fragmentManager use it
-        if (oldFragment != null) {
-            fragment = oldFragment;
-        }
 
-        fragmentTransaction.replace(R.id.content, fragment, fragment.getClass().getName());
-
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-
-        fragmentTransaction.commit();
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.btn_bl:
-                Bundle bn = new Bundle();
-                bn.putString(TAG_STU,"1153");
 
-                Fragment_login fragment_login = new Fragment_login();
-                fragment_login.setArguments(bn);
-                replaceFragment(fragment_login,bn);
-                break;
-        }
-    }
 }
 

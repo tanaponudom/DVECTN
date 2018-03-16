@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -23,7 +24,7 @@ import java.util.List;
  * Created by User on 9/3/2561.
  */
 
-public class Fragment_bt_d1 extends Fragment implements View.OnClickListener  {
+public class Fragment_bt_d1 extends Fragment   {
     RecyclerView recyclerView5;
     RecycleViewAdapter3 recycleViewAdapter5;
     List<String> Data_name;
@@ -45,9 +46,10 @@ public class Fragment_bt_d1 extends Fragment implements View.OnClickListener  {
         View view1 = inflater.inflate(R.layout.av_bt_d,container,false);
         showboobs(view1);
 
-        view1.findViewById(R.id.btn3).setOnClickListener(this);
         btn3 = getArguments();
         frg2 = btn3.getString(Fragment_mainapp.TAG_HELL);
+
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
 
 
 
@@ -88,39 +90,16 @@ public class Fragment_bt_d1 extends Fragment implements View.OnClickListener  {
             fragment.setArguments(bundle);
 
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Fragment oldFragment = fragmentManager.findFragmentByTag(fragment.getClass().getName());
+        FragmentTransaction frgTran = fragmentManager.beginTransaction();
+        frgTran.replace(R.id.content,fragment).addToBackStack(null).commit();
 
-        //if oldFragment already exits in fragmentManager use it
-        if (oldFragment != null) {
-            fragment = oldFragment;
-        }
 
-        fragmentTransaction.replace(R.id.content, fragment, fragment.getClass().getName());
-
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-
-        fragmentTransaction.commit();
     }
 
 
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.btn3:
-                Bundle bn = new Bundle();
-                bn.putString(TAG_HEW,"1156");
 
-                Fragment_mainapp av_main_traner = new Fragment_mainapp();
-                av_main_traner.setArguments(bn);
-                replaceFragment(av_main_traner,bn);
 
-//                getActiviity().getSupportFragmentManager().beginTransaction().add(R.id.content,av_main_traner,"name2").commit();
-                break;
 
-        }
-
-    }
 }
 

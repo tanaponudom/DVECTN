@@ -18,7 +18,7 @@ import com.example.user.dvectn.RecycelViewPack.Fragment_Student_Recycel;
  * Created by User on 21/2/2561.
  */
 
-public class Student_save extends Fragment implements View.OnClickListener {
+public class Student_save extends Fragment {
     EditText et_ins;
     Bundle bundlesave;
     String frg_sa;
@@ -30,7 +30,7 @@ public class Student_save extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
        View viewses = inflater.inflate(R.layout.student_save,container,false);
 
-        viewses.findViewById(R.id.btn_bsp).setOnClickListener(this);
+
         bundlesave = getArguments();
         if(bundlesave != null){
             frg_sa = bundlesave.getString(Fragment_Student_Recycel.TAG_STU);
@@ -45,35 +45,13 @@ public class Student_save extends Fragment implements View.OnClickListener {
             fragment.setArguments(bundle);
 
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Fragment oldFragment = fragmentManager.findFragmentByTag(fragment.getClass().getName());
+        FragmentTransaction frgTran = fragmentManager.beginTransaction();
+        frgTran.replace(R.id.content,fragment).addToBackStack(null).commit();
 
-        //if oldFragment already exits in fragmentManager use it
-        if (oldFragment != null) {
-            fragment = oldFragment;
-        }
 
-        fragmentTransaction.replace(R.id.content, fragment, fragment.getClass().getName());
-
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-
-        fragmentTransaction.commit();
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.btn_bsp:
-                Bundle bn = new Bundle();
-                bn.putString(TAG_STUSA,"15589");
-
-                Fragment_Student_Recycel student_page = new Fragment_Student_Recycel();
-                student_page.setArguments(bn);
-                replaceFragment(student_page,bn);
-                break;
 
 
-        }
 
-    }
 }

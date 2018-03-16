@@ -58,7 +58,6 @@ public class Fragment_bt_pj_6 extends Fragment implements View.OnClickListener {
         {
             frg = bn.getString(Fragment_bt_pj.TAG_KAW3);
         }
-        view.findViewById(R.id.btn14).setOnClickListener(this);
         view.findViewById(R.id.bbbtn7).setOnClickListener(this);
         return view;
     }
@@ -69,19 +68,10 @@ public class Fragment_bt_pj_6 extends Fragment implements View.OnClickListener {
             fragment.setArguments(bundle);
 
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Fragment oldFragment = fragmentManager.findFragmentByTag(fragment.getClass().getName());
+        FragmentTransaction frgTran = fragmentManager.beginTransaction();
+        frgTran.replace(R.id.content,fragment).addToBackStack(null).commit();
 
-        //if oldFragment already exits in fragmentManager use it
-        if (oldFragment != null) {
-            fragment = oldFragment;
-        }
 
-        fragmentTransaction.replace(R.id.content, fragment, fragment.getClass().getName());
-
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-
-        fragmentTransaction.commit();
     }
 
     private void senddata (){
@@ -106,15 +96,6 @@ public class Fragment_bt_pj_6 extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.btn14:
-                Bundle bn = new Bundle();
-                bn.putString(TAG_NA,"8451");
-
-                Fragment_bt_pj av_bt_pj = new Fragment_bt_pj();
-                av_bt_pj.setArguments(bn);
-                replaceFragment(av_bt_pj,bn);
-                break;
-
             case R.id.bbbtn7:
 
                 senddata();

@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,11 +30,15 @@ public class Fragment_bt_dd extends Fragment implements View.OnClickListener{
         view4.findViewById(R.id.BBTN_1).setOnClickListener(this);
         view4.findViewById(R.id.BBTN_2).setOnClickListener(this);
         view4.findViewById(R.id.BBTN_3).setOnClickListener(this);
+
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("การประเมินจิตพิสัย");
+
         bn4 = getArguments();
         if (bn4 != null) {
             frg4 = bn4.getString(Fragment_mainapp.TAG_HELL);
         }
-        view4.findViewById(R.id.btn4).setOnClickListener(this);
+
         return  view4;
 
     }
@@ -44,31 +49,16 @@ public class Fragment_bt_dd extends Fragment implements View.OnClickListener{
             fragment.setArguments(bundle);
 
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Fragment oldFragment = fragmentManager.findFragmentByTag(fragment.getClass().getName());
+        FragmentTransaction frgTran = fragmentManager.beginTransaction();
+        frgTran.replace(R.id.content,fragment).addToBackStack(null).commit();
 
-        //if oldFragment already exits in fragmentManager use it
-        if (oldFragment != null) {
-            fragment = oldFragment;
-        }
 
-        fragmentTransaction.replace(R.id.content, fragment, fragment.getClass().getName());
-
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-
-        fragmentTransaction.commit();
     }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case  R.id.btn4:
-                Bundle bn4 =new Bundle();
-                bn4.putString(TAG_KAWNA,"4567");
 
-                Fragment_mainapp av_main_traner = new Fragment_mainapp();
-                av_main_traner.setArguments(bn4);
-                replaceFragment(av_main_traner,bn4);
-                break;
             case  R.id.BBTN_1:
                 Bundle bn4_1 = new Bundle();
                 bn4_1.putString(TAG_KAWNA,"4567");

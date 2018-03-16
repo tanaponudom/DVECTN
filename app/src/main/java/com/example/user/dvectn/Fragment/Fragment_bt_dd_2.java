@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -71,11 +72,15 @@ public class Fragment_bt_dd_2 extends Fragment implements View.OnClickListener
         spin8.setAdapter(adapter7);
 
 
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("ด้านสมรรถนะหลักและสมรรถภาพทั่วไป");
+
+
         if(bn != null);
         {
             frg = bn.getString(Fragment_bt_dd.TAG_KAWNA);
         }
-        view.findViewById(R.id.btn7).setOnClickListener(this);
         view.findViewById(R.id.bbbtn2).setOnClickListener(this);
 
 
@@ -91,20 +96,13 @@ public class Fragment_bt_dd_2 extends Fragment implements View.OnClickListener
             fragment.setArguments(bundle);
 
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Fragment oldFragment = fragmentManager.findFragmentByTag(fragment.getClass().getName());
+        FragmentTransaction frgTran = fragmentManager.beginTransaction();
+        frgTran.replace(R.id.content,fragment).addToBackStack(null).commit();
 
-        //if oldFragment already exits in fragmentManager use it
-        if (oldFragment != null) {
-            fragment = oldFragment;
-        }
 
-        fragmentTransaction.replace(R.id.content, fragment, fragment.getClass().getName());
-
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-
-        fragmentTransaction.commit();
     }
+
+
     private void senddata (){
         String[] tmpSpn = {spin1.getSelectedItem().toString(),spin2.getSelectedItem().toString(),spin3.getSelectedItem().toString(),
                 spin4.getSelectedItem().toString(),spin5.getSelectedItem().toString(),spin6.getSelectedItem().toString(),
@@ -129,15 +127,6 @@ public class Fragment_bt_dd_2 extends Fragment implements View.OnClickListener
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.btn7:
-                Bundle bn = new Bundle();
-                bn.putString(TAG_HEW4,"1475");
-
-                Fragment_bt_dd av_bt_dd = new Fragment_bt_dd();
-                av_bt_dd.setArguments(bn);
-                replaceFragment(av_bt_dd,bn);
-                break;
-
             case R.id.bbbtn2:
 
                 senddata ();
