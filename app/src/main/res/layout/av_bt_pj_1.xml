@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:gravity="center"
-
+        android:orientation="vertical"
         android:layout_height="match_parent">
 
         <LinearLayout
@@ -151,6 +151,14 @@
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/style_button_test"
+            android:text="ยืนยันข้อมูล"
+            android:textColor="@color/text_w" />
     </LinearLayout>
 </ScrollView>
 

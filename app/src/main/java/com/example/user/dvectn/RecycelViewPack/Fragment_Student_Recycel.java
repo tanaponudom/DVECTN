@@ -79,9 +79,9 @@ public class Fragment_Student_Recycel extends Fragment {
         Data_Url = new ArrayList<>();
 
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 3; i++) {
 
-            Data_St.add("HewkawJung");
+            Data_St.add("นายสมศักดิ์ เกรียงไกร");
             Data_Url.add("https://images.pexels.com/photos/52710/matterhorn-zermatt-switzerland-snow-52710.jpeg?w=940&h=650&auto=compress&cs=tinysrgb");
         }
 

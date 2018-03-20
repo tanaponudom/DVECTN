@@ -14,7 +14,8 @@
         android:background="@color/colorPrimary"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp">
+        tools:layout_editor_absoluteX="0dp"
+        >
 
         <TextView
             android:layout_width="match_parent"

@@ -38,6 +38,12 @@ public class RecycleViewAdapter2 extends RecyclerView.Adapter<RecycleViewAdapter
 
     }
 
+    public  void  Update_str_work (List<String>thData,List<Integer>State){
+
+        this.thData = thData;
+        this.State = State;
+    }
+
     @Override
     public RecycleViewAdapter2.MyHoder onCreateViewHolder(ViewGroup parent, int viewType) {
 

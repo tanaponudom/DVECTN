@@ -13,8 +13,9 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
             android:orientation="vertical">
 
             <TextView
@@ -24,7 +25,7 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="50dp"
                 android:text="1.	วัสดุเครื่องมอ เครื่องใช้ในการฝึกงานมีปริมาณเหมาะสม"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
@@ -42,7 +43,7 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="25dp"
                 android:text="2.	สื่อการสอนที่ใช้ในการฝึกงานมีเพียงพอ"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
@@ -60,7 +61,7 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="25dp"
                 android:text="3.	สถานประกอบการมีครูฝึกอย่างเพียงพอ"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
@@ -78,7 +79,7 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="25dp"
                 android:text="4.	เอกสารคู่มือในการฝึกงานมีความชัดเจนต่อการปฏิบัติ"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
@@ -96,7 +97,7 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="25dp"
                 android:text="5.	ครูฝึกเข้าใจวิธีการสอนและการประเมินผลการฝึกงานรายวิชา"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
@@ -114,7 +115,7 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="25dp"
                 android:text="6.	สถานประกอบการมีการจัดงบประมาณสนับสนุนการฝึกงานรายวิชา"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
@@ -132,7 +133,7 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="25dp"
                 android:text="7.	ผู้บริหารสถานประกอบการมีความเข้าใจในหลักการและวิธีการในการดำเนินงานตามโครงการส่งนักเรียน นักศึกษาออกฝึกงานรายวิชา"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
@@ -150,9 +151,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/style_button_test2"
                 android:text="ยืนยัน"
+                android:textColor="@color/text_w"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.06"
@@ -170,17 +174,12 @@
             <Spinner
                 android:id="@+id/spinner30"
                 android:layout_width="58dp"
-                android:layout_marginStart="16dp"
                 android:layout_height="20dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/textView33"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.202" />
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="50dp"
+/>
 
             <Spinner
                 android:id="@+id/spinner29"
@@ -189,13 +188,8 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/textView32"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.111" />
+                android:layout_marginTop="32dp"
+/>
 
             <Spinner
                 android:id="@+id/spinner31"
@@ -204,13 +198,8 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/textView34"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.296" />
+                android:layout_marginTop="25dp"
+/>
 
             <Spinner
                 android:id="@+id/spinner32"
@@ -219,13 +208,7 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/textView35"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.393" />
+                android:layout_marginTop="22dp"/>
 
             <Spinner
                 android:id="@+id/spinner34"
@@ -234,13 +217,7 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/textView37"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.6" />
+                android:layout_marginTop="22dp"/>
 
             <Spinner
                 android:id="@+id/spinner33"
@@ -249,13 +226,7 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/textView36"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.498" />
+                android:layout_marginTop="32dp"/>
 
             <Spinner
                 android:id="@+id/spinner35"
@@ -264,13 +235,7 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/textView38"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.711" />
+                android:layout_marginTop="38dp"/>
 
         </LinearLayout>
     </LinearLayout>

@@ -8,53 +8,78 @@
     android:layout_height="match_parent">
 
 
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="การประเมินจิตพิสัย"
+            android:textColor="@color/text_w"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/BBTN_1"
-        android:layout_width="325dp"
-        android:layout_height="68dp"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="52dp"
-        android:background="@drawable/dd_1_1"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/style_mainn"
+        android:text="ด้านที่ 1 ด้านคุณลักษณะอันพึงประสงค์"
+        android:textColor="@color/text_w"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
+        app:layout_constraintVertical_bias="0.126" />
 
     <Button
         android:id="@+id/BBTN_2"
-        android:layout_width="325dp"
-        android:layout_height="68dp"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/dd_2"
+
+        android:background="@drawable/style_mainn"
+        android:text="ด้านที่ 2 ด้านสมรรถนะหลักและสมรรถภาพทั่วไป"
+        android:textColor="@color/text_w"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BBTN_1"
-        app:layout_constraintVertical_bias="0.221" />
+        app:layout_constraintVertical_bias="0.139" />
 
     <Button
         android:id="@+id/BBTN_3"
-        android:layout_width="325dp"
-        android:layout_height="68dp"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/dd_3"
+        android:background="@drawable/style_mainn"
+        android:text="ด้านที่ 3 ด้านสมรรถนะวิชาชีพ"
+        android:textColor="@color/text_w"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BBTN_2"
-        app:layout_constraintVertical_bias="0.349" />
+        app:layout_constraintVertical_bias="0.23" />
 
 </android.support.constraint.ConstraintLayout>

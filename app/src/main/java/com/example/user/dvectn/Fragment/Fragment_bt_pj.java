@@ -33,7 +33,10 @@ public class Fragment_bt_pj extends Fragment implements View.OnClickListener {
         view4.findViewById(R.id.BTNN_5).setOnClickListener(this);
         view4.findViewById(R.id.BTNN_6).setOnClickListener(this);
 
-        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("แบบประเมินโครงการ");
+
+
 
         bn5 = getArguments();
         if (bn5 != null) {

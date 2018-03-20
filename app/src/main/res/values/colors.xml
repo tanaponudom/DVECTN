@@ -2,10 +2,13 @@
 <resources>
     <color name="colorPrimary">#f5979c</color>
     <color name="colorPrimaryDark">#b7696d</color>
-    <color name="colorAccent">#f0bfbf</color>
+    <color name="colorAccent">#ae8d8d</color>
     <color name="color_text_login">#8f8f8f</color>
     <color name="color_img_login">#f0bfbf</color>
+    <color name="fabcoler">#ab6d70</color>
     <color name="text_b">#a99a90</color>
-    <color name="text_w">#FFF</color>
+    <color name="text_w">#ffffff</color>
+    <color name="text_p">#ffbdbd</color>
+    <color name="text_bb">#a5c8f9</color>
 
 </resources>

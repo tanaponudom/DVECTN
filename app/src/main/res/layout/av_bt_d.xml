@@ -46,9 +46,11 @@
             android:textSize="24sp" />
 
     </LinearLayout>
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 <LinearLayout
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
@@ -60,6 +62,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/text_bb"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         app:layout_constraintVertical_bias="0.0">
 
@@ -81,12 +84,9 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="80dp"
             android:layout_marginTop="8dp"
+            android:background="@drawable/style_button_confirm"
             android:text="บันทึก"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.625"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-            app:layout_constraintVertical_bias="0.973" />
+            android:textColor="@color/text_w" />
 
         <Button
             android:id="@+id/BT_E_D"
@@ -96,18 +96,15 @@
             android:layout_marginEnd="36dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:background="@drawable/style_button_confirm"
             android:text="แก้ไข"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.45"
-            app:layout_constraintStart_toEndOf="@+id/BT_S_D"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-            app:layout_constraintVertical_bias="0.971" />
+            android:textColor="@color/text_w" />
 
     </LinearLayout>
 
 
-</LinearLayout>
 
+</LinearLayout>
+    </ScrollView>
 </LinearLayout>
 </android.support.constraint.ConstraintLayout>

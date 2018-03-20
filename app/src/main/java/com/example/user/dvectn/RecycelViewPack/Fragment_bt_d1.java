@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,13 +29,14 @@ public class Fragment_bt_d1 extends Fragment   {
     RecyclerView recyclerView5;
     RecycleViewAdapter3 recycleViewAdapter5;
     List<String> Data_name;
+    List<String> Data_ltname;
     List<String> Data_chan;
     List<Integer> Data_num;
+    String CheckList [] = {"มา","มาสาย","ชาด","ลา"};
     String frg2;
     Bundle btn3;
 
-    TextView TV_2;
-
+    ArrayAdapter adp2;
     public  static  final String TAG_HEW = "HEW";
 
 
@@ -61,24 +63,37 @@ public class Fragment_bt_d1 extends Fragment   {
     private  void showboobs(View view){
 
         Data_name = new ArrayList<>();
+        Data_ltname = new ArrayList<>();
         Data_chan = new ArrayList<>();
         Data_num = new ArrayList<>();
 
 
 
-        for (int i = 0; i <3 ;  i++){
 
-            Data_name.add("ผัก ชี");
+
+            Data_name.add("นาย อักษรขจร");
+            Data_ltname.add("รถผ่าน");
             Data_chan.add("ปวช.2");
-            Data_num.add(12);
+            Data_num.add(001);
 
-        }
 
+            Data_name.add("นาย ประหยัด");
+            Data_ltname.add("จันทร์อังคารพุธ");
+            Data_chan.add("ปวช.2");
+            Data_num.add(002);
+
+            Data_name.add("นาง ประวิทย์");
+            Data_ltname.add("ฉลาดจุง");
+            Data_chan.add("ปวช.2");
+            Data_num.add(003);
+
+
+        adp2 = new ArrayAdapter(getContext(),android.R.layout.simple_dropdown_item_1line ,CheckList);
         recyclerView5 = view.findViewById(R.id.review_d);
 
         recycleViewAdapter5 = new RecycleViewAdapter3(getContext());
 
-        recycleViewAdapter5.DataStudent(Data_name,Data_chan,Data_num);
+        recycleViewAdapter5.DataStudent(Data_name,Data_ltname,Data_chan,Data_num ,adp2);
         recyclerView5.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView5.setHasFixedSize(true);
         recyclerView5.setAdapter(recycleViewAdapter5);

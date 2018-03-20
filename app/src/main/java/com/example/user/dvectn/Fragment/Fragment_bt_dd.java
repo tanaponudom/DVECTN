@@ -31,8 +31,8 @@ public class Fragment_bt_dd extends Fragment implements View.OnClickListener{
         view4.findViewById(R.id.BBTN_2).setOnClickListener(this);
         view4.findViewById(R.id.BBTN_3).setOnClickListener(this);
 
-        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("การประเมินจิตพิสัย");
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+
 
         bn4 = getArguments();
         if (bn4 != null) {

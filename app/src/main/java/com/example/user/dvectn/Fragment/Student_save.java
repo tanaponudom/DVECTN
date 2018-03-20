@@ -1,5 +1,9 @@
 package com.example.user.dvectn.Fragment;
 
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,19 +13,32 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.example.user.dvectn.R;
 import com.example.user.dvectn.RecycelViewPack.Fragment_Student_Recycel;
+import com.kbeanie.multipicker.api.ContactPicker;
+import com.kbeanie.multipicker.api.ImagePicker;
+import com.kbeanie.multipicker.api.Picker;
+import com.kbeanie.multipicker.api.callbacks.ImagePickerCallback;
+import com.kbeanie.multipicker.api.entity.ChosenImage;
+
+import java.io.File;
+import java.util.List;
 
 
 /**
  * Created by User on 21/2/2561.
  */
+import static android.app.Activity.RESULT_OK;
 
-public class Student_save extends Fragment {
+public class Student_save extends Fragment implements View.OnClickListener {
     EditText et_ins;
     Bundle bundlesave;
     String frg_sa;
+    ImagePicker imagePicker;
+    ImageView imageView;
+    Context context;
 
     public static final  String TAG_STUSA = "STUSAVE";
 
@@ -37,6 +54,8 @@ public class Student_save extends Fragment {
 
         }
 
+        init(viewses);
+
        return  viewses;
     }
     public void replaceFragment(Fragment fragment, Bundle bundle) {
@@ -51,7 +70,72 @@ public class Student_save extends Fragment {
 
     }
 
+    private void init(View view){
 
+        view.findViewById(R.id.btn_se).setOnClickListener(this);
+        view.findViewById(R.id.btn_up).setOnClickListener(this);
 
+        imageView = view.findViewById(R.id.img_1);
 
+        context = getContext();
+
+        imagePicker = new ImagePicker(this);
+
+        imagePicker.allowMultiple(); //เลือกหลายภาพ
+
+        imagePicker.setImagePickerCallback(new ImagePickerCallback() {
+
+            @Override
+            public void onImagesChosen(List<ChosenImage> list) {
+                // Do somethig
+                // get path and create file.
+                String path = list.get(0).getOriginalPath();
+                File file = new File(path);
+
+                // convert file to bitmap and set to imageView.
+                if(file.exists()){
+                    Bitmap myBitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+                    imageView.setImageBitmap(myBitmap);
+                }
+            }
+
+            @Override
+            public void onError(String message) {
+                // Do error handling
+            }
+        }
+        );
+    }
+
+    private  void onSelect(){
+
+        imagePicker.pickImage();
+    }
+    private void onUpload(){
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK){
+            if (requestCode == Picker.PICK_IMAGE_DEVICE){
+                imagePicker.submit(data);
+            }
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.btn_se:
+                onSelect();
+                break;
+            case  R.id.btn_up:
+                onSelect();
+                break;
+        }
+
+    }
 }

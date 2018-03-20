@@ -5,6 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.VideoView;
 
@@ -21,20 +23,22 @@ public class RecycleViewAdapter3 extends RecyclerView.Adapter<RecycleViewAdapter
     Context contex;
     List<String> classlist;
     List<String> namelist;
+    List<String> ltnamelist;
     List<Integer> numlist;
+    ArrayAdapter adp2 ;
 
     public RecycleViewAdapter3(Context context) {
 
         this.contex = context;
     }
 
-    public void DataStudent(List<String> namelist, List<String> classlist, List<Integer> numlist) {
+    public void DataStudent(List<String> namelist, List<String> ltnamelist, List<String> classlist, List<Integer> numlist , ArrayAdapter adp2) {
 
         this.namelist = namelist;
         this.classlist = classlist;
         this.numlist = numlist;
-
-
+        this.ltnamelist = ltnamelist;
+        this.adp2 = adp2 ;
     }
 
     @Override
@@ -53,6 +57,9 @@ public class RecycleViewAdapter3 extends RecyclerView.Adapter<RecycleViewAdapter
         holder.tx_1.setText(namelist.get(position));
         holder.tx_2.setText(classlist.get(position));
         holder.tx_3.setText(""+numlist.get(position));
+        holder.tx_4.setText(ltnamelist.get(position));
+        holder.tx_5.setAdapter(adp2);
+
 
 
     }
@@ -66,6 +73,8 @@ public class RecycleViewAdapter3 extends RecyclerView.Adapter<RecycleViewAdapter
         TextView tx_1;
         TextView tx_2;
         TextView tx_3;
+        TextView tx_4;
+        Spinner tx_5;
         Context context;
 
         public MyHoder (View itemView, Context context){
@@ -75,6 +84,8 @@ public class RecycleViewAdapter3 extends RecyclerView.Adapter<RecycleViewAdapter
             tx_1 =itemView.findViewById(R.id.tw_namlist);
             tx_2 =itemView.findViewById(R.id.tw_classlist);
             tx_3 =itemView.findViewById(R.id.tw_numberlist);
+            tx_4 =itemView.findViewById(R.id.cccttn);
+            tx_5 =itemView.findViewById(R.id.spn_checklist);
 
             this.context = context;
         }
