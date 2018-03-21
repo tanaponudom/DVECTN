@@ -12,8 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
+
 
 import com.example.user.dvectn.Fragment.Fragment_mainapp;
 import com.example.user.dvectn.R;
@@ -32,7 +31,7 @@ public class Fragment_bt_d1 extends Fragment   {
     List<String> Data_ltname;
     List<String> Data_chan;
     List<Integer> Data_num;
-    String CheckList [] = {"มา","มาสาย","ชาด","ลา"};
+    String CheckList [] = {"มา","มาสาย","ขาด","ลา"};
     String frg2;
     Bundle btn3;
 
@@ -82,7 +81,7 @@ public class Fragment_bt_d1 extends Fragment   {
             Data_chan.add("ปวช.2");
             Data_num.add(002);
 
-            Data_name.add("นาง ประวิทย์");
+            Data_name.add("นางสาว ประวิทย์");
             Data_ltname.add("ฉลาดจุง");
             Data_chan.add("ปวช.2");
             Data_num.add(003);

@@ -1,6 +1,7 @@
 package com.example.user.dvectn.RecycelViewPack;
 
 import android.content.Context;
+import android.os.Build;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,16 +56,22 @@ public class RecycleViewAdapter2 extends RecyclerView.Adapter<RecycleViewAdapter
     }
 
     @Override
-    public void onBindViewHolder(RecycleViewAdapter2.MyHoder holder, int position) {
+    public void onBindViewHolder(MyHoder holder, int position) {
 
         holder.dataview.setText(thData.get(position));
-        holder.btn_state.setTextColor(context.getColor(R.color.text_w));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            holder.btn_state.setTextColor(context.getColor(R.color.text_w));
+        }
         if (State.get(position)==1){
             holder.btn_state.setText("อนุมัติ");
-            holder.btn_state.setBackgroundColor(context.getColor(R.color.colorPrimaryDark));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                holder.btn_state.setBackgroundColor(context.getColor(R.color.colorPrimaryDark));
+            }
         }else {
             holder.btn_state.setText("ไม่อนุมัติ");
-            holder.btn_state.setBackgroundColor(context.getColor(R.color.colorAccent));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                holder.btn_state.setBackgroundColor(context.getColor(R.color.colorAccent));
+            }
 
         }
     }

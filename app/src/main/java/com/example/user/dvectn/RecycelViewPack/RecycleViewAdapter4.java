@@ -7,10 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.user.dvectn.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -72,7 +74,9 @@ public class RecycleViewAdapter4 extends RecyclerView.Adapter<RecycleViewAdapter
 
         TextView ux_1;
         TextView ux_2;
+        ImageView imgUser;
         Spinner ux_3;
+
 
         Context context;
 
@@ -86,6 +90,12 @@ public class RecycleViewAdapter4 extends RecyclerView.Adapter<RecycleViewAdapter
 
 
             this.context = context;
+        }
+        public void setIMG(String url) {
+//            Toast.makeText(context, ""+url, Toast.LENGTH_SHORT).show();
+            Picasso.with(context).load(url).into(imgUser);
+
+
         }
     }
 //

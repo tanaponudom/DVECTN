@@ -46,7 +46,7 @@ public class Fragment_bt_pj_1 extends Fragment {
 
 
 
-        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
 
 
         if (bn != null) ;

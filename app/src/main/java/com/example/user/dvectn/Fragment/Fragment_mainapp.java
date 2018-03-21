@@ -92,25 +92,25 @@ public class Fragment_mainapp extends Fragment implements View.OnClickListener {
                 Bundle bn2 = new Bundle();
                 bn2.putString(TAG_HELL, "1150");
 
-                Fragment_bt_ag av_bt_ag = new Fragment_bt_ag();
-                av_bt_ag.setArguments(bn2);
-                replaceFragment(av_bt_ag, bn2);
+                Fragment_AF_ag af_ag_list = new Fragment_AF_ag();
+                af_ag_list.setArguments(bn2);
+                replaceFragment(af_ag_list, bn2);
                 break;
             case R.id.BT_DD:
                 Bundle bn3 = new Bundle();
                 bn3.putString(TAG_HELL, "1150");
 
-                Fragment_bt_dd av_bt_dd = new Fragment_bt_dd();
-                av_bt_dd.setArguments(bn3);
-                replaceFragment(av_bt_dd, bn3);
+                Fragment_AF_dd af_dd_list = new Fragment_AF_dd();
+                af_dd_list.setArguments(bn3);
+                replaceFragment(af_dd_list, bn3);
                 break;
             case R.id.BT_PJ:
                 Bundle bn4 = new Bundle();
                 bn4.putString(TAG_HELL, "1150");
 
-                Fragment_bt_pj av_bt_pj = new Fragment_bt_pj();
-                av_bt_pj.setArguments(bn4);
-                replaceFragment(av_bt_pj, bn4);
+                Fragment_AF_pj af_pj_list = new Fragment_AF_pj();
+                af_pj_list.setArguments(bn4);
+                replaceFragment(af_pj_list, bn4);
                 break;
         }
 

@@ -76,7 +76,7 @@ public class Fragment_Teacher_Trainer extends Fragment {
         Data_th = new ArrayList<>();
         Data_state = new ArrayList<>();
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 20; i++) {
 
             Data_th.add("HewkawJung");
                 if (i %2 == 0){

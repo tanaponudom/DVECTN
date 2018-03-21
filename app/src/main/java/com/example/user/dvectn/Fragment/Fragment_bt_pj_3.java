@@ -60,7 +60,7 @@ public class Fragment_bt_pj_3 extends Fragment implements View.OnClickListener {
         spn7.setAdapter(adapter6);
 
 
-        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
 
         if(bn != null);
         {

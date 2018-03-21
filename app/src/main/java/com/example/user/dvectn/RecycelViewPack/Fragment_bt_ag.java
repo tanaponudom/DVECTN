@@ -53,7 +53,7 @@ public class Fragment_bt_ag extends Fragment {
         Data_str = new ArrayList<>();
         Data_state = new ArrayList<>();
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 20; i++) {
 
             Data_str.add("HewkawJung");
             if (i %2 == 0){

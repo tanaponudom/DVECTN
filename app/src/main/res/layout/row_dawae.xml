@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_height="150dp">
+    android:layout_height="151dp">
 
 
     <LinearLayout
@@ -34,7 +34,13 @@
     <Spinner
         android:id="@+id/spn_point"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="45dp" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_text_login">
+
+    </LinearLayout>
 
 </LinearLayout>

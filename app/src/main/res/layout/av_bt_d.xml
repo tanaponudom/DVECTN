@@ -13,24 +13,18 @@
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="147dp"
+        android:layout_height="130dp"
         android:background="@color/colorPrimary"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="DEV by CTN Phrae"
-            android:textAlignment="center"
-            android:textColor="#FFF"
-            android:textSize="24sp" />
+
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="25dp"
             android:text="ครูฝึกสถานประกอบการ"
             android:textAlignment="center"
             android:textColor="#FFF"
@@ -71,8 +65,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         android:orientation="horizontal"
+        android:layout_marginTop="10dp"
         tools:layout_editor_absoluteX="33dp"
         tools:layout_editor_absoluteY="523dp">
 
@@ -80,10 +75,6 @@
             android:id="@+id/BT_S_D"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="8dp"
             android:background="@drawable/style_button_confirm"
             android:text="บันทึก"
             android:textColor="@color/text_w" />
@@ -92,11 +83,8 @@
             android:id="@+id/BT_E_D"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="36dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:background="@drawable/style_button_confirm"
+            android:layout_marginStart="10dp"
             android:text="แก้ไข"
             android:textColor="@color/text_w" />
 

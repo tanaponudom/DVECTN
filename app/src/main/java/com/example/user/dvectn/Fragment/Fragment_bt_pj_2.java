@@ -63,7 +63,7 @@ public class Fragment_bt_pj_2 extends Fragment implements View.OnClickListener {
         ArrayAdapter adapter7 = new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_item,nameList);
         spn8.setAdapter(adapter7);
 
-        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
 
 
 

@@ -67,8 +67,14 @@ public class Fragment_bt_pd1 extends Fragment {
 
 
 
-            Data_ftname.add("นายสมศักดิ์");
-            Data_ltname.add("เกรียงไกร");
+            Data_ftname.add("นาย อักษรขจร");
+            Data_ltname.add("รถผ่าน");
+
+            Data_ftname.add("นาย ประหยัด");
+            Data_ltname.add("จันทร์อังคารพุธ");
+
+            Data_ftname.add("นางสาว ประวิทย์");
+            Data_ltname.add("ฉลาดจุง");
 
 
         adp = new ArrayAdapter(getContext(),android.R.layout.simple_dropdown_item_1line ,ScoreList);

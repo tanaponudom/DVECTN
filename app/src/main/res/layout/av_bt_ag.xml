@@ -15,44 +15,35 @@
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
-            android:layout_height="147dp"
+            android:layout_height="130dp"
             android:background="@color/colorPrimary"
+            android:gravity="center_horizontal"
             android:orientation="vertical"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="0dp">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="DEV by CTN Phrae"
-                android:textAlignment="center"
-                android:textColor="#FFF"
-                android:textSize="30sp"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="0dp" />
+
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="ครูฝึกสถานประกอบการ"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="25dp"
                 android:textAlignment="center"
+                android:gravity="center"
                 android:textColor="#FFF"
-                android:textSize="24sp"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="53dp" />
+                android:textSize="24sp" />
 
 
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="20dp"
                     android:text="ยืนยันการปฎิบัติงาน"
                     android:textAlignment="center"
+                    android:gravity="center"
                     android:textColor="#FFF"
-                    android:textSize="24sp"
-                    tools:layout_editor_absoluteX="0dp"
-                    tools:layout_editor_absoluteY="53dp" />
+                    android:textSize="24sp" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -77,8 +68,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-
+                    android:background="@drawable/style_button_test2"
                     android:text="ยืนยัน"
+                    android:textColor="@color/text_w"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.903"
