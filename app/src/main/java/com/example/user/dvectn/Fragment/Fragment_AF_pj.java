@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,8 @@ public class Fragment_AF_pj extends Fragment {
 
         ArrayAdapter ListViewAdapter = new ArrayAdapter(getContext(),android.R.layout.simple_list_item_1,chataterNaJa);
         listView.setAdapter(ListViewAdapter);
+
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

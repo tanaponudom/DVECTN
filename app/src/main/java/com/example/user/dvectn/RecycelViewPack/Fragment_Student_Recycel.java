@@ -27,7 +27,7 @@ import java.util.List;
 
 public class Fragment_Student_Recycel extends Fragment {
     RecyclerView recyclerView;
-    RecycleViewAdapter recycleViewAdapter;
+    RecycleViewAdapter1 recycleViewAdapter;
     List<String> Data_St;
     List<String> Data_Url;
     Bundle bn_se;
@@ -47,6 +47,7 @@ public class Fragment_Student_Recycel extends Fragment {
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
 
         FloatingActionButton fab = viewtt.findViewById(R.id.fab);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,6 +64,7 @@ public class Fragment_Student_Recycel extends Fragment {
                         student_save.setArguments(bnq);
                         replaceFragment(student_save, bnq);
                         break;
+
 
 
 
@@ -88,9 +90,9 @@ public class Fragment_Student_Recycel extends Fragment {
 
         recyclerView = view.findViewById(R.id.LV_st_1);
 
-        recycleViewAdapter = new RecycleViewAdapter(getContext());
+        recycleViewAdapter = new RecycleViewAdapter1(getContext());
 
-        recycleViewAdapter.Update_Data(Data_St, Data_Url);
+        recycleViewAdapter.Update_Data(Data_St,Data_Url);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(recycleViewAdapter);

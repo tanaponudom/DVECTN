@@ -1,5 +1,7 @@
 package com.example.user.dvectn.Retrofit;
 
+import com.example.user.dvectn.POJO.POJO_getstu;
+
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -13,6 +15,10 @@ public interface ApiLogin {
 
     @FormUrlEncoded
     @POST("login/")
-    Call<Login> loginHandle(@Field("Username") String first, @Field("Password") String last);
+    Call<Login> loginHandle(@Field("username") String first, @Field("password") String last);
+
+    @FormUrlEncoded
+    @POST("studata/")
+    Call<POJO_getstu> getDataStd(@Field(""));
 
 }

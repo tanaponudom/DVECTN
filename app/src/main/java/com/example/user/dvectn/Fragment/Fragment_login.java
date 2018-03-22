@@ -2,17 +2,21 @@ package com.example.user.dvectn.Fragment;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -25,6 +29,8 @@ import com.example.user.dvectn.Retrofit.Login;
 import com.example.user.dvectn.Retrofit.NetworkConnectionManager;
 import com.example.user.dvectn.Retrofit.OnNetworkCallbackLoginListener;
 
+import org.w3c.dom.Text;
+
 import okhttp3.ResponseBody;
 
 /**
@@ -36,7 +42,14 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
     String str_user,str_pass;
     public static String BASE_URL = "http://43.228.87.219/";
     public static final String TAG_user = "tokenData";
+    public static final String KEY_TOKEN = "myToken";
+    public static final String MyPer = "myPer";
+
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+
     ProgressDialog progressDialog;
+
 
 
     @Nullable
@@ -44,9 +57,18 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.login_layout,container,false);
         ImageView img = view.findViewById(R.id.imgif_naja);
+
         view.findViewById(R.id.btn_login).setOnClickListener(this);
+
         et_user = view.findViewById(R.id.et_user);
         et_pass = view.findViewById(R.id.et_pass);
+
+        //init session
+        sharedPreferences = getActivity().getSharedPreferences(MyPer, Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
+
+//        btn_login.setEnabled(false);
 
         img.setImageDrawable(getResources().getDrawable(R.drawable.logo2));
 
@@ -56,114 +78,118 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
 
     }
 
-        private void login(){
+    private void login(){
 
         str_user = et_user.getText().toString();
         str_pass = et_pass.getText().toString();
 //        Toast.makeText(getContext(), ""+str_user+str_pass, Toast.LENGTH_SHORT).show();
 //        new NetworkConnectionManager().callServerLogin(listener,str_user,str_pass);
+        new NetworkConnectionManager().callServerLogin(listener,str_user,str_pass);
 
 
 //        new NetworkConnectionManager().callServerLogin(onNetworkCallbackLoginListener,str_user,str_pass);
-
-        if (str_user.equals("admin") && str_pass.equals("1234"))
-        {
-
-            Fragment_mainapp sec=new Fragment_mainapp();
-            Bundle bundle = new Bundle();
-            bundle.putString(TAG_user,str_user);
-
-            replaceFragment(sec ,bundle);
-//            getActivity().getSupportFragmentManager().beginTransaction().add(R.id.content,sec,"ีsec").commit();
-
-        }
-          else if (str_user.equals("admin") && str_pass.equals("12345"))
-
-        {
-              Fragment_Student sec =new Fragment_Student();
-              Bundle bundle = new Bundle();
-              bundle.putString(TAG_user,str_user);
-
-              replaceFragment(sec ,bundle);
-
-        }
-        else if (str_user.equals("2")&& str_pass.equals("2")){
-
-
-            Fragment_Student_Recycel sec = new Fragment_Student_Recycel();
-            Bundle bunble = new Bundle();
-            bunble.putString(TAG_user,str_user);
-
-            replaceFragment(sec,bunble);
-        }
-        else  if (str_user.equals("3") && str_pass.equals("3")){
-
-            Fragment_Teacher_Recycle sec = new Fragment_Teacher_Recycle();
-            Bundle bundle = new Bundle();
-            bundle.putString(TAG_user,str_user);
-
-            replaceFragment(sec,bundle);
-        }
-        else  if (str_user.equals("4") && str_pass.equals("4")){
-
-            Fragment_Teacher_Trainer sec = new Fragment_Teacher_Trainer();
-            Bundle bundle = new Bundle();
-            bundle.putString(TAG_user,str_user);
-
-            replaceFragment(sec,bundle);
-        }
-
+//        if (TextUtils.isEmpty(et_user.getText().toString().trim())|| TextUtils.isEmpty(et_pass.getText().toString().trim())){
+//            et_user.setError("โปรดกรอกให้ถูกต้อง");
+//            et_pass.setError("โปรดกรอกรหัสผ่านให้ถูกต้อง");
+//        }
+//        if (str_user.equals("admin") && str_pass.equals("1234"))
+//        {
+//
+//            Fragment_mainapp sec=new Fragment_mainapp();
+//            Bundle bundle = new Bundle();
+//            bundle.putString(TAG_user,str_user);
+//
+//            replaceFragment(sec ,bundle);
+////            getActivity().getSupportFragmentManager().beginTransaction().add(R.id.content,sec,"ีsec").commit();
+//
+//        }
+//        else if (str_user.equals("admin") && str_pass.equals("12345"))
+//
+//        {
+//            Fragment_Student sec =new Fragment_Student();
+//            Bundle bundle = new Bundle();
+//            bundle.putString(TAG_user,str_user);
+//
+//            replaceFragment(sec ,bundle);
+//
+//        }
+//        else if (str_user.equals("2")&& str_pass.equals("2")){
+//
+//
+//            Fragment_Student_Recycel sec = new Fragment_Student_Recycel();
+//            Bundle bunble = new Bundle();
+//            bunble.putString(TAG_user,str_user);
+//
+//            replaceFragment(sec,bunble);
+//        }
+//        else  if (str_user.equals("3") && str_pass.equals("3")){
+//
+//            Fragment_AF_Teacherlayout sec = new Fragment_AF_Teacherlayout();
+//            Bundle bundle = new Bundle();
+//            bundle.putString(TAG_user,str_user);
+//
+//            replaceFragment(sec,bundle);
+//        }
+//        else  if (str_user.equals("4") && str_pass.equals("4")){
+//
+//            Fragment_Teacher_Trainer sec = new Fragment_Teacher_Trainer();
+//            Bundle bundle = new Bundle();
+//            bundle.putString(TAG_user,str_user);
+//
+//            replaceFragment(sec,bundle);
+//        }
+//        else {
+//            Toast.makeText(getContext(), "", Toast.LENGTH_SHORT);
+//        }
     }
 
-//    OnNetworkCallbackLoginListener listener = new OnNetworkCallbackLoginListener() {
-//        @Override
-//        public void onResponse(Login loginRes) {
-//
-//
-//
-//            Fragment_mainapp sec =new Fragment_mainapp();
-//            Bundle bundle = new Bundle();
-//            bundle.putString(TAG_user,loginRes.getAccesstoken());
-//            Toast.makeText(getContext(), ""+loginRes.getAccesstoken(), Toast.LENGTH_SHORT).show();
-//            replaceFragment(sec,bundle);
-//
-//            if(progressDialog.isShowing()){
-//                progressDialog.dismiss();
-//            }
-//
-//
-//        }
-//
-//        @Override
-//        public void onBodyError(ResponseBody responseBodyError) {
-//
-//            Log.e("onBodyError",""+responseBodyError);
-//            if(progressDialog.isShowing()){
-//                progressDialog.dismiss();
-//            }
-//
-//        }
-//
-//        @Override
-//        public void onBodyErrorIsNull() {
-//            Log.e("onBodyErrorIsNull","Data is Null");
-//            if(progressDialog.isShowing()){
-//                progressDialog.dismiss();
-//            }
-//
-//        }
-//
-//        @Override
-//        public void onFailure(Throwable t) {
-//            Log.e("onFailure",t.getMessage());
-//
-//            if(progressDialog.isShowing()){
-//                progressDialog.dismiss();
-//            }
-//
-//
-//        }
-//    };
+    OnNetworkCallbackLoginListener listener = new OnNetworkCallbackLoginListener() {
+        @Override
+        public void onResponse(Login loginRes) {
+
+            editor.putString(KEY_TOKEN,loginRes.getAccesstoken());
+            editor.commit();
+
+            Fragment_mainapp sec = new Fragment_mainapp();
+            replaceFragment(sec,null);
+
+            if(progressDialog.isShowing()){
+                progressDialog.dismiss();
+            }
+
+
+        }
+
+        @Override
+        public void onBodyError(ResponseBody responseBodyError) {
+
+            Log.e("onBodyError",""+responseBodyError);
+            if(progressDialog.isShowing()){
+                progressDialog.dismiss();
+            }
+
+        }
+
+        @Override
+        public void onBodyErrorIsNull() {
+            Log.e("onBodyErrorIsNull","Data is Null");
+            if(progressDialog.isShowing()){
+                progressDialog.dismiss();
+            }
+
+        }
+
+        @Override
+        public void onFailure(Throwable t) {
+            Log.e("onFailure",t.getMessage());
+
+            if(progressDialog.isShowing()){
+                progressDialog.dismiss();
+            }
+
+
+        }
+    };
 
     public void replaceFragment(Fragment fragment, Bundle bundle) {
 
@@ -200,10 +226,11 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn_login:
+                Toast.makeText(getContext(), "Login", Toast.LENGTH_SHORT).show();
 //            showDialog("Hello");
-
+                showLoading();
 //                showLoading();
-                    login();
+                login();
 
                 break;
         }

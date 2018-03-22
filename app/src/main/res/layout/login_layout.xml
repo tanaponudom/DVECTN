@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/text_w"
@@ -7,6 +7,9 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,8 +21,8 @@
 
             <ImageView
                 android:id="@+id/imgif_naja"
-                android:layout_width="188dp"
-                android:layout_height="192dp"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 app:srcCompat="@drawable/logo2" />
@@ -36,8 +39,8 @@
             <EditText
                 android:id="@+id/et_user"
 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="225dp"
+                android:layout_height="55dp"
 
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
@@ -51,8 +54,8 @@
 
             <EditText
                 android:id="@+id/et_pass"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="225dp"
+                android:layout_height="55dp"
                 android:layout_marginTop="8dp"
                 android:drawableRight="@drawable/ps_test"
                 android:ems="10"
@@ -85,4 +88,5 @@
 
         </LinearLayout>
     </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</LinearLayout>

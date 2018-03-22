@@ -13,18 +13,20 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="700dp"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp">
 
             <TextView
                 android:id="@+id/textView32"
-                android:layout_width="280dp"
+                android:layout_width="223dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="5dp"
                 android:text="1.วัสดุเครื่องมอ เครื่องใช้ในการฝึกงานมีปริมาณเหมาะสม"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
@@ -34,16 +36,28 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.11" />
+            <Spinner
+                android:id="@+id/spinner30"
+                android:layout_width="58dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="5dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp">
 
             <TextView
                 android:id="@+id/textView33"
-                android:layout_width="280dp"
+                android:layout_width="223dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="25dp"
-                android:text="2.	สื่อการสอนที่ใช้ในการฝึกงานมีเพียงพอ"
+                android:layout_marginTop="5dp"
+                android:text="2.สื่อการสอนที่ใช้ในการฝึกงานมีเพียงพอ"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -52,16 +66,27 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.2" />
-
+            <Spinner
+                android:id="@+id/spinner29"
+                android:layout_width="58dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="5dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp">
             <TextView
                 android:id="@+id/textView34"
-                android:layout_width="280dp"
+                android:layout_width="223dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="25dp"
-                android:text="3.	สถานประกอบการมีครูฝึกอย่างเพียงพอ"
+                android:layout_marginTop="5dp"
+                android:text="3.สถานประกอบการมีครูฝึกอย่างเพียงพอ"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -70,16 +95,27 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.294" />
-
+            <Spinner
+                android:id="@+id/spinner31"
+                android:layout_width="58dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="5dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp">
             <TextView
                 android:id="@+id/textView35"
-                android:layout_width="280dp"
+                android:layout_width="223dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="25dp"
-                android:text="4.	เอกสารคู่มือในการฝึกงานมีความชัดเจนต่อการปฏิบัติ"
+                android:layout_marginTop="5dp"
+                android:text="4.เอกสารคู่มือในการฝึกงานมีความชัดเจนต่อการปฏิบัติ"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -88,15 +124,26 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.39" />
-
+            <Spinner
+                android:id="@+id/spinner32"
+                android:layout_width="58dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="5dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp">
             <TextView
                 android:id="@+id/textView36"
-                android:layout_width="280dp"
+                android:layout_width="223dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="25dp"
-                android:text="5.ครูฝึกเข้าใจวิธีการสอนและการประเมินผลการฝึกงาน"
+                android:layout_marginTop="5dp"
+                android:text="5.ครูฝึกเข้าใจวิธีการสอนและการประเมินผลการฝึกงานรายวิชา"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -105,32 +152,26 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.498" />
-            <TextView
-                android:id="@+id/textView36.5"
-                android:layout_width="270dp"
-                android:layout_height="wrap_content"
+            <Spinner
+                android:id="@+id/spinner34"
+                android:layout_width="58dp"
+                android:layout_height="20dp"
                 android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="0dp"
-                android:text="รายวิชา"
-                android:textColor="@android:color/black"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.498" />
-
+                android:layout_marginTop="5dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp">
             <TextView
                 android:id="@+id/textView37"
-                android:layout_width="280dp"
+                android:layout_width="223dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="25dp"
-                android:text="6.สถานประกอบการมีการจัดงบประมาณสนับสนุนการ"
+                android:layout_marginTop="5dp"
+                android:text="6.สถานประกอบการมีการจัดงบประมาณสนับสนุนการึกงานรายวิชา"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -139,30 +180,26 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.614" />
-            <TextView
-                android:id="@+id/textView37.5"
-                android:layout_width="270dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="0dp"
-                android:text="ฝึกงานรายวิชา"
-                android:textColor="@android:color/black"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.614" />
+            <Spinner
+                android:id="@+id/spinner33"
+                android:layout_width="58dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="5dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp">
             <TextView
                 android:id="@+id/textView38"
-                android:layout_width="280dp"
+                android:layout_width="223dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="25dp"
-                android:text="7.ผู้บริหารสถานประกอบการมีความเข้าใจในหลักการและ"
+                android:layout_marginTop="5dp"
+                android:text="7.ผู้บริหารสถานประกอบการมีความเข้าใจในหลักการและวิธีการในการดำเนินงานตามโครงการส่งนักเรียนนักศึกษา ออกฝึกงานรายวิชา"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="
@@ -172,40 +209,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.746" />
-            <TextView
-                android:id="@+id/textView38.5"
-                android:layout_width="270dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="0dp"
-                android:text="วิธีการในการดำเนินงานตามโครงการส่งนักเรียน"
-                android:textColor="@android:color/black"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="
-                parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.746" />
-            <TextView
-                android:id="@+id/textView38.6"
-                android:layout_width="270dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="0dp"
-                android:text="นักศึกษา ออกฝึกงานรายวิชา"
-                android:textColor="@android:color/black"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="
-                parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.746" />
+            <Spinner
+                android:id="@+id/spinner35"
+                android:layout_width="58dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="5dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <Button
                 android:id="@+id/bbbtn4"
@@ -213,8 +226,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="35dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="57dp"
                 android:background="@drawable/style_button_test2"
                 android:text="ยืนยัน"
                 android:textColor="@color/text_w"
@@ -226,58 +239,5 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0" />
         </LinearLayout>
-
-
-
-            <Spinner
-                android:id="@+id/spinner30"
-                android:layout_width="58dp"
-                android:layout_height="20dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="50dp" />
-
-            <Spinner
-                android:id="@+id/spinner29"
-                android:layout_width="58dp"
-                android:layout_height="20dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="21dp" />
-
-            <Spinner
-                android:id="@+id/spinner31"
-                android:layout_width="58dp"
-                android:layout_height="20dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="20dp" />
-
-            <Spinner
-                android:id="@+id/spinner32"
-                android:layout_width="58dp"
-                android:layout_height="20dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="22dp"/>
-
-            <Spinner
-                android:id="@+id/spinner34"
-                android:layout_width="58dp"
-                android:layout_height="20dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="25dp"/>
-
-            <Spinner
-                android:id="@+id/spinner33"
-                android:layout_width="58dp"
-                android:layout_height="20dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="39dp"/>
-
-            <Spinner
-                android:id="@+id/spinner35"
-                android:layout_width="58dp"
-                android:layout_height="20dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="38dp"/>
-
-
     </LinearLayout>
 </ScrollView>

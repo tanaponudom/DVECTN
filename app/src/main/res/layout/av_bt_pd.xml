@@ -43,52 +43,53 @@
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="53dp" />
         </LinearLayout>
-
-
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="0dp"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_height="match_parent">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/LV_bt_pd"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="horizontal"
-            tools:layout_editor_absoluteX="33dp"
-            tools:layout_editor_absoluteY="523dp">
+                android:layout_height="match_parent"
+                android:layout_marginTop="0dp"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <Button
-                android:id="@+id/BT_S_PD"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/LV_bt_pd"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
-                android:layout_marginTop="8dp"
-                android:background="@drawable/style_button_test"
-                android:text="บันทึก"
-                android:textColor="@color/text_w" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/BT_E_PD"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                    <Button
+                        android:id="@+id/BT_S_PD"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="8dp"
 
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/style_button_test"
-                android:text="แก้ไข"
-                android:textColor="@color/text_w" />
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/style_button_test"
+                        android:text="บันทึก"
+                        android:textColor="@color/text_w" />
 
-        </LinearLayout>
+                    <Button
+                        android:id="@+id/BT_E_PD"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/style_button_test"
+                        android:text="แก้ไข"
+                        android:textColor="@color/text_w" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
 </ScrollView>

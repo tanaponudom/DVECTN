@@ -28,7 +28,7 @@ public class Fragment_AF_ag extends Fragment  {
     String [] chataterNaJa ={ "นาย อักษรขจร รถผ่าน","นางสาว ประวิทย์ ฉลาดจุง","นาย ประหยัด จันทร์อังคารพุธ" };
 
 
-    public static final String TAG_OHNO = "OHNO";
+    public static final String TAG_OHNOAG = "OHNOAG";
 
 
     @Nullable
@@ -43,7 +43,7 @@ public class Fragment_AF_ag extends Fragment  {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getContext(), "Item Click", Toast.LENGTH_SHORT);
+                Toast.makeText(getContext(), "Item C3lick", Toast.LENGTH_SHORT);
 
 
                 Fragment_bt_ag av_bt_ag = new Fragment_bt_ag();

@@ -1,7 +1,10 @@
 package com.example.user.dvectn.Fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -10,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.user.dvectn.R;
 import com.example.user.dvectn.RecycelViewPack.Fragment_bt_ag;
@@ -25,6 +29,7 @@ public class Fragment_mainapp extends Fragment implements View.OnClickListener {
     Bundle bundle1;
     String user;
     String frg;
+    SharedPreferences sharedPreferences;
 
     public static final String TAG_HELL = "Hello";
 
@@ -37,13 +42,17 @@ public class Fragment_mainapp extends Fragment implements View.OnClickListener {
 
         View view = inflater.inflate(R.layout.av_main_traner, container, false);
 
-        bundle1 = getArguments();
-        user = bundle1.getString(Fragment_login.TAG_user);
+
         view.findViewById(R.id.BT_D).setOnClickListener(this);
         view.findViewById(R.id.BT_PD).setOnClickListener(this);
         view.findViewById(R.id.BT_AG).setOnClickListener(this);
         view.findViewById(R.id.BT_DD).setOnClickListener(this);
         view.findViewById(R.id.BT_PJ).setOnClickListener(this);
+
+        sharedPreferences = getActivity().getSharedPreferences(Fragment_login.MyPer, Context.MODE_PRIVATE);
+
+        String tmp  = sharedPreferences.getString(Fragment_login.KEY_TOKEN,"");
+                Toast.makeText(getContext(), "Token  = "+tmp, Toast.LENGTH_SHORT).show();
 
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
 
@@ -112,6 +121,7 @@ public class Fragment_mainapp extends Fragment implements View.OnClickListener {
                 af_pj_list.setArguments(bn4);
                 replaceFragment(af_pj_list, bn4);
                 break;
+
         }
 
     }

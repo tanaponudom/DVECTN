@@ -1,6 +1,7 @@
 package com.example.user.dvectn.Retrofit;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.user.dvectn.Fragment.Fragment_login;
 import com.google.gson.Gson;
@@ -24,6 +25,7 @@ public class NetworkConnectionManager {
     }
 
     public void callServerLogin(final OnNetworkCallbackLoginListener listener, String username, String password) {
+
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
@@ -39,13 +41,13 @@ public class NetworkConnectionManager {
 
             @Override
             public void onResponse(Call<Login> call, Response<Login> response) {
+
                 try{
+                    Login loginRes = (Login) response.body();
 
-                    if(response.code() == 200)
+                    if(response.code() != 200)
                     {
-                        Log.e("Network connected","Response code = "+response.code());
-                        Login loginRes = (Login) response.body();
-
+//                        Log.e("Network connected","Response code = "+response.code());
 
                         ResponseBody responseBody = response.errorBody();
 
@@ -55,12 +57,15 @@ public class NetworkConnectionManager {
                             listener.onBodyErrorIsNull();
                         }
 
-                        listener.onResponse(loginRes);
-//                        Toast.makeText(context, ""+loginRes.getToken(), Toast.LENGTH_SHORT).show();
 
+//                        Toast.makeText(, ""+loginRes.getAccesstoken(), Toast.LENGTH_SHORT).show();
+                        Log.e("Network connected","Response code = "+loginRes.getAccesstoken());
+                    }else {
+                        listener.onResponse(loginRes);
                     }
+
                 }catch (Exception e){
-//                    Log.e("Network connect error",e.getMessage());
+                    Log.e("Network connect error",e.getMessage());
                 }
             }
 
