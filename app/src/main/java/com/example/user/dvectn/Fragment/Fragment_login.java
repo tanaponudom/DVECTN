@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.user.dvectn.POJO.POJO_login;
 import com.example.user.dvectn.R;
 import com.example.user.dvectn.RecycelViewPack.Fragment_Student_Recycel;
 import com.example.user.dvectn.RecycelViewPack.Fragment_Teacher_Recycle;
@@ -42,8 +43,13 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
     String str_user,str_pass;
     public static String BASE_URL = "http://43.228.87.219/";
     public static final String TAG_user = "tokenData";
-    public static final String KEY_TOKEN = "myToken";
     public static final String MyPer = "myPer";
+    public static final String KEY_member_id = "member_id";
+    public static final String KEY_member_firstname = "member_firstname";
+    public static final String KEY_member_lastname = "member_lastname";
+    public static final String KEY_member_email = "member_email";
+    public static final String KEY_dep_id = "dep_id";
+    public static final String KEY_member_type = "member_type";
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
@@ -84,19 +90,20 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
         str_pass = et_pass.getText().toString();
 //        Toast.makeText(getContext(), ""+str_user+str_pass, Toast.LENGTH_SHORT).show();
 //        new NetworkConnectionManager().callServerLogin(listener,str_user,str_pass);
-        new NetworkConnectionManager().callServerLogin(listener,str_user,str_pass);
-
 
 //        new NetworkConnectionManager().callServerLogin(onNetworkCallbackLoginListener,str_user,str_pass);
-//        if (TextUtils.isEmpty(et_user.getText().toString().trim())|| TextUtils.isEmpty(et_pass.getText().toString().trim())){
-//            et_user.setError("โปรดกรอกให้ถูกต้อง");
-//            et_pass.setError("โปรดกรอกรหัสผ่านให้ถูกต้อง");
-//        }
+        if (TextUtils.isEmpty(et_user.getText().toString().trim())|| TextUtils.isEmpty(et_pass.getText().toString().trim())){
+            et_user.setError("โปรดกรอกให้ถูกต้อง");
+            et_pass.setError("โปรดกรอกรหัสผ่านให้ถูกต้อง");
+        }else {
+                new NetworkConnectionManager().callServerLogin(listener,str_user,str_pass);
+
+        }
+
 //        if (str_user.equals("admin") && str_pass.equals("1234"))
 //        {
 //
 //            Fragment_mainapp sec=new Fragment_mainapp();
-//            Bundle bundle = new Bundle();
 //            bundle.putString(TAG_user,str_user);
 //
 //            replaceFragment(sec ,bundle);
@@ -107,7 +114,6 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
 //
 //        {
 //            Fragment_Student sec =new Fragment_Student();
-//            Bundle bundle = new Bundle();
 //            bundle.putString(TAG_user,str_user);
 //
 //            replaceFragment(sec ,bundle);
@@ -117,7 +123,6 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
 //
 //
 //            Fragment_Student_Recycel sec = new Fragment_Student_Recycel();
-//            Bundle bunble = new Bundle();
 //            bunble.putString(TAG_user,str_user);
 //
 //            replaceFragment(sec,bunble);
@@ -125,7 +130,6 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
 //        else  if (str_user.equals("3") && str_pass.equals("3")){
 //
 //            Fragment_AF_Teacherlayout sec = new Fragment_AF_Teacherlayout();
-//            Bundle bundle = new Bundle();
 //            bundle.putString(TAG_user,str_user);
 //
 //            replaceFragment(sec,bundle);
@@ -133,7 +137,6 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
 //        else  if (str_user.equals("4") && str_pass.equals("4")){
 //
 //            Fragment_Teacher_Trainer sec = new Fragment_Teacher_Trainer();
-//            Bundle bundle = new Bundle();
 //            bundle.putString(TAG_user,str_user);
 //
 //            replaceFragment(sec,bundle);
@@ -145,20 +148,48 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
 
     OnNetworkCallbackLoginListener listener = new OnNetworkCallbackLoginListener() {
         @Override
-        public void onResponse(Login loginRes) {
+        public void onResponse(POJO_login loginRes) {
 
-            editor.putString(KEY_TOKEN,loginRes.getAccesstoken());
+            editor.putString(KEY_member_id, loginRes.getMemberId());
+            editor.putString(KEY_member_firstname, loginRes.getMemberFirstname());
+            editor.putString(KEY_member_lastname, loginRes.getMemberLastname());
+            editor.putString(KEY_member_email, loginRes.getMemberEmail());
+            editor.putString(KEY_dep_id, loginRes.getDepId());
+            editor.putString(KEY_member_type, loginRes.getMemberType());
             editor.commit();
 
-            Fragment_mainapp sec = new Fragment_mainapp();
-            replaceFragment(sec,null);
 
-            if(progressDialog.isShowing()){
-                progressDialog.dismiss();
+            String Member_Type = loginRes.getMemberType();
+            Toast.makeText(getContext(), "Member type= " + Member_Type, Toast.LENGTH_SHORT).show();
+
+            if (Member_Type.equals("establishment")) {
+
+                Fragment_mainapp sec = new Fragment_mainapp();
+                replaceFragment(sec, null);
+
+            } else if (Member_Type.equals("student")) {
+
+                Fragment_Student_Recycel sec = new Fragment_Student_Recycel();
+                replaceFragment(sec, null);
+
+            } else if (Member_Type.equals("teacher")) {
+
+                Fragment_Teacher_Recycle sec = new Fragment_Teacher_Recycle();
+                replaceFragment(sec, null);
+
+
+            } else if (Member_Type.equals("admin")) {
+                Fragment_Teacher_Trainer sec = new Fragment_Teacher_Trainer();
+                replaceFragment(sec, null);
+
+            }
+                if (progressDialog.isShowing()) {
+                    progressDialog.dismiss();
+                }
+
+
             }
 
-
-        }
 
         @Override
         public void onBodyError(ResponseBody responseBodyError) {

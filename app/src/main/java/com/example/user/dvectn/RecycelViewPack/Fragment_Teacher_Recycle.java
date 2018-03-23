@@ -28,7 +28,6 @@ import java.util.List;
  */
 
 public class Fragment_Teacher_Recycle extends Fragment {
-    Bundle bd_tch;
     String str_tch;
     List<String> Data_th;
     List<String> Data_url_th;
@@ -41,7 +40,6 @@ public class Fragment_Teacher_Recycle extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View viewtch = inflater.inflate(R.layout.teacher_layout,container,false);
-        bd_tch = getArguments();
 //        str_tch = bd_tch.getString(Fragment_login.TAG_user);
 
         showdawaefah(viewtch);

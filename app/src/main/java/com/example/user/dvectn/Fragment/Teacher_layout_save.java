@@ -35,7 +35,6 @@ import static android.app.Activity.RESULT_OK;
 
 public class Teacher_layout_save extends Fragment implements View.OnClickListener {
     EditText et_ins2;
-    Bundle bundlesave2;
     String frg_sa2;
     ImagePicker imagePicker;
     ImageView imageView;
@@ -48,10 +47,7 @@ public class Teacher_layout_save extends Fragment implements View.OnClickListene
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view2 = inflater.inflate(R.layout.teacher_layuot_save,container,false);
 
-        bundlesave2 = getArguments();
-        if(bundlesave2 != null){
-            frg_sa2 = bundlesave2.getString(Fragment_Teacher_Recycle.TAG_TCH);
-        }
+
         return  view2;
     }
 

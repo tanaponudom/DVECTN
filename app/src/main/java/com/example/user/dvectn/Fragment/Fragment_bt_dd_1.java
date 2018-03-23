@@ -24,7 +24,7 @@ import com.example.user.dvectn.R;
 
 public class Fragment_bt_dd_1 extends Fragment implements View.OnClickListener
 {
-    Bundle bn;
+
     String frg;
     String nameList[] = {"-","1","2","3","4","5"};
     Button bbb;
@@ -36,7 +36,7 @@ public class Fragment_bt_dd_1 extends Fragment implements View.OnClickListener
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.av_bt_dd_1,container, false);
-        bn = getArguments();
+
 
         bbb=view.findViewById(R.id.bbbtn1);
 
@@ -64,10 +64,6 @@ public class Fragment_bt_dd_1 extends Fragment implements View.OnClickListener
         ((AppCompatActivity) getActivity()).getSupportActionBar().show();
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("ด้านคุณลักษณะอันพึงประสงค์");
 
-        if(bn != null);
-        {
-            frg = bn.getString(Fragment_bt_dd.TAG_KAWNA);
-        }
 
         view.findViewById(R.id.bbbtn1).setOnClickListener(this);
         return view;

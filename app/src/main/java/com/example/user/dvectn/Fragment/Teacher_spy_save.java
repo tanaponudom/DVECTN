@@ -35,7 +35,6 @@ import static android.app.Activity.RESULT_OK;
 public class Teacher_spy_save extends Fragment implements View.OnClickListener  {
 
     EditText se_ins1;
-    Bundle bundlesave1;
     String frg_sa1;
     ImagePicker imagePicker;
     ImageView imageView;
@@ -48,10 +47,6 @@ public class Teacher_spy_save extends Fragment implements View.OnClickListener  
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view1 = inflater.inflate(R.layout.teacher_spy_save, container, false);
 
-        bundlesave1 = getArguments();
-        if(bundlesave1 != null){
-            frg_sa1 = bundlesave1.getString(Fragment_Teacher_Trainer.TAG_TCH1);
-        }
         init(view1);
         return  view1;
     }

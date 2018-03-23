@@ -17,7 +17,7 @@ import com.example.user.dvectn.R;
  */
 
 public class Fragment_Student extends Fragment{
-    Bundle bundle2;
+
     String user;
     String frg;
 
@@ -29,14 +29,7 @@ public class Fragment_Student extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.student_layout, container, false);
 
-        
-        bundle2 = getArguments();
-        user = bundle2.getString(Fragment_login.TAG_user);
 
-        if(bundle2 != null);
-        {
-            frg = bundle2.getString(Fragment_login.TAG_user);
-        }
         return view;
 
     }

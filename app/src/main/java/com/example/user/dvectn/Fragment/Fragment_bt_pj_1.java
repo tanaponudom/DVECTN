@@ -20,7 +20,6 @@ import com.example.user.dvectn.R;
  */
 
 public class Fragment_bt_pj_1 extends Fragment {
-    Bundle bn;
     String frg;
 
     public static final String TAG_KONAMI = "KOKO";
@@ -30,7 +29,6 @@ public class Fragment_bt_pj_1 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.av_bt_pj_1, container, false);
-        bn = getArguments();
 
         CheckBox CB1 = view.findViewById(R.id.CB1);
         CB1.setChecked(false);
@@ -44,15 +42,7 @@ public class Fragment_bt_pj_1 extends Fragment {
         CheckBox CB4 = view.findViewById(R.id.CB4);
         CB4.setChecked(false);
 
-
-
         ((AppCompatActivity) getActivity()).getSupportActionBar().show();
-
-
-        if (bn != null) ;
-        {
-            frg = bn.getString(Fragment_bt_pj.TAG_KAW3);
-        }
 
         return view;
 

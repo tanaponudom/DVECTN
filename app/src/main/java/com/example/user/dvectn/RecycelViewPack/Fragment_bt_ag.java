@@ -23,7 +23,6 @@ import java.util.List;
  */
 
 public class Fragment_bt_ag extends Fragment {
-    Bundle bn2;
     String frg3;
     RecyclerView recycleView6;
     RecycleViewAdapter2 recycleViewAdapter6;
@@ -39,10 +38,6 @@ public class Fragment_bt_ag extends Fragment {
         View view2 = inflater.inflate(R.layout.av_bt_ag, container, false);
         shownanaju(view2);
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
-        bn2 = getArguments();
-        if (bn2 != null) {
-            frg3 = bn2.getString(Fragment_mainapp.TAG_HELL);
-        }
 
 
         return view2;

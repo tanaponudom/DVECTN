@@ -18,7 +18,6 @@ import com.example.user.dvectn.R;
  */
 
 public class Fragment_bt_dd extends Fragment implements View.OnClickListener{
-    Bundle bn4;
     String frg4;
 
     public static final String TAG_KAWNA = "KAWNA";
@@ -32,12 +31,6 @@ public class Fragment_bt_dd extends Fragment implements View.OnClickListener{
         view4.findViewById(R.id.BBTN_3).setOnClickListener(this);
 
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
-
-
-        bn4 = getArguments();
-        if (bn4 != null) {
-            frg4 = bn4.getString(Fragment_mainapp.TAG_HELL);
-        }
 
         return  view4;
 
@@ -60,28 +53,16 @@ public class Fragment_bt_dd extends Fragment implements View.OnClickListener{
         switch (view.getId()){
 
             case  R.id.BBTN_1:
-                Bundle bn4_1 = new Bundle();
-                bn4_1.putString(TAG_KAWNA,"4567");
-
-                Fragment_bt_dd_1 av_bt_dd_1 = new Fragment_bt_dd_1();
-                av_bt_dd_1.setArguments(bn4_1);
-                replaceFragment(av_bt_dd_1,bn4_1);
+                 Fragment_bt_dd_1 av_bt_dd_1 = new Fragment_bt_dd_1();
+                replaceFragment(av_bt_dd_1,null);
                 break;
             case  R.id.BBTN_2:
-                Bundle bn4_2 = new Bundle();
-                bn4_2.putString(TAG_KAWNA,"4567");
-
                 Fragment_bt_dd_2 av_bt_dd_2 = new Fragment_bt_dd_2();
-                av_bt_dd_2.setArguments(bn4_2);
-                replaceFragment(av_bt_dd_2,bn4_2);
+                replaceFragment(av_bt_dd_2,null);
                 break;
             case  R.id.BBTN_3:
-                Bundle bn4_3 = new Bundle();
-                bn4_3.putString(TAG_KAWNA,"4567");
-
                 Fragment_bt_dd_3 av_bt_dd_3 = new Fragment_bt_dd_3();
-                av_bt_dd_3.setArguments(bn4_3);
-                replaceFragment(av_bt_dd_3,bn4_3);
+                replaceFragment(av_bt_dd_3,null);
                 break;
         }
 

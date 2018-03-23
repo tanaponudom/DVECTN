@@ -4,9 +4,13 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.user.dvectn.Fragment.Fragment_login;
+import com.example.user.dvectn.Fragment.Student_save;
+import com.example.user.dvectn.POJO.POJO_login;
+import com.example.user.dvectn.POJO.ResPOJO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -37,13 +41,13 @@ public class NetworkConnectionManager {
         ApiLogin callapi = retrofit.create(ApiLogin.class);
 
         Call call = callapi.loginHandle(username, password);
-        call.enqueue(new Callback<Login>() {
+        call.enqueue(new Callback<POJO_login>() {
 
             @Override
-            public void onResponse(Call<Login> call, Response<Login> response) {
+            public void onResponse(Call<POJO_login> call, Response<POJO_login> response) {
 
                 try{
-                    Login loginRes = (Login) response.body();
+                    POJO_login loginRes = (POJO_login) response.body();
 
                     if(response.code() != 200)
                     {
@@ -59,7 +63,7 @@ public class NetworkConnectionManager {
 
 
 //                        Toast.makeText(, ""+loginRes.getAccesstoken(), Toast.LENGTH_SHORT).show();
-                        Log.e("Network connected","Response code = "+loginRes.getAccesstoken());
+//                        Log.e("Network connected","Response code = "+loginRes.getAccesstoken());
                     }else {
                         listener.onResponse(loginRes);
                     }
@@ -70,7 +74,7 @@ public class NetworkConnectionManager {
             }
 
             @Override
-            public void onFailure(Call<Login> call, Throwable t) {
+            public void onFailure(Call<POJO_login> call, Throwable t) {
                 try{
 
                     listener.onFailure(t);
@@ -81,5 +85,55 @@ public class NetworkConnectionManager {
 
             }
         });
+    }
+
+    public void pushImage(
+
+            final OnNetworkCallbackListener listener
+            , MultipartBody.Part img
+            , String user_id
+            , String app_name
+            ,String app_detail
+    ){
+
+
+        final Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Fragment_login.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        ApiLogin git = retrofit.create(ApiLogin.class);
+        Call call = git.updateImageProfile(img,user_id,app_name,app_detail);
+        call.enqueue(new Callback<ResPOJO>() {
+
+            @Override
+            public void onResponse(Call<ResPOJO> call, Response<ResPOJO> response) {
+
+                ResPOJO res = response.body();
+//                Log.e("TAG",res.getStatus());
+//
+                if (res == null) {
+                    //404 or the response cannot be converted to User.
+                    ResponseBody responseBody = response.errorBody();
+                    if (responseBody != null) {
+                        listener.onBodyError(responseBody);
+                    } else {
+                        listener.onBodyErrorIsNull();
+                    }
+                } else {
+                    //200
+                    listener.onResponse(response.body(), retrofit);
+                    Log.e("ResNet",""+res.getUrl());
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ResPOJO> call, Throwable t) {
+                listener.onFailure(t);
+//                Log.e("NWMG",t.getMessage());
+            }
+        });
+
     }
 }

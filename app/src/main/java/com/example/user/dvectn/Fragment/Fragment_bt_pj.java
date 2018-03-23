@@ -17,7 +17,6 @@ import com.example.user.dvectn.R;
  */
 
 public class Fragment_bt_pj extends Fragment implements View.OnClickListener {
-    Bundle bn5;
     String frg5;
 
     public static final String TAG_KAW3 = "KAW2";
@@ -36,12 +35,6 @@ public class Fragment_bt_pj extends Fragment implements View.OnClickListener {
         ((AppCompatActivity) getActivity()).getSupportActionBar().show();
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("แบบประเมินโครงการ");
 
-
-
-        bn5 = getArguments();
-        if (bn5 != null) {
-            frg5 = bn5.getString(Fragment_mainapp.TAG_HELL);
-        }
         return view4;
     }
 
@@ -62,57 +55,33 @@ public class Fragment_bt_pj extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.BTNN_1:
-                Bundle bn5_1 = new Bundle();
-                bn5_1.putString(TAG_KAW3,"71120");
-
                 Fragment_bt_pj_1 av_bt_pj_1 = new Fragment_bt_pj_1();
-                av_bt_pj_1.setArguments(bn5_1);
-                replaceFragment(av_bt_pj_1,bn5_1);
+                replaceFragment(av_bt_pj_1,null);
 
                 break;
             case R.id.BTNN_2:
-                Bundle bn5_2 = new Bundle();
-                bn5_2.putString(TAG_KAW3,"71120");
-
                 Fragment_bt_pj_2 av_bt_pj_2 = new Fragment_bt_pj_2();
-                av_bt_pj_2.setArguments(bn5_2);
-                replaceFragment(av_bt_pj_2,bn5_2);
+                replaceFragment(av_bt_pj_2,null);
 
                 break;
             case R.id.BTNN_3:
-                Bundle bn5_3 = new Bundle();
-                bn5_3.putString(TAG_KAW3,"71120");
-
                 Fragment_bt_pj_3 av_bt_pj_3 = new Fragment_bt_pj_3();
-                av_bt_pj_3.setArguments(bn5_3);
-                replaceFragment(av_bt_pj_3,bn5_3);
+                replaceFragment(av_bt_pj_3,null);
 
                 break;
             case R.id.BTNN_4:
-                Bundle bn5_4 = new Bundle();
-                bn5_4.putString(TAG_KAW3,"71120");
-
                 Fragment_bt_pj_4 av_bt_pj_4 = new Fragment_bt_pj_4();
-                av_bt_pj_4.setArguments(bn5_4);
-                replaceFragment(av_bt_pj_4,bn5_4);
+                replaceFragment(av_bt_pj_4,null);
 
                 break;
             case R.id.BTNN_5:
-                Bundle bn5_5 = new Bundle();
-                bn5_5.putString(TAG_KAW3,"71120");
-
                 Fragment_bt_pj_5 av_bt_pj_5 = new Fragment_bt_pj_5();
-                av_bt_pj_5.setArguments(bn5_5);
-                replaceFragment(av_bt_pj_5,bn5_5);
+                replaceFragment(av_bt_pj_5,null);
 
                 break;
             case R.id.BTNN_6:
-                Bundle bn5_6 = new Bundle();
-                bn5_6.putString(TAG_KAW3,"71120");
-
                 Fragment_bt_pj_6 av_bt_pj_6 = new Fragment_bt_pj_6();
-                av_bt_pj_6.setArguments(bn5_6);
-                replaceFragment(av_bt_pj_6,bn5_6);
+                replaceFragment(av_bt_pj_6,null);
 
                 break;
 

@@ -25,7 +25,6 @@ import java.util.List;
  */
 
 public class Fragment_bt_pd1 extends Fragment {
-    Bundle bn3;
     String frg1;
     RecyclerView recycleView;
     RecycleViewAdapter4 recycleViewAdapter;
@@ -41,17 +40,10 @@ public class Fragment_bt_pd1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view2 = inflater.inflate(R.layout.av_bt_pd,container,false);
         showdawae(view2);
-        bn3 = getArguments();
 
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
 
 
-
-
-        if(bn3 != null);
-        {
-            frg1 = bn3.getString(Fragment_mainapp.TAG_HELL);
-        }
         return  view2;
 
     }

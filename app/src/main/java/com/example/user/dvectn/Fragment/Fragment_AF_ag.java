@@ -23,7 +23,7 @@ import com.example.user.dvectn.RecycelViewPack.Fragment_bt_ag;
 
 public class Fragment_AF_ag extends Fragment  {
 
-    Bundle blt1;
+
     ListView listView;
     String [] chataterNaJa ={ "นาย อักษรขจร รถผ่าน","นางสาว ประวิทย์ ฉลาดจุง","นาย ประหยัด จันทร์อังคารพุธ" };
 

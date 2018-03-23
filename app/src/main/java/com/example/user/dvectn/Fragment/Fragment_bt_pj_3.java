@@ -19,7 +19,6 @@ import com.example.user.dvectn.R;
  */
 
 public class Fragment_bt_pj_3 extends Fragment implements View.OnClickListener {
-    Bundle bn;
     String frg;
     String nameList[] = {"-","1","2","3","4","5"};
     Spinner spn1, spn2 , spn3 , spn4 , spn5 , spn6 , spn7;
@@ -29,7 +28,6 @@ public class Fragment_bt_pj_3 extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.av_bt_pj_3,container, false);
-        bn = getArguments();
 
         spn1 = view.findViewById(R.id.spinner29);
         ArrayAdapter adapter = new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_item,nameList);
@@ -62,10 +60,6 @@ public class Fragment_bt_pj_3 extends Fragment implements View.OnClickListener {
 
         ((AppCompatActivity) getActivity()).getSupportActionBar().show();
 
-        if(bn != null);
-        {
-            frg = bn.getString(Fragment_bt_pj.TAG_KAW3);
-        }
         view.findViewById(R.id.bbbtn4).setOnClickListener(this);
         return view;
     }

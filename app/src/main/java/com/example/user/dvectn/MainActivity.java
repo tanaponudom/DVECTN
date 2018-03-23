@@ -6,8 +6,11 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.example.user.dvectn.Fragment.Fragment_login;
+import com.example.user.dvectn.Retrofit.Login;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,6 +47,27 @@ public class MainActivity extends AppCompatActivity {
             });
             builder.show();
         }
+        private void Logout(){
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setTitle("คำเตือน");
+            builder.setMessage("Logout ?");
+
+            builder.setPositiveButton("ตกลง", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            });
+
+            builder.setNegativeButton("ยกเลิก", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.dismiss();
+                }
+            });
+            builder.show();
+        }
 
     @Override
     public void onBackPressed() {
@@ -52,11 +76,9 @@ public class MainActivity extends AppCompatActivity {
 
         int co = fragmentManager.getBackStackEntryCount();
 
-//        Toast.makeText(this, ""+co, Toast.LENGTH_SHORT).show();
-//
         if(co > 1 ){
             fragmentManager.popBackStack();
-        }else {
+        }else if(co==1) {
             Exit();
         }
 

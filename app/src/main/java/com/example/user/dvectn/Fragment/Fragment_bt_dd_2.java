@@ -25,7 +25,7 @@ import java.util.List;
 
 public class Fragment_bt_dd_2 extends Fragment implements View.OnClickListener
 {
-    Bundle bn;
+
     String frg;
     String nameList[] = {"-","1","2","3","4","5"};
     Spinner spin1, spin2 , spin3 , spin4 , spin5 , spin6 , spin7 , spin8 ;
@@ -37,7 +37,7 @@ public class Fragment_bt_dd_2 extends Fragment implements View.OnClickListener
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.av_bt_dd_2,container, false);
-        bn = getArguments();
+
 
         spin1 = view.findViewById(R.id.spinner6);
         ArrayAdapter adapter = new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_item,nameList);
@@ -77,10 +77,7 @@ public class Fragment_bt_dd_2 extends Fragment implements View.OnClickListener
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("ด้านสมรรถนะหลักและสมรรถภาพทั่วไป");
 
 
-        if(bn != null);
-        {
-            frg = bn.getString(Fragment_bt_dd.TAG_KAWNA);
-        }
+
         view.findViewById(R.id.bbbtn2).setOnClickListener(this);
 
 

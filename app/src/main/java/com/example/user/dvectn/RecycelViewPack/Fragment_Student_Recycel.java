@@ -30,7 +30,6 @@ public class Fragment_Student_Recycel extends Fragment {
     RecycleViewAdapter1 recycleViewAdapter;
     List<String> Data_St;
     List<String> Data_Url;
-    Bundle bn_se;
     String frg_st;
 
     public  static  final String TAG_STU = "DENT";
@@ -40,9 +39,6 @@ public class Fragment_Student_Recycel extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View viewtt = inflater.inflate(R.layout.student_page, container, false);
         showdawae(viewtt);
-        bn_se = getArguments();
-        frg_st = bn_se.getString(Fragment_login.TAG_user);
-
 
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
 

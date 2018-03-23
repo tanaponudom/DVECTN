@@ -33,7 +33,6 @@ public class Fragment_bt_d1 extends Fragment   {
     List<Integer> Data_num;
     String CheckList [] = {"มา","มาสาย","ขาด","ลา"};
     String frg2;
-    Bundle btn3;
 
     ArrayAdapter adp2;
     public  static  final String TAG_HEW = "HEW";
@@ -47,8 +46,6 @@ public class Fragment_bt_d1 extends Fragment   {
         View view1 = inflater.inflate(R.layout.av_bt_d,container,false);
         showboobs(view1);
 
-        btn3 = getArguments();
-        frg2 = btn3.getString(Fragment_mainapp.TAG_HELL);
 
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
 

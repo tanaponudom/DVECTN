@@ -30,7 +30,6 @@ public class Fragment_Teacher_Trainer extends Fragment {
     RecycleViewAdapter2 recycleViewAdapter2;
     List<String> Data_th;
     List<Integer> Data_state;
-    Bundle bd_thch;
     String str_thch;
 
 
@@ -43,8 +42,6 @@ public class Fragment_Teacher_Trainer extends Fragment {
         View viewtcher = inflater.inflate(R.layout.teacher_fusionjob,container,false);
         showpuyfah(viewtcher);
 
-        bd_thch = getArguments();
-        str_thch = bd_thch.getString(Fragment_login.TAG_user);
 
 
         FloatingActionButton fab3 = viewtcher.findViewById(R.id.fab2);
