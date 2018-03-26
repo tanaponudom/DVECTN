@@ -1,14 +1,15 @@
 package com.example.user.dvectn.Retrofit;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.user.dvectn.Fragment.Fragment_login;
-import com.example.user.dvectn.Fragment.Student_save;
+import com.example.user.dvectn.POJO.POJO_getstu;
 import com.example.user.dvectn.POJO.POJO_login;
 import com.example.user.dvectn.POJO.ResPOJO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import java.util.List;
 
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
@@ -39,7 +40,7 @@ public class NetworkConnectionManager {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
-        ApiLogin callapi = retrofit.create(ApiLogin.class);
+        APISERVER callapi = retrofit.create(APISERVER.class);
 
         Call call = callapi.loginHandle(username, password);
         call.enqueue(new Callback<POJO_login>() {
@@ -107,7 +108,7 @@ public class NetworkConnectionManager {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        ApiLogin git = retrofit.create(ApiLogin.class);
+        APISERVER git = retrofit.create(APISERVER.class);
         Call call = git.updateImageProfile(img,user_id,app_name,app_detail);
         call.enqueue(new Callback<ResPOJO>() {
 
@@ -141,4 +142,73 @@ public class NetworkConnectionManager {
         });
 
     }
+
+
+    public void getStudentName(final OnNetworkCallBackGetStd listener, String depid) {
+
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
+        final Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Fragment_login.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+
+        APISERVER callapi = retrofit.create(APISERVER.class);
+
+        Call call = callapi.getSTD(depid);
+
+
+        call.enqueue(new Callback< List<POJO_getstu>>() {
+
+            @Override
+            public void onResponse(Call<List<POJO_getstu>> call, Response< List<POJO_getstu>> response ) {
+//                Log.e("onResponse",""+response.body());
+
+                try{
+
+                    List<POJO_getstu> stdRes = (List<POJO_getstu>) response.body();
+
+                    if(response.code() != 200)
+                    {
+//                        Log.e("Network connected","Response code = "+response.code());
+
+                        ResponseBody responseBody = response.errorBody();
+
+                        if(responseBody != null){
+                            listener.onBodyError(responseBody);
+                        }else if(responseBody == null ) {
+                            listener.onBodyErrorIsNull();
+                        }
+
+//                        Toast.makeText(, ""+loginRes.getAccesstoken(), Toast.LENGTH_SHORT).show();
+//                        Log.e("Network connected","Response code = "+loginRes.getAccesstoken());
+                    }else {
+                       listener.onResponse(stdRes);
+                    }
+
+                }catch (Exception e){
+//                    Log.e("Network connect error",e.getMessage());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<POJO_getstu>> call, Throwable t) {
+                Log.e("NT",t.getMessage());
+                try{
+
+                    listener.onFailure(t);
+
+                }catch (Exception e){
+
+                    listener.onFailure(t);
+//                    Log.e("Network connectLogin",t.getMessage());
+                }
+
+            }
+        });
+    }
+
+
 }

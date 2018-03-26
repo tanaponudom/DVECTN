@@ -1,5 +1,7 @@
 package com.example.user.dvectn.Retrofit;
 
+import android.support.annotation.FractionRes;
+
 import com.example.user.dvectn.POJO.POJO_Checkdaily;
 import com.example.user.dvectn.POJO.POJO_DD_P1;
 import com.example.user.dvectn.POJO.POJO_DD_P2;
@@ -16,6 +18,8 @@ import com.example.user.dvectn.POJO.POJO_login;
 import com.example.user.dvectn.POJO.POJO_studata;
 import com.example.user.dvectn.POJO.ResPOJO;
 
+import java.util.List;
+
 import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -28,11 +32,18 @@ import retrofit2.http.Part;
  * Created by kritsanrongkaew on 12/3/2018 AD.
  */
 
-public interface ApiLogin {
+public interface APISERVER {
 
     @FormUrlEncoded
     @POST("login/")
     Call<POJO_login> loginHandle(@Field("username") String first, @Field("password") String last);
+
+    @FractionRes
+    
+    @FormUrlEncoded
+    @POST("getstu/")
+    Call<List<POJO_getstu>> getSTD(@Field("dep_id") String dep_id);
+
 
     @FormUrlEncoded
     @POST("studata/")

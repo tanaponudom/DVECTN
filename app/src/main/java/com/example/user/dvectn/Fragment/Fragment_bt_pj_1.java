@@ -1,5 +1,6 @@
 package com.example.user.dvectn.Fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,8 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 
 import com.example.user.dvectn.R;
 
@@ -21,6 +24,9 @@ import com.example.user.dvectn.R;
 
 public class Fragment_bt_pj_1 extends Fragment {
     String frg;
+    Button btn_confirm;
+
+    Context context;
 
     public static final String TAG_KONAMI = "KOKO";
 
@@ -29,18 +35,32 @@ public class Fragment_bt_pj_1 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.av_bt_pj_1, container, false);
-
-        CheckBox CB1 = view.findViewById(R.id.CB1);
+        context = getContext();
+        final CheckBox CB1 = view.findViewById(R.id.CB1);
         CB1.setChecked(false);
 
-        CheckBox CB2 = view.findViewById(R.id.CB2);
+        final CheckBox CB2 = view.findViewById(R.id.CB2);
         CB2.setChecked(false);
 
-        CheckBox CB3 = view.findViewById(R.id.CB3);
+        final CheckBox CB3 = view.findViewById(R.id.CB3);
         CB3.setChecked(false);
 
-        CheckBox CB4 = view.findViewById(R.id.CB4);
+        final CheckBox CB4 = view.findViewById(R.id.CB4);
         CB4.setChecked(false);
+
+        btn_confirm = view.findViewById(R.id.btn_confirm);
+
+        btn_confirm.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(context, "CK 1 = "+CB1.isChecked()
+                                            +"CK 2 = "+CB2.isChecked()
+                                            +"CK 3 = "+CB3.isChecked()
+                                            +"CK 4 = "+CB4.isChecked()
+                        , Toast.LENGTH_SHORT).show();
+            }
+        });
 
         ((AppCompatActivity) getActivity()).getSupportActionBar().show();
 

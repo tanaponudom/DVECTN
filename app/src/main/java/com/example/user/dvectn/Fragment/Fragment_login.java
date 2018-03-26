@@ -78,13 +78,10 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
 
     private void login(){
 
-        str_user = et_user.getText().toString();
-        str_pass = et_pass.getText().toString();
-//        Toast.makeText(getContext(), ""+str_user+str_pass, Toast.LENGTH_SHORT).show();
-//        new NetworkConnectionManager().callServerLogin(listener,str_user,str_pass);
+        str_user = et_user.getText().toString().toUpperCase();
+        str_pass = et_pass.getText().toString().toUpperCase();
 
-//        new NetworkConnectionManager().callServerLogin(onNetworkCallbackLoginListener,str_user,str_pass);
-        if (TextUtils.isEmpty(et_user.getText().toString().trim())|| TextUtils.isEmpty(et_pass.getText().toString().trim())){
+     if (TextUtils.isEmpty(et_user.getText().toString().trim())|| TextUtils.isEmpty(et_pass.getText().toString().trim())){
             et_user.setError("โปรดกรอกให้ถูกต้อง");
             et_pass.setError("โปรดกรอกรหัสผ่านให้ถูกต้อง");
 
@@ -98,50 +95,7 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
 
         }
 
-//        if (str_user.equals("admin") && str_pass.equals("1234"))
-//        {
-//
-//            Fragment_mainapp sec=new Fragment_mainapp();
-//            bundle.putString(TAG_user,str_user);
-//
-//            replaceFragment(sec ,bundle);
-////            getActivity().getSupportFragmentManager().beginTransaction().add(R.id.content,sec,"ีsec").commit();
-//
-//        }
-//        else if (str_user.equals("admin") && str_pass.equals("12345"))
-//
-//        {
-//            Fragment_Student sec =new Fragment_Student();
-//            bundle.putString(TAG_user,str_user);
-//
-//            replaceFragment(sec ,bundle);
-//
-//        }
-//        else if (str_user.equals("2")&& str_pass.equals("2")){
-//
-//
-//            Fragment_Student_Recycel sec = new Fragment_Student_Recycel();
-//            bunble.putString(TAG_user,str_user);
-//
-//            replaceFragment(sec,bunble);
-//        }
-//        else  if (str_user.equals("3") && str_pass.equals("3")){
-//
-//            Fragment_AF_Teacherlayout sec = new Fragment_AF_Teacherlayout();
-//            bundle.putString(TAG_user,str_user);
-//
-//            replaceFragment(sec,bundle);
-//        }
-//        else  if (str_user.equals("4") && str_pass.equals("4")){
-//
-//            Fragment_Teacher_Trainer sec = new Fragment_Teacher_Trainer();
-//            bundle.putString(TAG_user,str_user);
-//
-//            replaceFragment(sec,bundle);
-//        }
-//        else {
-//            Toast.makeText(getContext(), "", Toast.LENGTH_SHORT);
-//        }
+
     }
 
 
@@ -156,6 +110,8 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
             editor.putString(KEY_dep_id, loginRes.getDepId());
             editor.putString(KEY_member_type, loginRes.getMemberType());
             editor.commit();
+
+//            Toast.makeText(getContext(), ""+loginRes.getDepId(), Toast.LENGTH_SHORT).show();
 
 
             String Member_Type = loginRes.getMemberType();
