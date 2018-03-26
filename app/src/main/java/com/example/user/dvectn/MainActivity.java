@@ -6,11 +6,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.example.user.dvectn.Fragment.Fragment_login;
-import com.example.user.dvectn.Retrofit.Login;
 
 public class MainActivity extends AppCompatActivity {
 

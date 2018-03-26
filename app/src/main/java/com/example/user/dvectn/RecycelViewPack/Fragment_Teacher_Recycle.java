@@ -7,12 +7,16 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.user.dvectn.Fragment.Fragment_login;
@@ -29,11 +33,17 @@ import java.util.List;
 
 public class Fragment_Teacher_Recycle extends Fragment {
     String str_tch;
-    List<String> Data_th;
+    //List<String> Data_th;
     List<String> Data_url_th;
-    RecyclerView recyclerView;
-    RecycleViewAdapter recycleViewAdapter;
-
+    RecyclerView recyclerView5;
+    RecycleViewAdapter5teacher recycleViewAdapter5;
+    String nameList[] = {"-","1","2","3","4","5"};
+    List<String> Data_name1;
+    List<String> Data_name2;
+    List<String> Data_name3;
+    Button bbb;
+    Spinner spn_name_stu1,spn_name_stu31,spn_name_stu41 ;
+    ArrayAdapter adp2;
     public static final String TAG_TCH ="TCH";
 
     @Nullable
@@ -42,6 +52,11 @@ public class Fragment_Teacher_Recycle extends Fragment {
         View viewtch = inflater.inflate(R.layout.teacher_layout,container,false);
 //        str_tch = bd_tch.getString(Fragment_login.TAG_user);
 
+
+//        str_tch = bd_tch.getString(Fragment_login.TAG_user);
+
+
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
         showdawaefah(viewtch);
 
 
@@ -64,6 +79,7 @@ public class Fragment_Teacher_Recycle extends Fragment {
 //                }
 //            }
 //        });
+
         return viewtch;
 
 
@@ -72,28 +88,30 @@ public class Fragment_Teacher_Recycle extends Fragment {
     private void showdawaefah(View view) {
 
 
-        Data_th = new ArrayList<>();
+        Data_name1 = new ArrayList<>();
+        Data_name2 = new ArrayList<>();
+        Data_name3 = new ArrayList<>();
 //        Data_url_th = new ArrayList<>();
 
 
 
 
-        Data_th.add("นาย อักษรขจร รถผ่าน");
-        Data_th.add("นางสาว ประวิทย์ ฉลาดจุง");
-        Data_th.add("นาย ประหยัด จันทร์อังคารพุธ");
+        Data_name1.add("นาย อักษรขจร รถผ่าน");
+        Data_name2.add("นางสาว ประวิทย์ ฉลาดจุง");
+        Data_name3.add("นาย ประหยัด จันทร์อังคารพุธ");
 //      Data_url_th.add("https://images.pexels.com/photos/52710/matterhorn-zermatt-switzerland-snow-52710.jpeg?w=940&h=650&auto=compress&cs=tinysrgb");
 
 
 
-        recyclerView = view.findViewById(R.id.LV_th_1);
+        recyclerView5 = view.findViewById(R.id.LV_th_1);
 
-        recycleViewAdapter = new RecycleViewAdapter(getContext());
+        recycleViewAdapter5 = new RecycleViewAdapter5teacher(getContext());
         //Toast.makeText(getContext(), ""+Data_th.size(), Toast.LENGTH_SHORT).show();
 
-        recycleViewAdapter.Update_Data(Data_th);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(recycleViewAdapter);
+        recycleViewAdapter5.Dataname(Data_name1,Data_name2,Data_name3,adp2);
+        recyclerView5.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView5.setHasFixedSize(true);
+        recyclerView5.setAdapter(recycleViewAdapter5);
     }
 
 
@@ -110,8 +128,9 @@ public class Fragment_Teacher_Recycle extends Fragment {
     }
 
 
-
-
-
-
 }
+
+
+
+
+

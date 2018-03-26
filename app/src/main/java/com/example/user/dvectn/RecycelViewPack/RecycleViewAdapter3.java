@@ -60,8 +60,6 @@ public class RecycleViewAdapter3 extends RecyclerView.Adapter<RecycleViewAdapter
         holder.tx_4.setText(ltnamelist.get(position));
         holder.tx_5.setAdapter(adp2);
 
-
-
     }
 
     @Override

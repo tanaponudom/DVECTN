@@ -1,9 +1,7 @@
 package com.example.user.dvectn.Fragment;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,11 +10,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -26,11 +22,8 @@ import com.example.user.dvectn.R;
 import com.example.user.dvectn.RecycelViewPack.Fragment_Student_Recycel;
 import com.example.user.dvectn.RecycelViewPack.Fragment_Teacher_Recycle;
 import com.example.user.dvectn.RecycelViewPack.Fragment_Teacher_Trainer;
-import com.example.user.dvectn.Retrofit.Login;
 import com.example.user.dvectn.Retrofit.NetworkConnectionManager;
 import com.example.user.dvectn.Retrofit.OnNetworkCallbackLoginListener;
-
-import org.w3c.dom.Text;
 
 import okhttp3.ResponseBody;
 
@@ -73,7 +66,6 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
         sharedPreferences = getActivity().getSharedPreferences(MyPer, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
-
 //        btn_login.setEnabled(false);
 
         img.setImageDrawable(getResources().getDrawable(R.drawable.logo2));
@@ -95,7 +87,13 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
         if (TextUtils.isEmpty(et_user.getText().toString().trim())|| TextUtils.isEmpty(et_pass.getText().toString().trim())){
             et_user.setError("โปรดกรอกให้ถูกต้อง");
             et_pass.setError("โปรดกรอกรหัสผ่านให้ถูกต้อง");
+
+            if (progressDialog.isShowing()) {
+                progressDialog.dismiss();
+            }
+
         }else {
+
                 new NetworkConnectionManager().callServerLogin(listener,str_user,str_pass);
 
         }
@@ -146,6 +144,7 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
 //        }
     }
 
+
     OnNetworkCallbackLoginListener listener = new OnNetworkCallbackLoginListener() {
         @Override
         public void onResponse(POJO_login loginRes) {
@@ -194,7 +193,7 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
         @Override
         public void onBodyError(ResponseBody responseBodyError) {
 
-            Log.e("onBodyError",""+responseBodyError);
+//            Log.e("onBodyError",""+responseBodyError);
             if(progressDialog.isShowing()){
                 progressDialog.dismiss();
             }
@@ -203,7 +202,7 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
 
         @Override
         public void onBodyErrorIsNull() {
-            Log.e("onBodyErrorIsNull","Data is Null");
+//            Log.e("onBodyErrorIsNull","Data is Null");
             if(progressDialog.isShowing()){
                 progressDialog.dismiss();
             }
@@ -212,7 +211,7 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
 
         @Override
         public void onFailure(Throwable t) {
-            Log.e("onFailure",t.getMessage());
+//            Log.e("onFailure",t.getMessage());
 
             if(progressDialog.isShowing()){
                 progressDialog.dismiss();
@@ -257,7 +256,7 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn_login:
-                Toast.makeText(getContext(), "Login", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), "Login", Toast.LENGTH_SHORT).show();
 //            showDialog("Hello");
                 showLoading();
 //                showLoading();

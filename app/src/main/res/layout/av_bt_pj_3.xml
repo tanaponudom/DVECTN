@@ -36,6 +36,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.11" />
+
             <Spinner
                 android:id="@+id/spinner30"
                 android:layout_width="58dp"

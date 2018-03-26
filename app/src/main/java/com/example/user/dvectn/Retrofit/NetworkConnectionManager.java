@@ -33,6 +33,7 @@ public class NetworkConnectionManager {
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
+
         final Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Fragment_login.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
@@ -47,6 +48,7 @@ public class NetworkConnectionManager {
             public void onResponse(Call<POJO_login> call, Response<POJO_login> response) {
 
                 try{
+
                     POJO_login loginRes = (POJO_login) response.body();
 
                     if(response.code() != 200)
@@ -78,7 +80,9 @@ public class NetworkConnectionManager {
                 try{
 
                     listener.onFailure(t);
+
                 }catch (Exception e){
+
                     listener.onFailure(t);
 //                    Log.e("Network connectLogin",t.getMessage());
                 }
@@ -86,6 +90,7 @@ public class NetworkConnectionManager {
             }
         });
     }
+
 
     public void pushImage(
 
