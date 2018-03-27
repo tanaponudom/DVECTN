@@ -87,17 +87,17 @@
                     >
 
                     <CheckBox
-                        android:id="@+id/CB3"
+                        android:id="@+id/CB1"
                         android:layout_width="105dp"
                         android:layout_height="wrap_content"
-                        android:text="ขาย"/>
+                        android:text="ขาย" />
 >
 
                     <CheckBox
-                        android:id="@+id/CB4"
+                        android:id="@+id/CB2"
                         android:layout_width="75dp"
                         android:layout_height="wrap_content"
-                        android:text="หญิง"/>
+                        android:text="หญิง" />
 
                 </LinearLayout>
 
@@ -134,20 +134,18 @@
                 android:orientation="horizontal">
 
                 <CheckBox
-                    android:id="@+id/CB1"
+                    android:id="@+id/CB3"
                     android:layout_width="105dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:text="ปวช."
-/>
+                    android:text="ปวช." />
 
                 <CheckBox
-                    android:id="@+id/CB2"
+                    android:id="@+id/CB4"
                     android:layout_width="75dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:text="ปวส."
-/>
+                    android:text="ปวส." />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

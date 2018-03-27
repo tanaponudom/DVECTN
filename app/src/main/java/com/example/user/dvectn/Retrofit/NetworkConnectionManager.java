@@ -3,6 +3,7 @@ package com.example.user.dvectn.Retrofit;
 import android.util.Log;
 
 import com.example.user.dvectn.Fragment.Fragment_login;
+import com.example.user.dvectn.POJO.POJO_PJ_P1;
 import com.example.user.dvectn.POJO.POJO_getstu;
 import com.example.user.dvectn.POJO.POJO_login;
 import com.example.user.dvectn.POJO.ResPOJO;
@@ -211,4 +212,70 @@ public class NetworkConnectionManager {
     }
 
 
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public  void  callServer_pj_p1(final OnNetworkCallback_PJ_P1 listener, int member_id, int ex11, int ex12 ){
+
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
+        final Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Fragment_login.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+
+        APISERVER callapi = retrofit.create(APISERVER.class);
+
+        Call call = callapi.getDataPJP1(member_id,ex11,ex12);
+        call.enqueue(new Callback <POJO_PJ_P1>()   {
+
+
+            @Override
+            public void onResponse(Call<POJO_PJ_P1> call, Response  <POJO_PJ_P1> response ) {
+//                Log.e("onResponse",""+response.body());
+
+                try{
+
+                    POJO_PJ_P1 assessmentstu1 = (POJO_PJ_P1) response.body();
+
+                    if(response.code() != 200)
+                    {
+//                        Log.e("Network connected","Response code = "+response.code());
+
+                        ResponseBody responseBody = response.errorBody();
+
+                        if(responseBody != null){
+                            listener.onBodyError(responseBody);
+                        }else if(responseBody == null ) {
+                            listener.onBodyErrorIsNull();
+                        }
+
+//                        Toast.makeText(, ""+loginRes.getAccesstoken(), Toast.LENGTH_SHORT).show();
+//                        Log.e("Network connected","Response code = "+loginRes.getAccesstoken());
+                    }else {
+                        listener.onResponse(assessmentstu1);
+                    }
+
+                }catch (Exception e){
+//                    Log.e("Network connect error",e.getMessage());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<POJO_PJ_P1> call, Throwable t) {
+                Log.e("NT",t.getMessage());
+                try{
+
+                    listener.onFailure(t);
+
+                }catch (Exception e){
+
+                    listener.onFailure(t);
+//                    Log.e("Network connectLogin",t.getMessage());
+                }
+
+            }
+        });
+    }
 }

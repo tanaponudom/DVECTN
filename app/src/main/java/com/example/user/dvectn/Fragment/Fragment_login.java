@@ -103,7 +103,7 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
         @Override
         public void onResponse(POJO_login loginRes) {
 
-            editor.putString(KEY_member_id, loginRes.getMemberId());
+            editor.putInt(KEY_member_id, Integer.parseInt(loginRes.getMemberId()));
             editor.putString(KEY_member_firstname, loginRes.getMemberFirstname());
             editor.putString(KEY_member_lastname, loginRes.getMemberLastname());
             editor.putString(KEY_member_email, loginRes.getMemberEmail());

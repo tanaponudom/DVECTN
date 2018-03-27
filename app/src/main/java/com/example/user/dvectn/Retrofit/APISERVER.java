@@ -38,8 +38,8 @@ public interface APISERVER {
     @POST("login/")
     Call<POJO_login> loginHandle(@Field("username") String first, @Field("password") String last);
 
-    @FractionRes
-    
+
+
     @FormUrlEncoded
     @POST("getstu/")
     Call<List<POJO_getstu>> getSTD(@Field("dep_id") String dep_id);
