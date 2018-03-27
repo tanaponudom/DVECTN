@@ -175,19 +175,19 @@ public void replaceFragment(Fragment fragment, Bundle bundle) {
     public void onClick(View v) {
     switch (v.getId()){
         case R.id.CB1:
-            ex11_tmp = 0;
+            ex11_tmp = 1;
             CB2.setChecked(false);
             break;
         case R.id.CB2:
-             ex11_tmp = 1;
+             ex11_tmp = 2;
              CB1.setChecked(false);
             break;
         case R.id.CB3:
-            ex12_tmp = 0;
+            ex12_tmp = 1;
             CB4.setChecked(false);
             break;
         case R.id.CB4:
-            ex12_tmp = 1;
+            ex12_tmp = 2;
             CB3.setChecked(false);
             break;
         case R.id.btn_confirm:

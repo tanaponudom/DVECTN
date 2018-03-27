@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
             });
             builder.show();
         }
+
+
         private void Logout(){
 
             AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);

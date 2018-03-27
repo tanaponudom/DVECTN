@@ -24,7 +24,7 @@
             <TextView
                 android:id="@+id/textView17"
                 android:layout_width="223dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
@@ -35,7 +35,7 @@
             <Spinner
                 android:id="@+id/spinner17"
                 android:layout_width="58dp"
-                android:layout_height="20dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="5dp" />
         </LinearLayout>
@@ -47,7 +47,7 @@
             <TextView
                 android:id="@+id/textView18"
                 android:layout_width="223dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
@@ -58,7 +58,7 @@
             <Spinner
                 android:id="@+id/spinner16"
                 android:layout_width="58dp"
-                android:layout_height="20dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="5dp" />
         </LinearLayout>
@@ -70,7 +70,7 @@
             <TextView
                 android:id="@+id/textView19"
                 android:layout_width="223dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
@@ -81,7 +81,7 @@
             <Spinner
                 android:id="@+id/spinner15"
                 android:layout_width="58dp"
-                android:layout_height="20dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="5dp" />
         </LinearLayout>
@@ -93,7 +93,7 @@
             <TextView
                 android:id="@+id/textView20"
                 android:layout_width="223dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
@@ -104,7 +104,7 @@
             <Spinner
                 android:id="@+id/spinner19"
                 android:layout_width="58dp"
-                android:layout_height="20dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="5dp" />
         </LinearLayout>
@@ -116,7 +116,7 @@
             <TextView
                 android:id="@+id/textView21"
                 android:layout_width="223dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
@@ -127,7 +127,7 @@
             <Spinner
                 android:id="@+id/spinner18"
                 android:layout_width="58dp"
-                android:layout_height="20dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="5dp" />
         </LinearLayout>
@@ -139,7 +139,7 @@
             <TextView
                 android:id="@+id/textView22"
                 android:layout_width="223dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
@@ -150,7 +150,7 @@
             <Spinner
                 android:id="@+id/spinner20"
                 android:layout_width="58dp"
-                android:layout_height="20dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="5dp" />
         </LinearLayout>
@@ -162,7 +162,7 @@
             <TextView
                 android:id="@+id/textView23"
                 android:layout_width="223dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
@@ -173,7 +173,7 @@
             <Spinner
                 android:id="@+id/spinner14"
                 android:layout_width="58dp"
-                android:layout_height="20dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="5dp" />
 

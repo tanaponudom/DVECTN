@@ -22,7 +22,7 @@
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="223dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
@@ -39,7 +39,7 @@
             <Spinner
                 android:id="@+id/spinner7"
                 android:layout_width="58dp"
-                android:layout_height="20dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -58,7 +58,7 @@
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="223dp"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
@@ -75,7 +75,7 @@
             <Spinner
                 android:id="@+id/spinner8"
                 android:layout_width="58dp"
-                android:layout_height="20dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -93,7 +93,7 @@
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="223dp"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
@@ -111,7 +111,7 @@
             <Spinner
                 android:id="@+id/spinner11"
                 android:layout_width="58dp"
-                android:layout_height="20dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -130,7 +130,7 @@
             <TextView
                 android:id="@+id/textView5"
                 android:layout_width="223dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
@@ -147,7 +147,7 @@
             <Spinner
                 android:id="@+id/spinner10"
                 android:layout_width="58dp"
-                android:layout_height="20dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -165,7 +165,7 @@
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="223dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
@@ -182,7 +182,7 @@
             <Spinner
                 android:id="@+id/spinner9"
                 android:layout_width="58dp"
-                android:layout_height="20dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -200,7 +200,7 @@
             <TextView
                 android:id="@+id/textView13"
                 android:layout_width="223dp"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
@@ -217,7 +217,7 @@
             <Spinner
                 android:id="@+id/spinner12"
                 android:layout_width="58dp"
-                android:layout_height="20dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -236,7 +236,7 @@
             <TextView
                 android:id="@+id/textView14"
                 android:layout_width="223dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
@@ -253,7 +253,7 @@
             <Spinner
                 android:id="@+id/spinner13"
                 android:layout_width="58dp"
-                android:layout_height="20dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -272,7 +272,7 @@
             <TextView
                 android:id="@+id/textView15"
                 android:layout_width="223dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
@@ -289,7 +289,7 @@
             <Spinner
                 android:id="@+id/spinner6"
                 android:layout_width="58dp"
-                android:layout_height="20dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -22,7 +22,7 @@
             <TextView
                 android:id="@+id/textView32"
                 android:layout_width="223dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginStart="16dp"
@@ -36,10 +36,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.109" />
+
             <Spinner
-                android:id="@+id/spinner22"
+                android:id="@+id/spinner21"
                 android:layout_width="58dp"
-                android:layout_height="20dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -57,7 +58,7 @@
             <TextView
                 android:id="@+id/textView33"
                 android:layout_width="223dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginStart="16dp"
@@ -71,10 +72,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.2" />
+
             <Spinner
-                android:id="@+id/spinner25"
+                android:id="@+id/spinner22"
                 android:layout_width="58dp"
-                android:layout_height="20dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -92,7 +94,7 @@
             <TextView
                 android:id="@+id/textView34"
                 android:layout_width="223dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
 
                 android:layout_marginEnd="10dp"
                 android:layout_marginStart="16dp"
@@ -106,10 +108,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.303" />
+
             <Spinner
-                android:id="@+id/spinner24"
+                android:id="@+id/spinner23"
                 android:layout_width="58dp"
-                android:layout_height="20dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -127,7 +130,7 @@
             <TextView
                 android:id="@+id/textView35"
                 android:layout_width="223dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="5dp"
@@ -140,10 +143,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.39" />
+
             <Spinner
-                android:id="@+id/spinner23"
+                android:id="@+id/spinner24"
                 android:layout_width="58dp"
-                android:layout_height="20dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -161,11 +165,11 @@
             <TextView
                 android:id="@+id/textView36"
                 android:layout_width="223dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="5dp"
-                android:text="5.อุปกรณ์ในการฝึกงานรายวิชาของสถานประกอบการมีความเหมาะสม"
+                android:text="5.อุปกรณ์ในการฝึกงานรายวิชาของ       สถานประกอบการมีความเหมาะสม"
                 android:textAlignment="viewStart"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
@@ -175,10 +179,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.498" />
+
             <Spinner
-                android:id="@+id/spinner26"
+                android:id="@+id/spinner25"
                 android:layout_width="58dp"
-                android:layout_height="20dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -196,7 +201,7 @@
             <TextView
                 android:id="@+id/textView37"
                 android:layout_width="223dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginStart="16dp"
@@ -210,10 +215,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.613" />
+
             <Spinner
-                android:id="@+id/spinner27"
+                android:id="@+id/spinner26"
                 android:layout_width="58dp"
-                android:layout_height="20dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -231,11 +237,11 @@
             <TextView
                 android:id="@+id/textView38"
                 android:layout_width="223dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="5dp"
-                android:text="7.สภาพแวดล้อมภายในสถานประกอบการเหมาะสมต่อการฝึกงานรายวิชา"
+                android:text="7.สภาพแวดล้อมภายในสถานประกอบการ เหมาะสมต่อการฝึกงานรายวิชา"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -244,10 +250,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.747" />
+
             <Spinner
-                android:id="@+id/spinner28"
+                android:id="@+id/spinner27"
                 android:layout_width="58dp"
-                android:layout_height="20dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -265,7 +272,7 @@
             <TextView
                 android:id="@+id/textView46"
                 android:layout_width="223dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="5dp"
@@ -278,10 +285,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.875" />
+
             <Spinner
-                android:id="@+id/spinner21"
+                android:id="@+id/spinner28"
                 android:layout_width="58dp"
-                android:layout_height="20dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"

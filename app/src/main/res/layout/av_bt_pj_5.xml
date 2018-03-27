@@ -24,11 +24,11 @@
             <TextView
                 android:id="@+id/textView32"
                 android:layout_width="223dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="5dp"
-                android:text="1.นักเรียน นักศึกษาได้รับประสบการณ์ในการทำงานเพิ่มขึ้น"
+                android:text="1.นักเรียนนักศึกษาได้รับประสบการณ์ในการทำงานเพิ่มขึ้น"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -37,10 +37,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.107" />
+
             <Spinner
-                android:id="@+id/spinner44"
+                android:id="@+id/spinner43"
                 android:layout_width="58dp"
-                android:layout_height="20dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -58,7 +59,7 @@
             <TextView
                 android:id="@+id/textView33"
                 android:layout_width="223dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="5dp"
@@ -71,10 +72,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.197" />
+
             <Spinner
-                android:id="@+id/spinner45"
+                android:id="@+id/spinner44"
                 android:layout_width="58dp"
-                android:layout_height="20dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -93,7 +95,7 @@
             <TextView
                 android:id="@+id/textView34"
                 android:layout_width="223dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="5dp"
@@ -106,10 +108,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.292" />
+
             <Spinner
-                android:id="@+id/spinner46"
+                android:id="@+id/spinner45"
                 android:layout_width="58dp"
-                android:layout_height="20dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -128,7 +131,7 @@
             <TextView
                 android:id="@+id/textView35"
                 android:layout_width="223dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="5dp"
@@ -141,10 +144,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.403" />
+
             <Spinner
-                android:id="@+id/spinner47"
+                android:id="@+id/spinner46"
                 android:layout_width="57dp"
-                android:layout_height="20dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -163,11 +167,11 @@
             <TextView
                 android:id="@+id/textView36"
                 android:layout_width="223dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="5dp"
-                android:text="5.	นักเรียน นักศึกษา มีเจตคติที่ดีต่อการฝึกงานรายวิชาในสถานประกอบการ"
+                android:text="5.นักเรียนนักศึกษามีเจตคติที่ดีต่อการ ฝึกงานรายวิชาในสถานประกอบการ"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -176,10 +180,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.516" />
+
             <Spinner
-                android:id="@+id/spinner48"
+                android:id="@+id/spinner47"
                 android:layout_width="58dp"
-                android:layout_height="20dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -197,12 +202,12 @@
             <TextView
                 android:id="@+id/textView37"
                 android:layout_width="223dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
 
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="5dp"
-                android:text="6.	นักเรียน นักศึกษา ได้เรียนรู้ระบบบริหารงานของสถานประกอบการ"
+                android:text="6.นักเรียนนักศึกษาได้เรียนรู้ระบบบริหาร  งานของสถานประกอบการ"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -211,10 +216,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.633" />
+
             <Spinner
-                android:id="@+id/spinner43"
+                android:id="@+id/spinner48"
                 android:layout_width="58dp"
-                android:layout_height="20dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
