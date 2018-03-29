@@ -29,8 +29,8 @@ public class Fragment_AF_Tea_LIstStu extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v4 =inflater.inflate(R.layout.af_teacher_layout,container,false);
-        ListView listView =(ListView) v4.findViewById(R.id.list_af_th);
+        View v4 =inflater.inflate(R.layout.af_tea_sta_teainer,container,false);
+        ListView listView =(ListView) v4.findViewById(R.id.list_af_th_stu);
         context = getContext();
 
         ArrayAdapter ListViewAdapter = new ArrayAdapter(getContext(),android.R.layout.simple_list_item_1,chataterNaJa);

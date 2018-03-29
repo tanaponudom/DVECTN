@@ -33,7 +33,7 @@
     </LinearLayout>
 
     <ListView
-        android:id="@+id/list_af_th_stu"
+        android:id="@+id/list_af_th_OLO"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
