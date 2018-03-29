@@ -1,35 +1,26 @@
 package com.example.user.dvectn.Fragment;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AlertDialog;
-import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.dvectn.R;
+import com.example.user.dvectn.RecycelViewPack.Fragment_Teacher_Trainer;
+
+public class Fragment_AF_Tea_LIstStu extends Fragment {
 
 
-/**
- * Created by Praipran on 3/21/2018.
- */
-
-public class Fragment_AF_Teacherlayout extends Fragment {
-
-
-    String [] chataterNaJa ={ "นิเทสครั้งที่ 1","นิเทสครั้งที่ 2"};
+    String [] chataterNaJa ={ "ร้าน พี พาวเวอร์","ร้าน ท็อบวิวพอย์","ศาลากลางจังหวัด" };
     Context context;
 
     String scoreTmp="";
@@ -53,14 +44,13 @@ public class Fragment_AF_Teacherlayout extends Fragment {
                 Toast.makeText(getContext(), "Item Click", Toast.LENGTH_SHORT);
 
 
-               Fragment_AF_Teacherlayout2 teacher_layout = new Fragment_AF_Teacherlayout2();
-               replaceFragment(teacher_layout, null);
+                Fragment_Teacher_Trainer teacher_layout = new Fragment_Teacher_Trainer();
+                replaceFragment(teacher_layout, null);
 
 
 
             }
         });
-
 
         return v4;
     }
@@ -75,8 +65,6 @@ public class Fragment_AF_Teacherlayout extends Fragment {
         frgTran.replace(R.id.content,fragment).addToBackStack(null).commit();
 
     }
-
-
 
 
 

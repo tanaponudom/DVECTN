@@ -1,6 +1,8 @@
 package com.example.user.dvectn.Fragment;
 
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,7 +18,14 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.user.dvectn.POJO.POJO_DD_P1;
+import com.example.user.dvectn.POJO.POJO_PJ_P1;
 import com.example.user.dvectn.R;
+import com.example.user.dvectn.Retrofit.NetworkConnectionManager;
+import com.example.user.dvectn.Retrofit.OnNetworkCallback_DD_P1;
+import com.example.user.dvectn.Retrofit.OnNetworkCallback_PJ_P1;
+
+import okhttp3.ResponseBody;
 
 /**
  * Created by User on 20/2/2561.
@@ -24,19 +33,27 @@ import com.example.user.dvectn.R;
 
 public class Fragment_bt_dd_1 extends Fragment implements View.OnClickListener
 {
-
+    Context context;
     String frg;
     String nameList[] = {"-","1","2","3","4","5"};
     Button bbb;
     Spinner spn1, spn2 , spn3 , spn4 , spn5 ;
+    ProgressDialog progressDialog;
     public  static  final String TAG_HEW3 = "HEW3";
+
+    int memberId = 0,
+            ex11 = -1 ,
+            ex12 = -1 ,
+            ex13 = -1 ,
+            ex14 = -1 ,
+            ex15 = -1 ;
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.av_bt_dd_1,container, false);
-
+        context = getContext();
 
         bbb=view.findViewById(R.id.bbbtn1);
 
@@ -66,9 +83,66 @@ public class Fragment_bt_dd_1 extends Fragment implements View.OnClickListener
 
 
         view.findViewById(R.id.bbbtn1).setOnClickListener(this);
+
+
         return view;
     }
 
+    private  void ConfirmDD1(int ex11,int ex12,int ex13,int ex14 ,int ex15){
+
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setMessage("Loading......");
+        progressDialog.show();
+
+        if(memberId > 0 ){
+            new NetworkConnectionManager().callServer_dd_p1(onCallbackList,memberId,ex11,ex12,ex13,ex14,ex15);
+        }else {
+            Toast.makeText(context, "กรุราตรวจสอบข้อมูล", Toast.LENGTH_SHORT).show();
+        }
+
+//        ArrayAdapter
+    }
+    OnNetworkCallback_DD_P1 onCallbackList = new OnNetworkCallback_DD_P1() {
+        @Override
+        public void onResponse(POJO_DD_P1 status) {
+            Toast.makeText(context, "บันทึกข้อมูลสำเร็จ", Toast.LENGTH_SHORT).show();
+            if(progressDialog.isShowing()){
+                progressDialog.dismiss();
+            }
+
+            FragmentManager fragmentManager =getActivity().getSupportFragmentManager();
+            fragmentManager.popBackStack();
+        }
+
+        @Override
+        public void onBodyError(ResponseBody responseBodyError) {
+            Toast.makeText(context, "responseBodyError", Toast.LENGTH_SHORT).show();
+            if(progressDialog.isShowing()){
+                progressDialog.dismiss();
+            }
+
+        }
+
+        @Override
+        public void onBodyErrorIsNull() {
+
+            Toast.makeText(context, "res is null", Toast.LENGTH_SHORT).show();
+            if(progressDialog.isShowing()){
+                progressDialog.dismiss();
+            }
+
+        }
+
+        @Override
+        public void onFailure(Throwable t) {
+
+//            Toast.makeText(context, "Err "+t.getMessage(), Toast.LENGTH_SHORT).show();
+            if(progressDialog.isShowing()){
+                progressDialog.dismiss();
+            }
+
+        }
+    };
 
     public void replaceFragment(Fragment fragment, Bundle bundle) {
 
@@ -87,12 +161,18 @@ public class Fragment_bt_dd_1 extends Fragment implements View.OnClickListener
         String[] tmpSpn = {spn1.getSelectedItem().toString(),spn2.getSelectedItem().toString(),spn3.getSelectedItem().toString(),
                 spn4.getSelectedItem().toString(),spn5.getSelectedItem().toString()};
 
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setMessage("Loading......");
+        progressDialog.show();
+
+
         if(tmpSpn != null){
             if (!tmpSpn[0].equals("-") || !tmpSpn[1].equals("-") || !tmpSpn[2].equals("-") || !tmpSpn[3].equals("-") || !tmpSpn[4].equals("-")
                     ){
-                Toast.makeText(getContext(), ""+tmpSpn[0]
-                        +" , "+tmpSpn[1]+" , "+tmpSpn[2]+" , "+tmpSpn[3]+" , "+tmpSpn[4]
-                        , Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), ""+tmpSpn[0]+" , "+tmpSpn[1]+" , "+tmpSpn[2]+" , "+tmpSpn[3]+" , "+tmpSpn[4]
+//                        , Toast.LENGTH_SHORT).show();
+                new NetworkConnectionManager().callServer_dd_p1(onCallbackList,memberId,Integer.parseInt(tmpSpn[0]),Integer.parseInt(tmpSpn[1]),Integer.parseInt(tmpSpn[2]),Integer.parseInt(tmpSpn[3])
+                        ,Integer.parseInt(tmpSpn[4]));
             }else {
                 Toast.makeText(getContext(),"กรุณากรอกให้ครบ",Toast.LENGTH_SHORT).show();
             }

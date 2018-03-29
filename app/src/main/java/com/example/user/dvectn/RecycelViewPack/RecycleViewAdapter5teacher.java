@@ -55,7 +55,9 @@ public class RecycleViewAdapter5teacher extends RecyclerView.Adapter<RecycleView
         holder.tx_1.setText(name1.get(position));
         holder.tx_2.setText(name2.get(position));
         holder.tx_3.setText(name3.get(position));
+        holder.tx_4.setAdapter(adp2);
         holder.tx_5.setAdapter(adp2);
+        holder.tx_6.setAdapter(adp2);
 
 
 

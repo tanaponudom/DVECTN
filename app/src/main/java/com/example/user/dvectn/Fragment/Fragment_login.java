@@ -129,12 +129,12 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
 
             } else if (Member_Type.equals("teacher")) {
 
-                Fragment_Teacher_Recycle sec = new Fragment_Teacher_Recycle();
+                Fragment_AF_Teacherlayout sec = new Fragment_AF_Teacherlayout();
                 replaceFragment(sec, null);
 
 
             } else if (Member_Type.equals("admin")) {
-                Fragment_Teacher_Trainer sec = new Fragment_Teacher_Trainer();
+                Fragment_AF_Tea_LIstOLO sec = new Fragment_AF_Tea_LIstOLO();
                 replaceFragment(sec, null);
 
             }

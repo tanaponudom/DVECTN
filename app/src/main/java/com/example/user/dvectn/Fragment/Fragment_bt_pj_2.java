@@ -83,7 +83,7 @@ public class Fragment_bt_pj_2 extends Fragment implements View.OnClickListener {
         ((AppCompatActivity) getActivity()).getSupportActionBar().show();
 
         view.findViewById(R.id.bbbtn3).setOnClickListener(this);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+
 
         sharedPreferences = getActivity().getSharedPreferences(Fragment_login.MyPer, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();

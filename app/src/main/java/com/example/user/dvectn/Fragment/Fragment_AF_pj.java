@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,16 +18,30 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.user.dvectn.POJO.POJO_DD_P1;
+import com.example.user.dvectn.POJO.POJO_DD_P2;
+import com.example.user.dvectn.POJO.POJO_DD_P3;
 import com.example.user.dvectn.POJO.POJO_getstu;
 import com.example.user.dvectn.R;
 import com.example.user.dvectn.RecycelViewPack.Fragment_bt_ag;
+import com.example.user.dvectn.Retrofit.APISERVER;
 import com.example.user.dvectn.Retrofit.NetworkConnectionManager;
 import com.example.user.dvectn.Retrofit.OnNetworkCallBackGetStd;
+import com.example.user.dvectn.Retrofit.OnNetworkCallback_DD_P1;
+import com.example.user.dvectn.Retrofit.OnNetworkCallback_DD_P2;
+import com.example.user.dvectn.Retrofit.OnNetworkCallback_DD_P3;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by Praipran on 3/21/2018.
@@ -161,4 +176,6 @@ public class Fragment_AF_pj extends Fragment {
         frgTran.replace(R.id.content,fragment).addToBackStack(null).commit();
 
     }
+
+
 }

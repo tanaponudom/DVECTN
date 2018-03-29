@@ -78,6 +78,7 @@ public class Fragment_bt_d1 extends Fragment   {
             Data_chan.add("ปวช.2");
             Data_num.add(002);
 
+
             Data_name.add("นางสาว ประวิทย์");
             Data_ltname.add("ฉลาดจุง");
             Data_chan.add("ปวช.2");

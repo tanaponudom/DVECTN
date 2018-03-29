@@ -1,7 +1,5 @@
 package com.example.user.dvectn.Retrofit;
 
-import android.support.annotation.FractionRes;
-
 import com.example.user.dvectn.POJO.POJO_Checkdaily;
 import com.example.user.dvectn.POJO.POJO_DD_P1;
 import com.example.user.dvectn.POJO.POJO_DD_P2;
@@ -12,10 +10,10 @@ import com.example.user.dvectn.POJO.POJO_PJ_P3;
 import com.example.user.dvectn.POJO.POJO_PJ_P4;
 import com.example.user.dvectn.POJO.POJO_PJ_P5;
 import com.example.user.dvectn.POJO.POJO_PJ_P6;
-import com.example.user.dvectn.POJO.POJO_getdata_ebs;
 import com.example.user.dvectn.POJO.POJO_getstu;
 import com.example.user.dvectn.POJO.POJO_login;
 import com.example.user.dvectn.POJO.POJO_studata;
+import com.example.user.dvectn.POJO.POJO_test1_in_ag;
 import com.example.user.dvectn.POJO.ResPOJO;
 
 import java.util.List;
@@ -100,23 +98,22 @@ public interface APISERVER {
     @POST("getstu/")
     Call<POJO_getstu> getDataPJP5 (@Field("member_id") int first);
 
-    @FormUrlEncoded
-    @POST("getdata-ebs/")
-    Call<POJO_getdata_ebs> getData_ebs ();
+//    @FormUrlEncoded
+//    @POST("getdata-ebs/")
+//    Call<POJO_getdata_ebs> getData_ebs ();
 
-    @FormUrlEncoded
     @POST("affective-1/")
     Call<POJO_DD_P1> getDataDDP1 (@Field("member_id") int first , @Field("ex11") int Sec ,
                                   @Field("ex12") int Thrir , @Field("ex13") int four ,
-                                  @Field("ex14") int five , @Field("ex15") int six ,
-                                  @Field("ex21") int seven);
+                                  @Field("ex14") int five , @Field("ex15") int six);
 
     @FormUrlEncoded
     @POST("affective-2/")
     Call<POJO_DD_P2> getDataDDP2 (@Field("member_id") int first , @Field("ex22") int Sec ,
                                   @Field("ex23") int Thrir , @Field("ex24") int four ,
                                   @Field("ex25") int five , @Field("ex26") int six ,
-                                  @Field("ex27") int seven , @Field("ex28") int eight);
+                                  @Field("ex27") int seven , @Field("ex28") int eight ,
+                                  @Field("ex29") int nine);
 
     @FormUrlEncoded
     @POST("affective-3/")
@@ -125,12 +122,21 @@ public interface APISERVER {
                                   @Field("ex34") int five , @Field("ex35") int six ,
                                   @Field("ex36") int seven , @Field("ex37") int eight);
 
+    @FormUrlEncoded
+    @POST("test1/")
+    Call<POJO_test1_in_ag> getDatatest1(@Field("member_id ") int first);
+
+
     @Multipart
     @POST("upload/")
     Call<ResPOJO> updateImageProfile(@Part MultipartBody.Part image,
                                      @Part("memberid") String memberid,
                                      @Part("app_name") String name,
                                      @Part("app_detail") String detail
+
+
+
+
     );
 
 }

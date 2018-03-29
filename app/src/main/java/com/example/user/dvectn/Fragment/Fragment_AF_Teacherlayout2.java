@@ -16,20 +16,19 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.dvectn.R;
-
+import com.example.user.dvectn.RecycelViewPack.Fragment_Teacher_Recycle;
 
 /**
  * Created by Praipran on 3/21/2018.
  */
 
-public class Fragment_AF_Teacherlayout extends Fragment {
+public class Fragment_AF_Teacherlayout2 extends Fragment {
 
 
-    String [] chataterNaJa ={ "นิเทสครั้งที่ 1","นิเทสครั้งที่ 2"};
+    String [] chataterNaJa ={ "ร้าน พี พาวเวอร์","ร้าน ท็อบวิวพอย์","ศาลากลางจังหวัด" };
     Context context;
 
     String scoreTmp="";
@@ -53,14 +52,13 @@ public class Fragment_AF_Teacherlayout extends Fragment {
                 Toast.makeText(getContext(), "Item Click", Toast.LENGTH_SHORT);
 
 
-               Fragment_AF_Teacherlayout2 teacher_layout = new Fragment_AF_Teacherlayout2();
-               replaceFragment(teacher_layout, null);
+                Fragment_Teacher_Recycle teacher_layout = new Fragment_Teacher_Recycle();
+                replaceFragment(teacher_layout, null);
 
 
 
             }
         });
-
 
         return v4;
     }
@@ -75,8 +73,6 @@ public class Fragment_AF_Teacherlayout extends Fragment {
         frgTran.replace(R.id.content,fragment).addToBackStack(null).commit();
 
     }
-
-
 
 
 

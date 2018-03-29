@@ -38,6 +38,8 @@ public class Fragment_Teacher_Recycle extends Fragment {
     RecyclerView recyclerView5;
     RecycleViewAdapter5teacher recycleViewAdapter5;
     String nameList[] = {"-","1","2","3","4","5"};
+    String nameList2[] = {"-","1","2","3","4","5"};
+    String nameList3[] = {"-","1","2","3","4","5"};
     List<String> Data_name1;
     List<String> Data_name2;
     List<String> Data_name3;
@@ -102,7 +104,9 @@ public class Fragment_Teacher_Recycle extends Fragment {
 //      Data_url_th.add("https://images.pexels.com/photos/52710/matterhorn-zermatt-switzerland-snow-52710.jpeg?w=940&h=650&auto=compress&cs=tinysrgb");
 
 
-
+        adp2 = new ArrayAdapter(getContext(),android.R.layout.simple_dropdown_item_1line ,nameList);
+        adp2 = new ArrayAdapter(getContext(),android.R.layout.simple_dropdown_item_1line ,nameList2);
+        adp2 = new ArrayAdapter(getContext(),android.R.layout.simple_dropdown_item_1line ,nameList3);
         recyclerView5 = view.findViewById(R.id.LV_th_1);
 
         recycleViewAdapter5 = new RecycleViewAdapter5teacher(getContext());
