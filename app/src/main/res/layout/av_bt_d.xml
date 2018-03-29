@@ -62,33 +62,7 @@
 
     </android.support.v7.widget.RecyclerView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="523dp">
 
-        <Button
-            android:id="@+id/BT_S_D"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/style_button_confirm"
-            android:text="บันทึก"
-            android:textColor="@color/text_w" />
-
-        <Button
-            android:id="@+id/BT_E_D"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/style_button_confirm"
-            android:layout_marginStart="10dp"
-            android:text="แก้ไข"
-            android:textColor="@color/text_w" />
-
-    </LinearLayout>
 
 
 

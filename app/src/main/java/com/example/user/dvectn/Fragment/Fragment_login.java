@@ -62,6 +62,9 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
         et_user = view.findViewById(R.id.et_user);
         et_pass = view.findViewById(R.id.et_pass);
 
+        et_user.setText("DVE05");
+        et_pass.setText("DVE05");
+
         //init session
         sharedPreferences = getActivity().getSharedPreferences(MyPer, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();

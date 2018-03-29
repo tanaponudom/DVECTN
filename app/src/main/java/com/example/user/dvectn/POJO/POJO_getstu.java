@@ -9,9 +9,12 @@ import com.google.gson.annotations.SerializedName;
 
 public class POJO_getstu {
 
-    @SerializedName("id")
+    @SerializedName("member_id")
     @Expose
-    private String id;
+    private String memberId;
+    @SerializedName("member_code")
+    @Expose
+    private String memberCode;
     @SerializedName("firstname")
     @Expose
     private String firstname;
@@ -22,12 +25,20 @@ public class POJO_getstu {
     @Expose
     private String type;
 
-    public String getId() {
-        return id;
+    public String getMemberId() {
+        return memberId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setMemberId(String memberId) {
+        this.memberId = memberId;
+    }
+
+    public String getMemberCode() {
+        return memberCode;
+    }
+
+    public void setMemberCode(String memberCode) {
+        this.memberCode = memberCode;
     }
 
     public String getFirstname() {

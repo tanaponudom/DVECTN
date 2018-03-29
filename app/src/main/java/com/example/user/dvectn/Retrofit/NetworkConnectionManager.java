@@ -614,69 +614,69 @@ public void callServer_pj_p5(final OnNetworkCallback_PJ_P5 listener, int member_
         });
     }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-public void callServer_bt_d1(final OnNetworkCallback_BT_D1 listener, int member_id, String  app_name, int app_date, String  app_detai) {
-
-    Gson gson = new GsonBuilder()
-            .setLenient()
-            .create();
-
-    final Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl(Fragment_login.BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .build();
-
-    APISERVER callapi = retrofit.create(APISERVER.class);
-
-    Call call = callapi.getDatadaily(member_id, app_name, app_date, app_detai);
-    call.enqueue(new Callback<POJO_Checkdaily>() {
-
-
-        @Override
-        public void onResponse(Call<POJO_Checkdaily> call, Response<POJO_Checkdaily> response) {
-//                Log.e("onResponse",""+response.body());
-
-            try {
-
-                POJO_Checkdaily Checkdaily = (POJO_Checkdaily) response.body();
-
-                if (response.code() != 200) {
-//                        Log.e("Network connected","Response code = "+response.code());
-
-                    ResponseBody responseBody = response.errorBody();
-
-                    if (responseBody != null) {
-                        listener.onBodyError(responseBody);
-                    } else if (responseBody == null) {
-                        listener.onBodyErrorIsNull();
-                    }
-
-//                        Toast.makeText(, ""+loginRes.getAccesstoken(), Toast.LENGTH_SHORT).show();
-//                        Log.e("Network connected","Response code = "+loginRes.getAccesstoken());
-                } else {
-                    listener.onResponse(Checkdaily);
-                }
-
-            } catch (Exception e) {
-//                    Log.e("Network connect error",e.getMessage());
-            }
-        }
-
-        @Override
-        public void onFailure(Call<POJO_Checkdaily> call, Throwable t) {
-            Log.e("NT", t.getMessage());
-            try {
-
-                listener.onFailure(t);
-
-            } catch (Exception e) {
-
-                listener.onFailure(t);
-//                    Log.e("Network connectLogin",t.getMessage());
-            }
-
-        }
-    });
-}
+//public void callServer_bt_d1(final OnNetworkCallback_BT_D1 listener, int member_id, String  app_name, int app_date, String  app_detai) {
+//
+//    Gson gson = new GsonBuilder()
+//            .setLenient()
+//            .create();
+//
+//    final Retrofit retrofit = new Retrofit.Builder()
+//            .baseUrl(Fragment_login.BASE_URL)
+//            .addConverterFactory(GsonConverterFactory.create(gson))
+//            .build();
+//
+//    APISERVER callapi = retrofit.create(APISERVER.class);
+//
+//    Call call = callapi.getDatadaily(member_id, app_name, app_date, app_detai);
+//    call.enqueue(new Callback<POJO_Checkdaily>() {
+//
+//
+//        @Override
+//        public void onResponse(Call<POJO_Checkdaily> call, Response<POJO_Checkdaily> response) {
+////                Log.e("onResponse",""+response.body());
+//
+//            try {
+//
+//                POJO_Checkdaily Checkdaily = (POJO_Checkdaily) response.body();
+//
+//                if (response.code() != 200) {
+////                        Log.e("Network connected","Response code = "+response.code());
+//
+//                    ResponseBody responseBody = response.errorBody();
+//
+//                    if (responseBody != null) {
+//                        listener.onBodyError(responseBody);
+//                    } else if (responseBody == null) {
+//                        listener.onBodyErrorIsNull();
+//                    }
+//
+////                        Toast.makeText(, ""+loginRes.getAccesstoken(), Toast.LENGTH_SHORT).show();
+////                        Log.e("Network connected","Response code = "+loginRes.getAccesstoken());
+//                } else {
+//                    listener.onResponse(Checkdaily);
+//                }
+//
+//            } catch (Exception e) {
+////                    Log.e("Network connect error",e.getMessage());
+//            }
+//        }
+//
+//        @Override
+//        public void onFailure(Call<POJO_Checkdaily> call, Throwable t) {
+//            Log.e("NT", t.getMessage());
+//            try {
+//
+//                listener.onFailure(t);
+//
+//            } catch (Exception e) {
+//
+//                listener.onFailure(t);
+////                    Log.e("Network connectLogin",t.getMessage());
+//            }
+//
+//        }
+//    });
+//}
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 public void callServer_test1_in_ag(final OnNetworkCallback_test1_in_ag listener, int member_id) {
 
@@ -944,5 +944,69 @@ public void callServer_test1_in_ag(final OnNetworkCallback_test1_in_ag listener,
         });
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public  void  callServer_Checkdaily(final OnNetworkCallback_Checkdaily_D1 listener, String name_std, int score ){
 
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
+        final Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Fragment_login.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+
+        APISERVER callapi = retrofit.create(APISERVER.class);
+
+        Call call = callapi.getDatadaily(name_std,score);
+        call.enqueue(new Callback <POJO_Checkdaily>()   {
+
+
+            @Override
+            public void onResponse(Call<POJO_Checkdaily> call, Response  <POJO_Checkdaily> response ) {
+//                Log.e("onResponse",""+response.body());
+
+                try{
+
+                    POJO_Checkdaily Checkdaily = (POJO_Checkdaily) response.body();
+
+                    if(response.code() != 200)
+                    {
+//                        Log.e("Network connected","Response code = "+response.code());
+
+                        ResponseBody responseBody = response.errorBody();
+
+                        if(responseBody != null){
+                            listener.onBodyError(responseBody);
+                        }else if(responseBody == null ) {
+                            listener.onBodyErrorIsNull();
+                        }
+
+//                        Toast.makeText(, ""+loginRes.getAccesstoken(), Toast.LENGTH_SHORT).show();
+//                        Log.e("Network connected","Response code = "+loginRes.getAccesstoken());
+                    }else {
+                        listener.onResponse(Checkdaily);
+                    }
+
+                }catch (Exception e){
+//                    Log.e("Network connect error",e.getMessage());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<POJO_Checkdaily> call, Throwable t) {
+                Log.e("NT",t.getMessage());
+                try{
+
+                    listener.onFailure(t);
+
+                }catch (Exception e){
+
+                    listener.onFailure(t);
+//                    Log.e("Network connectLogin",t.getMessage());
+                }
+
+            }
+        });
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.user.dvectn.Retrofit;
 
+import com.example.user.dvectn.POJO.POJOGetDaily;
 import com.example.user.dvectn.POJO.POJO_Checkdaily;
 import com.example.user.dvectn.POJO.POJO_DD_P1;
 import com.example.user.dvectn.POJO.POJO_DD_P2;
@@ -26,9 +27,6 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 
-/**
- * Created by kritsanrongkaew on 12/3/2018 AD.
- */
 
 public interface APISERVER {
 
@@ -49,9 +47,13 @@ public interface APISERVER {
 
     @FormUrlEncoded
     @POST("Checkdaily/")
-    Call<POJO_Checkdaily> getDatadaily(@Field("member_id") int first , @Field("app_name") String Sec ,
-                                       @Field("app_date") int Thrir , @Field("app_detai") String Four
-                                      /* @Field("img") five */);
+    Call<POJO_Checkdaily> getDatadaily(@Field("name") String name , @Field("score") int score );
+
+
+    @FormUrlEncoded
+    @POST("getCheckdaily/")
+    Call<List<POJOGetDaily>> getDatadaily(@Field("member_id") String name);
+
 
     @FormUrlEncoded
     @POST("assessmentstu-1/")
@@ -133,6 +135,8 @@ public interface APISERVER {
                                      @Part("memberid") String memberid,
                                      @Part("app_name") String name,
                                      @Part("app_detail") String detail
+
+
 
 
 

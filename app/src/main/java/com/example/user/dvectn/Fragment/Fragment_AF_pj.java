@@ -111,7 +111,7 @@ public class Fragment_AF_pj extends Fragment {
 
             for (int i = 0; i<getstu.size() ;i++){
 
-                idStd.add(getstu.get(i).getId());
+                idStd.add(getstu.get(i).getMemberId());
                 nameStd.add(getstu.get(i).getFirstname()+" "+getstu.get(i).getLastnamename());
 
             }

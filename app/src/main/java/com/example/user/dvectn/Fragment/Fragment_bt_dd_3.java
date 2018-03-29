@@ -162,6 +162,7 @@ public class Fragment_bt_dd_3 extends Fragment implements View.OnClickListener  
     }
 
     private void senddata (){
+
         String[] tmpSpn = {spn1.getSelectedItem().toString(),spn2.getSelectedItem().toString(),spn3.getSelectedItem().toString(),
                 spn4.getSelectedItem().toString(),spn5.getSelectedItem().toString(),spn6.getSelectedItem().toString(),spn7.getSelectedItem().toString()};
 

@@ -1,20 +1,28 @@
 package com.example.user.dvectn.RecycelViewPack;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.user.dvectn.POJO.POJO_Checkdaily;
 import com.example.user.dvectn.R;
+import com.example.user.dvectn.Retrofit.NetworkConnectionManager;
+import com.example.user.dvectn.Retrofit.OnNetworkCallback_Checkdaily_D1;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import okhttp3.ResponseBody;
 
 import static java.security.AccessController.getContext;
 
@@ -24,10 +32,11 @@ import static java.security.AccessController.getContext;
 
 public class RecycleViewAdapter4 extends RecyclerView.Adapter<RecycleViewAdapter4.MyHoder> {
 
+    ProgressDialog progressDialog;
     Context coconut;
     List<String> testwae;
     List<String> testwae2;
-
+    List<Integer> testwaeScore;
     ArrayAdapter adp ;
 
 
@@ -38,11 +47,14 @@ public class RecycleViewAdapter4 extends RecyclerView.Adapter<RecycleViewAdapter
 
     }
 
-    public void Dataspinner(List<String> testwae,List<String> testwae2 ,ArrayAdapter adp ) {
+    public void Dataspinner(List<String> testwae,List<String> testwae2 , List<Integer> testwaeScore ,ArrayAdapter adp ) {
 
         this.testwae = testwae;
         this.testwae2 = testwae2;
+        this.testwaeScore = testwaeScore;
         this.adp  = adp;
+
+
 
     }
 
@@ -63,7 +75,53 @@ public class RecycleViewAdapter4 extends RecyclerView.Adapter<RecycleViewAdapter
         holder.ux_2.setText(testwae2.get(position));
         holder.ux_3.setAdapter(adp);
 
+        int spinnerPosition = adp.getPosition(getStatusStr(testwaeScore.get(position)-1));
+        holder.ux_3.setSelection(spinnerPosition);
+
     }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    OnNetworkCallback_Checkdaily_D1 onCallbackList = new OnNetworkCallback_Checkdaily_D1() {
+        @Override
+        public void onResponse(POJO_Checkdaily getstu) {
+
+            Toast.makeText(coconut, "บันทึกข้อมูลสำเร็จ", Toast.LENGTH_SHORT).show();
+
+            if (progressDialog.isShowing()) {
+                progressDialog.dismiss();
+            }
+        }
+
+        @Override
+        public void onBodyError(ResponseBody responseBodyError) {
+            Toast.makeText(coconut, "responseBodyError", Toast.LENGTH_SHORT).show();
+            if (progressDialog.isShowing()) {
+                progressDialog.dismiss();
+            }
+
+        }
+
+        @Override
+        public void onBodyErrorIsNull() {
+
+            Toast.makeText(coconut, "res is null", Toast.LENGTH_SHORT).show();
+            if (progressDialog.isShowing()) {
+                progressDialog.dismiss();
+            }
+
+        }
+
+        @Override
+        public void onFailure(Throwable t) {
+
+//            Toast.makeText(coconut, "Err "+t.getMessage(), Toast.LENGTH_SHORT).show();
+            if (progressDialog.isShowing()) {
+                progressDialog.dismiss();
+            }
+
+        }
+    };
+
 
     @Override
     public int getItemCount() {
@@ -78,7 +136,7 @@ public class RecycleViewAdapter4 extends RecyclerView.Adapter<RecycleViewAdapter
         Spinner ux_3;
 
 
-        Context context;
+        Context coconut;
 
         public MyHoder (View itemView, Context context){
 
@@ -89,13 +147,75 @@ public class RecycleViewAdapter4 extends RecyclerView.Adapter<RecycleViewAdapter
             ux_3 =itemView.findViewById(R.id.spn_point);
 
 
-            this.context = context;
+            this.coconut = context;
+
+            ux_3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                    if(!ux_3.getSelectedItem().toString().equals("-")){
+
+                        progressDialog = new ProgressDialog(coconut);
+                        progressDialog.setMessage("Loading......");
+                        progressDialog.show();
+
+                        new NetworkConnectionManager().callServer_Checkdaily(onCallbackList,ux_1.getText().toString(),getStatus(ux_3.getSelectedItem().toString()));
+
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
         }
         public void setIMG(String url) {
 //            Toast.makeText(context, ""+url, Toast.LENGTH_SHORT).show();
-            Picasso.with(context).load(url).into(imgUser);
+            Picasso.with(coconut).load(url).into(imgUser);
 
 
+        }
+    }
+
+    private int getStatus(String input){
+
+        if(input.equals("-")){
+            return 0;
+        }else if (input.equals("น้อยที่สุด")){
+            return 1;
+        }else if (input.equals("น้อย")){
+            return 2;
+        }else if (input.equals("ปานกลาง")){
+            return 3;
+        }else if (input.equals("มาก")){
+            return 4;
+        }else if (input.equals("มากที่สุด")){
+            return 5;
+        }else {
+            return -1;
+        }
+    }
+
+
+
+
+    private String getStatusStr(int input){
+
+        if(input == 0 ){
+            return "-";
+        }else if (input== 1){
+            return "น้อยที่สุด";
+        }else if (input == 2 ){
+            return "น้อย";
+        }else if (input == 3){
+            return "ปานกลาง";
+        }else if (input == 4){
+            return "มาก";
+        }else if (input == 5){
+            return "มากที่สุด";
+        }else {
+            return "-";
         }
     }
 //
