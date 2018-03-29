@@ -110,7 +110,9 @@ public class Fragment_AF_dd extends Fragment {
                     editor.putString(KEY_STD_ID,idStd.get(position));
                     editor.commit();
 
-                    replaceFragment(new Fragment_bt_pj() ,null);
+
+
+                    replaceFragment(new Fragment_bt_dd() ,null);
 
 
                 }
