@@ -145,8 +145,8 @@ public class Fragment_bt_pj_6 extends Fragment implements View.OnClickListener {
         progressDialog.show();
 
         if(tmpSpn != null){
-            if (!tmpSpn[0].equals("-") || !tmpSpn[1].equals("-") || !tmpSpn[2].equals("-") || !tmpSpn[3].equals("-") || !tmpSpn[4].equals("-")
-                    || !tmpSpn[5].equals("-") ){
+            if ((!tmpSpn[0].equals("-")) && (!tmpSpn[1].equals("-")) && (!tmpSpn[2].equals("-")) && (!tmpSpn[3].equals("-")) && (!tmpSpn[4].equals("-"))
+                    && (!tmpSpn[5].equals("-")) ){
 //                Toast.makeText(getContext(), ""+tmpSpn[0]
 //                        +" , "+tmpSpn[1]+" , "+tmpSpn[2]+" , "+tmpSpn[3]+" , "+tmpSpn[4]+" , "+tmpSpn[5]
 //                        , Toast.LENGTH_SHORT).show();

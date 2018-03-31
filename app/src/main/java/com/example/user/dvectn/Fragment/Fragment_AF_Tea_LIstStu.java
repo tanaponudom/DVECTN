@@ -56,7 +56,7 @@ public class Fragment_AF_Tea_LIstStu extends Fragment {
         idStd = new ArrayList<>();
 
         context = getContext();
-
+        ArrayAdapter ListViewAdapter = new ArrayAdapter(getContext(),android.R.layout.simple_list_item_1,chataterNaJa);
         sharedPreferences = getActivity().getSharedPreferences(Fragment_login.MyPer, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
 

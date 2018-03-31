@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.user.dvectn.Fragment.Fragment_login;
 
@@ -55,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
             builder.setPositiveButton("ตกลง", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    fragmentManager.popBackStack();
                 }
             });
 
@@ -76,10 +78,32 @@ public class MainActivity extends AppCompatActivity {
         int co = fragmentManager.getBackStackEntryCount();
 
         if(co > 1 ){
-            fragmentManager.popBackStack();
-        }else if(co==1) {
-            Exit();
-        }
+                fragmentManager.popBackStack();
+        }else{
+                Exit();
+            }
+
+        String tmp = ""+fragmentManager.findFragmentById(R.id.content);
+        String frgLogin = "Fragment_login";
+//        Toast.makeText(this, ""+tmp, Toast.LENGTH_SHORT).show();
+
+//        try {
+//            if(co > 1 ){
+//                fragmentManager.popBackStack();
+//            }else if(!tmp.substring(0,13).equals(frgLogin.substring(0,13))){
+//                Logout();
+//            }else{
+//                Exit();
+//            }
+//
+//        }catch (Exception e){
+//
+//            if(co > 1 ){
+//                fragmentManager.popBackStack();
+//            }
+//
+//        }
+
 
 
 

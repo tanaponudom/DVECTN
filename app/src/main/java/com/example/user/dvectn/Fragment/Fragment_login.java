@@ -62,8 +62,8 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
         et_user = view.findViewById(R.id.et_user);
         et_pass = view.findViewById(R.id.et_pass);
 
-        et_user.setText("DVE05");
-        et_pass.setText("DVE05");
+        et_user.setText("admin");
+        et_pass.setText("0850400151");
 
         //init session
         sharedPreferences = getActivity().getSharedPreferences(MyPer, Context.MODE_PRIVATE);
@@ -118,7 +118,7 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
 
 
             String Member_Type = loginRes.getMemberType();
-            Toast.makeText(getContext(), "Member type= " + Member_Type, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getContext(), "Member type= " + Member_Type, Toast.LENGTH_SHORT).show();
 
             if (Member_Type.equals("establishment")) {
 

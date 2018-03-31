@@ -1,6 +1,7 @@
 package com.example.user.dvectn.Retrofit;
 
 import com.example.user.dvectn.POJO.POJOGetDaily;
+import com.example.user.dvectn.POJO.POJO_AF_teacher;
 import com.example.user.dvectn.POJO.POJO_Checkdaily;
 import com.example.user.dvectn.POJO.POJO_DD_P1;
 import com.example.user.dvectn.POJO.POJO_DD_P2;
@@ -11,9 +12,10 @@ import com.example.user.dvectn.POJO.POJO_PJ_P3;
 import com.example.user.dvectn.POJO.POJO_PJ_P4;
 import com.example.user.dvectn.POJO.POJO_PJ_P5;
 import com.example.user.dvectn.POJO.POJO_PJ_P6;
+import com.example.user.dvectn.POJO.POJO_Stu_naja;
+import com.example.user.dvectn.POJO.POJO_Stu_naja_gogo;
 import com.example.user.dvectn.POJO.POJO_getstu;
 import com.example.user.dvectn.POJO.POJO_login;
-import com.example.user.dvectn.POJO.POJO_studata;
 import com.example.user.dvectn.POJO.POJO_test1_in_ag;
 import com.example.user.dvectn.POJO.ResPOJO;
 
@@ -41,9 +43,7 @@ public interface APISERVER {
     Call<List<POJO_getstu>> getSTD(@Field("dep_id") String dep_id);
 
 
-    @FormUrlEncoded
-    @POST("studata/")
-    Call<POJO_studata> getDataStd(@Field("token") String first);
+
 
     @FormUrlEncoded
     @POST("Checkdaily/")
@@ -52,7 +52,7 @@ public interface APISERVER {
 
     @FormUrlEncoded
     @POST("getCheckdaily/")
-    Call<List<POJOGetDaily>> getDatadaily(@Field("member_id") String name);
+    Call<List<POJOGetDaily>> getDatadaily(@Field("dep_id") String dep_id);
 
 
     @FormUrlEncoded
@@ -104,6 +104,7 @@ public interface APISERVER {
 //    @POST("getdata-ebs/")
 //    Call<POJO_getdata_ebs> getData_ebs ();
 
+    @FormUrlEncoded
     @POST("affective-1/")
     Call<POJO_DD_P1> getDataDDP1 (@Field("member_id") int first , @Field("ex11") int Sec ,
                                   @Field("ex12") int Thrir , @Field("ex13") int four ,
@@ -134,13 +135,22 @@ public interface APISERVER {
     Call<ResPOJO> updateImageProfile(@Part MultipartBody.Part image,
                                      @Part("memberid") String memberid,
                                      @Part("app_name") String name,
-                                     @Part("app_detail") String detail
+                                     @Part("app_detail") String detail);
+
+//    @FormUrlEncoded
+//    @POST("Ag_Accept/")
+//    Call<POJO_AG> getDatastuAG (@Field("member_id ") int first);
+
+    @FormUrlEncoded
+    @POST("stu/")
+    Call<List<POJO_Stu_naja>> getDatastunaja (@Field("member_id") String first);
 
 
+    @FormUrlEncoded
+    @POST("getstu/")
+    Call <List<POJO_Stu_naja_gogo>> getDatastunajagogo (@Field("dep_id") String first);
 
-
-
-
-    );
-
+    @FormUrlEncoded
+    @POST("teacher-af/")
+    Call<List<POJO_AF_teacher>> getDataAF_teacher_company(@Field("member_id") String first);
 }

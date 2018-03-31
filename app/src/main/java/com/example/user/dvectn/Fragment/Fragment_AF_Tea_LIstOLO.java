@@ -43,8 +43,8 @@ public class Fragment_AF_Tea_LIstOLO extends Fragment {
                 Toast.makeText(getContext(), "Item Click", Toast.LENGTH_SHORT);
 
 
-                Fragment_AF_Tea_LIstStu teacher_layout = new Fragment_AF_Tea_LIstStu();
-                replaceFragment(teacher_layout, null);
+//                Fragment_AF_Tea_LIstStu teacher_layout = new Fragment_AF_Tea_LIstStu();
+                replaceFragment(new Fragment_AF_Tea_LIstStu() , null);
 
 
 

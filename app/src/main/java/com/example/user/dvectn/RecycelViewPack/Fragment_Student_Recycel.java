@@ -1,5 +1,8 @@
 package com.example.user.dvectn.RecycelViewPack;
 
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -13,13 +16,22 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import com.example.user.dvectn.Fragment.Fragment_login;
 import com.example.user.dvectn.Fragment.Student_save;
+import com.example.user.dvectn.POJO.POJOGetDaily;
+import com.example.user.dvectn.POJO.POJO_Stu_naja;
 import com.example.user.dvectn.R;
+import com.example.user.dvectn.Retrofit.NetworkConnectionManager;
+import com.example.user.dvectn.Retrofit.OnNetworkCallback_GetStdDaily;
+import com.example.user.dvectn.Retrofit.OnNetworkCallback_Stu_naja;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.ResponseBody;
 
 /**
  * Created by User on 7/3/2561.
@@ -31,6 +43,11 @@ public class Fragment_Student_Recycel extends Fragment {
     List<String> Data_St;
     List<String> Data_Url;
     String frg_st;
+    String dep_id = "";
+    int memberId = 0;
+    SharedPreferences.Editor editor;
+    SharedPreferences sharedPreferences;
+    Context context;
 
     public  static  final String TAG_STU = "DENT";
 
@@ -38,9 +55,16 @@ public class Fragment_Student_Recycel extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View viewtt = inflater.inflate(R.layout.student_page, container, false);
-        showdawae(viewtt);
+
 
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+
+        context = getContext();
+
+        sharedPreferences = getActivity().getSharedPreferences(Fragment_login.MyPer, Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
+        dep_id = sharedPreferences.getString(Fragment_login.KEY_dep_id,null);
 
         FloatingActionButton fab = viewtt.findViewById(R.id.fab);
 
@@ -61,38 +85,68 @@ public class Fragment_Student_Recycel extends Fragment {
                         replaceFragment(student_save, bnq);
                         break;
 
-
-
-
                 }
             }
 
         });
-        return viewtt;
-    }
-    private void showdawae(View view) {
 
+        memberId = sharedPreferences.getInt(Fragment_login.KEY_member_id,0);
+
+        recyclerView = viewtt.findViewById(R.id.LV_st_1);
 
         Data_St = new ArrayList<>();
         Data_Url = new ArrayList<>();
+        new NetworkConnectionManager().callServer_stu_naja(onCallbackList,""+ memberId);
 
 
-        for (int i = 0; i < 3; i++) {
+        return viewtt;
+    }
 
-            Data_St.add("นายสมศักดิ์ เกรียงไกร");
-            Data_Url.add("https://images.pexels.com/photos/52710/matterhorn-zermatt-switzerland-snow-52710.jpeg?w=940&h=650&auto=compress&cs=tinysrgb");
+    OnNetworkCallback_Stu_naja onCallbackList = new OnNetworkCallback_Stu_naja() {
+
+
+        @Override
+        public void onResponse(List<POJO_Stu_naja> stu_naja) {
+
+            for (int i = 0; i< stu_naja.size() ;i++){
+                  Data_St.add(stu_naja.get(i).getAppDetail());
+                  Data_Url.add(stu_naja.get(i).getImgurl());
+            }
+
+            recycleViewAdapter = new RecycleViewAdapter1(getContext());
+
+            recycleViewAdapter.Update_Data(Data_St,Data_Url);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setAdapter(recycleViewAdapter);
+
         }
 
 
-        recyclerView = view.findViewById(R.id.LV_st_1);
+        @Override
+        public void onBodyError(ResponseBody responseBodyError) {
+            Toast.makeText(context, "responseBodyError", Toast.LENGTH_SHORT).show();
 
-        recycleViewAdapter = new RecycleViewAdapter1(getContext());
+        }
 
-        recycleViewAdapter.Update_Data(Data_St,Data_Url);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(recycleViewAdapter);
-    }
+        @Override
+        public void onBodyErrorIsNull() {
+
+            Toast.makeText(context, "res is null", Toast.LENGTH_SHORT).show();
+
+
+        }
+
+        @Override
+        public void onFailure(Throwable t) {
+
+            Toast.makeText(context, "Err "+t.getMessage(), Toast.LENGTH_SHORT).show();
+
+
+        }
+    };
+
+
 
     public void replaceFragment(Fragment fragment, Bundle bundle) {
 

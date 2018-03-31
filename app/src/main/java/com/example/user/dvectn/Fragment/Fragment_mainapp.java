@@ -89,8 +89,8 @@ public class Fragment_mainapp extends Fragment implements View.OnClickListener {
                 replaceFragment(av_bt_pd, null);
                 break;
             case R.id.BT_AG:
-                Fragment_AF_ag af_ag_list = new Fragment_AF_ag();
-                replaceFragment(af_ag_list, null);
+                Fragment_bt_ag av_bt_ag = new Fragment_bt_ag();
+                replaceFragment(av_bt_ag, null);
                 break;
             case R.id.BT_DD:
                 Fragment_AF_dd af_dd_list = new Fragment_AF_dd();

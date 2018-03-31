@@ -33,6 +33,7 @@ import com.example.user.dvectn.Retrofit.NetworkConnectionManager;
 import com.example.user.dvectn.Retrofit.OnNetworkCallBackGetStd;
 import com.example.user.dvectn.Retrofit.OnNetworkCallback_Checkdaily_D1;
 import com.example.user.dvectn.Retrofit.OnNetworkCallback_GET_state_d;
+import com.example.user.dvectn.Retrofit.OnNetworkCallback_GetStdDaily;
 import com.example.user.dvectn.Retrofit.OnNetworkCallback_PJ_P2;
 
 import java.util.ArrayList;
@@ -52,7 +53,7 @@ public class Fragment_bt_d1 extends Fragment {
     List<String> Data_ltname;
     List<String> Data_chan;
     List<String> Data_num;
-    List<Integer>  Data_state;
+    List<String>  Data_score;
     List<Integer> Data_member_id;
 
     String CheckList[] = {"-","ขาด", "ลา", "มา", "มาสาย"};
@@ -88,7 +89,7 @@ public class Fragment_bt_d1 extends Fragment {
 
         dep_id = sharedPreferences.getString(Fragment_login.KEY_dep_id,null);
 
-        Toast.makeText(context, ""+dep_id, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(context, ""+dep_id, Toast.LENGTH_SHORT).show();
 
         memberId = sharedPreferences.getInt(Fragment_login.KEY_member_id,0);
 
@@ -96,7 +97,7 @@ public class Fragment_bt_d1 extends Fragment {
         Data_ltname = new ArrayList<>();
         Data_chan = new ArrayList<>();
         Data_num = new ArrayList<>();
-        Data_state = new ArrayList<>();
+        Data_score = new ArrayList<>();
         Data_member_id = new ArrayList<>();
 
         recyclerView5 = view1.findViewById(R.id.review_d);
@@ -105,16 +106,16 @@ public class Fragment_bt_d1 extends Fragment {
         progressDialog.setMessage("Loading......");
         progressDialog.show();
 
-        new NetworkConnectionManager().getStudentName(onCallbackList,dep_id);
+        new NetworkConnectionManager().getDataStdDaily(onCallbackList,dep_id);
 
         return view1;
 
     }
 
 
-    OnNetworkCallBackGetStd onCallbackList = new OnNetworkCallBackGetStd() {
+    OnNetworkCallback_GetStdDaily onCallbackList = new OnNetworkCallback_GetStdDaily() {
         @Override
-        public void onResponse(List<POJO_getstu> getstu) {
+        public void onResponse(List<POJOGetDaily> getstu) {
 
                 if(progressDialog.isShowing()){
                     progressDialog.dismiss();
@@ -129,17 +130,12 @@ public class Fragment_bt_d1 extends Fragment {
                     Data_ltname.add(getstu.get(i).getLastnamename());
                     Data_num.add(getstu.get(i).getMemberCode());
                     Data_member_id.add(Integer.parseInt(getstu.get(i).getMemberId()));   // get member id
-
-                    Random rn = new Random();
-                    int range = 4 - 0 + 1;
-                    int randomNum =  rn.nextInt(range) + 0;
-
-                    Data_state.add(randomNum);
+                    Data_score.add(getstu.get(i).getScore());
                 }
 
                     adp2 =  new ArrayAdapter(context,android.R.layout.simple_spinner_dropdown_item,CheckList);
                     recycleViewAdapter5 = new RecycleViewAdapter3(getContext());
-                    recycleViewAdapter5.DataStudent(Data_name, Data_ltname, Data_num,Data_state, adp2);
+                    recycleViewAdapter5.DataStudent(Data_name, Data_ltname, Data_num,Data_score, adp2);
                     recyclerView5.setLayoutManager(new LinearLayoutManager(getContext()));
                     recyclerView5.setHasFixedSize(true);
                     recyclerView5.setAdapter(recycleViewAdapter5);
@@ -177,7 +173,6 @@ public class Fragment_bt_d1 extends Fragment {
 
         }
     };
-
 
 
     public void replaceFragment(Fragment fragment, Bundle bundle) {

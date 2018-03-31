@@ -3,8 +3,10 @@ package com.example.user.dvectn.RecycelViewPack;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -54,19 +56,26 @@ public class RecycleViewAdapter1 extends RecyclerView.Adapter<RecycleViewAdapter
 
         holder.tv_name.setText(nData.get(position));
         holder.setIMG(nUrl.get(position));
+        holder.setOnClickRecycleView(new OnClickRecycleView() {
+            @Override
+            public void onClick(View view, int position, boolean isLongClick, MotionEvent motionEvent) {
+
+            }
+        });
 
     }
+
 
     @Override
     public int getItemCount() {return nData.size();}
 
+    class MyHoder extends RecyclerView.ViewHolder implements  View.OnClickListener
+            , View.OnLongClickListener, View.OnTouchListener {
 
-    class MyHoder extends RecyclerView.ViewHolder{
-
+        private OnClickRecycleView onClickRecycleView;
         TextView tv_name;
         ImageView imgUser;
         Context context;
-
 
         public MyHoder(View itemView,Context context) {
 
@@ -76,18 +85,45 @@ public class RecycleViewAdapter1 extends RecyclerView.Adapter<RecycleViewAdapter
             imgUser = itemView.findViewById(R.id.IV_row_st2);
             this.context = context;
 
+
+            itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
+
+        }
+
+        public void setOnClickRecycleView(OnClickRecycleView onClickRecycleView){
+            this.onClickRecycleView =  onClickRecycleView;
+
+        }
+
+        @Override
+        public void onClick(View view) {
+            onClickRecycleView.onClick(view, getAdapterPosition(), false, null);
+        }
+
+        @Override
+        public boolean onLongClick(View view) {
+            onClickRecycleView.onClick(view, getAdapterPosition(), false, null);
+            return true;
+        }
+
+        @Override
+        public boolean onTouch(View view, MotionEvent motionEvent) {
+            onClickRecycleView.onClick(view, getAdapterPosition(), false, null);
+            return true;
         }
 
         public void setIMG(String url){
-//            Toast.makeText(context, ""+url, Toast.LENGTH_SHORT).show();
+
+            if(!url.isEmpty())
             Picasso.with(context).load(url).into(imgUser);
+            else
+                imgUser.setImageDrawable(context.getDrawable(R.drawable.logo2));
 
-
+            }
         }
 
-
     }
-}
 
 
 

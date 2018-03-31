@@ -53,8 +53,8 @@ public class Fragment_AF_Teacherlayout extends Fragment {
                 Toast.makeText(getContext(), "Item Click", Toast.LENGTH_SHORT);
 
 
-               Fragment_AF_Teacherlayout2 teacher_layout = new Fragment_AF_Teacherlayout2();
-               replaceFragment(teacher_layout, null);
+               Fragment_AF_Teacherlayout2 af_teacherlayout2 = new Fragment_AF_Teacherlayout2();
+               replaceFragment(af_teacherlayout2, null);
 
 
 

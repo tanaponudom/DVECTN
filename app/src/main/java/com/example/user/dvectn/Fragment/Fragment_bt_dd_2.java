@@ -3,6 +3,7 @@ package com.example.user.dvectn.Fragment;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -39,17 +40,12 @@ public class Fragment_bt_dd_2 extends Fragment implements View.OnClickListener
     String frg;
     String nameList[] = {"-","1","2","3","4","5"};
     Spinner spin1, spin2 , spin3 , spin4 , spin5 , spin6 , spin7 , spin8 ;
+    String dep_id = "";
+    SharedPreferences.Editor editor;
+    SharedPreferences sharedPreferences;
     public  static  final String TAG_HEW4 = "HEW4";
 
-    int memberId = 0,
-            ex22 = -1 ,
-            ex23 = -1 ,
-            ex24 = -1 ,
-            ex25 = -1 ,
-            ex26 = -1 ,
-            ex27 = -1 ,
-            ex28 = -1 ,
-            ex29 = -1 ;
+    int memberId = 0;
 
 
 
@@ -98,29 +94,22 @@ public class Fragment_bt_dd_2 extends Fragment implements View.OnClickListener
 
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("ด้านสมรรถนะหลักและสมรรถภาพทั่วไป");
 
-
-
         view.findViewById(R.id.bbbtn2).setOnClickListener(this);
+
+        sharedPreferences = getActivity().getSharedPreferences(Fragment_login.MyPer, Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
+        dep_id = sharedPreferences.getString(Fragment_login.KEY_dep_id,null);
+        memberId = sharedPreferences.getInt(Fragment_login.KEY_member_id,0);
+
+
 
 
         return view;
     }
 
 
-//    private  void ConfirmDD2(int ex22,int ex23,int ex24,int ex25 ,int ex26,int ex27,int ex28,int ex29){
-//
-//        progressDialog = new ProgressDialog(context);
-//        progressDialog.setMessage("Loading......");
-//        progressDialog.show();
-//
-//        if(memberId > 0 ){
-//            new NetworkConnectionManager().callServer_dd_p2(onCallbackList,memberId,ex22,ex23,ex24,ex25,ex26,ex27,ex28,ex29);
-//        }else {
-//            Toast.makeText(context, "กรุราตรวจสอบข้อมูล", Toast.LENGTH_SHORT).show();
-//        }
 
-//        ArrayAdapter
-//    }
 
 
     OnNetworkCallback_DD_P2 onCallbackList = new OnNetworkCallback_DD_P2() {
@@ -188,8 +177,8 @@ public class Fragment_bt_dd_2 extends Fragment implements View.OnClickListener
         progressDialog.show();
 
         if(tmpSpn != null){
-            if (!tmpSpn[0].equals("-") || !tmpSpn[1].equals("-") || !tmpSpn[2].equals("-") || !tmpSpn[3].equals("-") || !tmpSpn[4].equals("-")
-                    || !tmpSpn[5].equals("-") || !tmpSpn[6].equals("-") || !tmpSpn[7].equals("-") ){
+            if ((!tmpSpn[0].equals("-")) && (!tmpSpn[1].equals("-")) && (!tmpSpn[2].equals("-")) && (!tmpSpn[3].equals("-")) && (!tmpSpn[4].equals("-"))
+                    && (!tmpSpn[5].equals("-")) && (!tmpSpn[6].equals("-")) && (!tmpSpn[7].equals("-")) ){
 //                Toast.makeText(getContext(), ""+tmpSpn[0]
 //                        +" , "+tmpSpn[1]+" , "+tmpSpn[2]+" , "+tmpSpn[3]+" , "+tmpSpn[4]+" , "+tmpSpn[5]
 //                        +" , "+tmpSpn[6]+" , "+tmpSpn[7], Toast.LENGTH_SHORT).show();
@@ -198,6 +187,9 @@ public class Fragment_bt_dd_2 extends Fragment implements View.OnClickListener
                         ,Integer.parseInt(tmpSpn[4]),Integer.parseInt(tmpSpn[5]),Integer.parseInt(tmpSpn[6]),Integer.parseInt(tmpSpn[7]));
             }else {
                 Toast.makeText(getContext(),"กรุณากรอกให้ครบ",Toast.LENGTH_SHORT).show();
+                if(progressDialog.isShowing()){
+                    progressDialog.dismiss();
+                }
             }
 
 

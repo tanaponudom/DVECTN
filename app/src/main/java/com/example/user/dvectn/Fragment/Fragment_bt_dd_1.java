@@ -3,6 +3,7 @@ package com.example.user.dvectn.Fragment;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -35,18 +36,18 @@ public class Fragment_bt_dd_1 extends Fragment implements View.OnClickListener
 {
     Context context;
     String frg;
-    String nameList[] = {"-","1","2","3","4","5"};
+    String nameList[] = {"-","0","1","2","3","4","5"};
     Button bbb;
     Spinner spn1, spn2 , spn3 , spn4 , spn5 ;
     ProgressDialog progressDialog;
+    String dep_id = "";
+    SharedPreferences.Editor editor;
+    SharedPreferences sharedPreferences;
+
+
     public  static  final String TAG_HEW3 = "HEW3";
 
-    int memberId = 0,
-            ex11 = -1 ,
-            ex12 = -1 ,
-            ex13 = -1 ,
-            ex14 = -1 ,
-            ex15 = -1 ;
+    int memberId = 0;
 
 
     @Nullable
@@ -55,7 +56,7 @@ public class Fragment_bt_dd_1 extends Fragment implements View.OnClickListener
         View view = inflater.inflate(R.layout.av_bt_dd_1,container, false);
         context = getContext();
 
-        bbb=view.findViewById(R.id.bbbtn1);
+
 
 
         spn1 = view.findViewById(R.id.spinner1);
@@ -78,30 +79,27 @@ public class Fragment_bt_dd_1 extends Fragment implements View.OnClickListener
         ArrayAdapter adapter4 = new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_item,nameList);
         spn5.setAdapter(adapter4);
 
+
+
+
         ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("ด้านคุณลักษณะอันพึงประสงค์");
 
 
         view.findViewById(R.id.bbbtn1).setOnClickListener(this);
 
+        sharedPreferences = getActivity().getSharedPreferences(Fragment_login.MyPer, Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
+        dep_id = sharedPreferences.getString(Fragment_login.KEY_dep_id,null);
+        memberId = sharedPreferences.getInt(Fragment_login.KEY_member_id,0);
+
 
         return view;
     }
 
-    private  void ConfirmDD1(int ex11,int ex12,int ex13,int ex14 ,int ex15){
 
-        progressDialog = new ProgressDialog(context);
-        progressDialog.setMessage("Loading......");
-        progressDialog.show();
-
-        if(memberId > 0 ){
-            new NetworkConnectionManager().callServer_dd_p1(onCallbackList,memberId,ex11,ex12,ex13,ex14,ex15);
-        }else {
-            Toast.makeText(context, "กรุราตรวจสอบข้อมูล", Toast.LENGTH_SHORT).show();
-        }
-
-//        ArrayAdapter
-    }
     OnNetworkCallback_DD_P1 onCallbackList = new OnNetworkCallback_DD_P1() {
         @Override
         public void onResponse(POJO_DD_P1 status) {
@@ -167,14 +165,17 @@ public class Fragment_bt_dd_1 extends Fragment implements View.OnClickListener
 
 
         if(tmpSpn != null){
-            if (!tmpSpn[0].equals("-") || !tmpSpn[1].equals("-") || !tmpSpn[2].equals("-") || !tmpSpn[3].equals("-") || !tmpSpn[4].equals("-")
-                    ){
+            if ((!tmpSpn[0].equals("-")) && (!tmpSpn[1].equals("-")) && (!tmpSpn[2].equals("-")) && (!tmpSpn[3].equals("-")) && (!tmpSpn[4].equals("-"))
+                     ){
 //                Toast.makeText(getContext(), ""+tmpSpn[0]+" , "+tmpSpn[1]+" , "+tmpSpn[2]+" , "+tmpSpn[3]+" , "+tmpSpn[4]
 //                        , Toast.LENGTH_SHORT).show();
                 new NetworkConnectionManager().callServer_dd_p1(onCallbackList,memberId,Integer.parseInt(tmpSpn[0]),Integer.parseInt(tmpSpn[1]),Integer.parseInt(tmpSpn[2]),Integer.parseInt(tmpSpn[3])
                         ,Integer.parseInt(tmpSpn[4]));
             }else {
                 Toast.makeText(getContext(),"กรุณากรอกให้ครบ",Toast.LENGTH_SHORT).show();
+                if(progressDialog.isShowing()){
+                    progressDialog.dismiss();
+                }
             }
 
 

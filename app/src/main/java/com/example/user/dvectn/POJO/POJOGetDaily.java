@@ -5,26 +5,24 @@ import com.google.gson.annotations.SerializedName;
 
 public class POJOGetDaily {
 
-    @SerializedName("activities_id")
-    @Expose
-    private String activitiesId;
     @SerializedName("member_id")
     @Expose
     private String memberId;
+    @SerializedName("member_code")
+    @Expose
+    private String memberCode;
+    @SerializedName("firstname")
+    @Expose
+    private String firstname;
+    @SerializedName("lastnamename")
+    @Expose
+    private String lastnamename;
+    @SerializedName("type")
+    @Expose
+    private String type;
     @SerializedName("score")
     @Expose
     private String score;
-    @SerializedName("date")
-    @Expose
-    private String date;
-
-    public String getActivitiesId() {
-        return activitiesId;
-    }
-
-    public void setActivitiesId(String activitiesId) {
-        this.activitiesId = activitiesId;
-    }
 
     public String getMemberId() {
         return memberId;
@@ -34,6 +32,38 @@ public class POJOGetDaily {
         this.memberId = memberId;
     }
 
+    public String getMemberCode() {
+        return memberCode;
+    }
+
+    public void setMemberCode(String memberCode) {
+        this.memberCode = memberCode;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastnamename() {
+        return lastnamename;
+    }
+
+    public void setLastnamename(String lastnamename) {
+        this.lastnamename = lastnamename;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public String getScore() {
         return score;
     }
@@ -41,13 +71,4 @@ public class POJOGetDaily {
     public void setScore(String score) {
         this.score = score;
     }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
 }

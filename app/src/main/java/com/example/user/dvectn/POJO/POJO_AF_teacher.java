@@ -3,15 +3,17 @@ package com.example.user.dvectn.POJO;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by User on 22/3/2561.
- */
-
-public class POJO_getstu {
-
+public class POJO_AF_teacher {
     @SerializedName("member_id")
     @Expose
     private String memberId;
+    @SerializedName("dep_id")
+    @Expose
+    private String depId;
+
+    @SerializedName("name")
+    @Expose
+    private String name;
     @SerializedName("member_code")
     @Expose
     private String memberCode;
@@ -34,6 +36,22 @@ public class POJO_getstu {
 
     public void setMemberId(String memberId) {
         this.memberId = memberId;
+    }
+
+    public String getDepId() {
+        return depId;
+    }
+
+    public void setDepId(String depId) {
+        this.depId = depId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getMemberCode() {
@@ -75,5 +93,6 @@ public class POJO_getstu {
     public void setScore(String score) {
         this.score = score;
     }
+
 
 }

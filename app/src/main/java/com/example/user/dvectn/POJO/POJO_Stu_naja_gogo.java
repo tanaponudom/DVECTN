@@ -3,11 +3,7 @@ package com.example.user.dvectn.POJO;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by User on 22/3/2561.
- */
-
-public class POJO_getstu {
+public class POJO_Stu_naja_gogo {
 
     @SerializedName("member_id")
     @Expose
@@ -75,5 +71,6 @@ public class POJO_getstu {
     public void setScore(String score) {
         this.score = score;
     }
+
 
 }

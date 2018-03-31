@@ -1,8 +1,10 @@
 package com.example.user.dvectn.RecycelViewPack;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -20,113 +22,150 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.user.dvectn.Fragment.Fragment_mainapp;
+import com.example.user.dvectn.Fragment.Fragment_login;
+import com.example.user.dvectn.POJO.POJO_getstu;
 import com.example.user.dvectn.R;
+import com.example.user.dvectn.Retrofit.NetworkConnectionManager;
+import com.example.user.dvectn.Retrofit.OnNetworkCallBackGetStd;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
+import okhttp3.ResponseBody;
 
 /**
  * Created by User on 20/2/2561.
  */
 
-public class Fragment_bt_ag extends Fragment implements View.OnClickListener {
-    String frg3;
+public class Fragment_bt_ag extends Fragment {
+
 
     RecyclerView recycleView6;
     RecycleViewAdapter2 recycleViewAdapter6;
-    List<String> Data_str;
+    List<String> Data_flstr;
+    List<String> Data_lsstr;
     List<Integer> Data_state;
+    List<Integer> Data_member_id;
+
     Context context;
-
-
+    String dep_id = "";
+    SharedPreferences.Editor editor;
+    ProgressDialog progressDialog;
+    SharedPreferences sharedPreferences;
+    int memberId = 0;
     public static final String TAG_KAW = "KAW";
+
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view2 = inflater.inflate(R.layout.av_bt_ag, container, false);
-        shownanaju(view2);
+        context = getContext();
+
+
+
+
+        sharedPreferences = getActivity().getSharedPreferences(Fragment_login.MyPer, Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
+        dep_id = sharedPreferences.getString(Fragment_login.KEY_dep_id,null);
+//        Toast.makeText(context, ""+dep_id, Toast.LENGTH_SHORT).show();
+        memberId = sharedPreferences.getInt(Fragment_login.KEY_member_id,0);
+
+        recycleView6 = view2.findViewById(R.id.LV_str_naja);
+
+        Data_flstr = new ArrayList<>();
+        Data_lsstr = new ArrayList<>();
+        Data_state = new ArrayList<>();
+
+//        Data_flstr.add("Hew");
+//        Data_lsstr.add("kaw");
+//        Data_state.add(1);
+//
+//
+//        Data_flstr.add("Hew");
+//        Data_lsstr.add("kaw");
+//        Data_state.add(1);
+//
+//
+//        Data_flstr.add("Hew");
+//        Data_lsstr.add("kaw");
+//        Data_state.add(1);
+//        Data_member_id.add(55);
+
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
 
+        new NetworkConnectionManager().getStudentName(onCallbackList,dep_id);
 
         return view2;
     }
 
-    private  void shownanaju (View view){
 
-        Data_str = new ArrayList<>();
-        Data_state = new ArrayList<>();
 
-        for (int i = 0; i < 20; i++) {
+    OnNetworkCallBackGetStd onCallbackList = new OnNetworkCallBackGetStd() {
+        @Override
+        public void onResponse(List<POJO_getstu> getstu) {
 
-            Data_str.add("HewkawJung");
-            if (i %2 == 0){
-                Data_state.add(1);
+//            if(progressDialog.isShowing()){
+//                progressDialog.dismiss();
+//            }
+//            Toast.makeText(context, "Fuckkkkkkkkkkkkkkkkkkkkkkk", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(context, ""+getstu.get(0).getFirstname(), Toast.LENGTH_SHORT).show();
 
-            }else {
-                Data_state.add(0);
+
+
+            for (int i = 0; i< getstu.size() ;i++){
+
+
+                Data_flstr.add(getstu.get(i).getFirstname());
+                Data_lsstr.add(getstu.get(i).getLastnamename());
+                Data_state.add(i);
+//                Data_member_id.add(Integer.parseInt(getstu.get(i).getMemberId()));   // get member id
+
             }
+
+            recycleViewAdapter6 = new RecycleViewAdapter2(getContext());
+            recycleViewAdapter6.Update_str_work(Data_flstr,Data_lsstr,Data_state);
+            recycleView6.setLayoutManager(new LinearLayoutManager(getContext()));
+            recycleView6.setHasFixedSize(true);
+            recycleView6.setAdapter(recycleViewAdapter6);
+
         }
 
-
-        recycleView6 = view.findViewById(R.id.LV_str_naja);
-
-        recycleViewAdapter6 = new RecycleViewAdapter2(getContext());
-
-        recycleViewAdapter6.Update_str_work(Data_str,Data_state);
-        recycleView6.setLayoutManager(new LinearLayoutManager(getContext()));
-        recycleView6.setHasFixedSize(true);
-        recycleView6.setAdapter(recycleViewAdapter6);
-
-    }
-
-    private void showCustomDialog(final String member_id, String detail, String url){
-
-        String[] DataSp = {"-","0","1","2","3"};  // คะแนน
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-
-        LayoutInflater layoutInflater = LayoutInflater.from(context);
-
-        View handleView = layoutInflater.inflate(R.layout.custom_layout_dialog,null);
-        TextView tv_detail = handleView.findViewById(R.id.tv_detail);
-        ImageView imageView = handleView.findViewById(R.id.img);
-        final Spinner spinner = handleView.findViewById(R.id.spScore);
-
-
-        //set detail
-        tv_detail.setText(detail);
-        // set image from url
-        Picasso.with(context).load(url).into(imageView);
-
-        ArrayAdapter adt = new ArrayAdapter(context,android.R.layout.simple_spinner_dropdown_item,DataSp);
-        spinner.setAdapter(adt);
-        builder.setTitle("ดูรายละเอียด");
-        builder.setView(handleView);
-
-        builder.setPositiveButton("อนุมัติ", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-                Toast.makeText(context, "อนุมัติ member_id = "+member_id, Toast.LENGTH_SHORT).show();
-
+        @Override
+        public void onBodyError(ResponseBody responseBodyError) {
+            Toast.makeText(context, "responseBodyError", Toast.LENGTH_SHORT).show();
+            if(progressDialog.isShowing()){
+                progressDialog.dismiss();
             }
-        });
 
-        builder.setNegativeButton("ไม่อนุมัติ", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
+        }
 
-                Toast.makeText(context, "ไม่อนุมัติ  member_id = "+member_id, Toast.LENGTH_SHORT).show();
+        @Override
+        public void onBodyErrorIsNull() {
 
+            Toast.makeText(context, "res is null", Toast.LENGTH_SHORT).show();
+            if(progressDialog.isShowing()){
+                progressDialog.dismiss();
             }
-        });
-        builder.show();
+
+        }
+
+        @Override
+        public void onFailure(Throwable t) {
+
+            Toast.makeText(context, "Err "+t.getMessage(), Toast.LENGTH_SHORT).show();
+            if(progressDialog.isShowing()){
+                progressDialog.dismiss();
+            }
+
+        }
+    };
 
 
-    }
 
     public void replaceFragment(Fragment fragment, Bundle bundle) {
 
@@ -141,14 +180,5 @@ public class Fragment_bt_ag extends Fragment implements View.OnClickListener {
     }
 
 
-    @Override
-    public void onClick(View v) {
-        switch (recycleView6.getId()){
-            case  R.id.btn_ap:
 
-                showCustomDialog("50999","ลง windows","http://2.bp.blogspot.com/-6_khqkp_IYc/Vm3LCXRwdvI/AAAAAAAA3i8/jYteC-WQXRE/s1000/header.jpg");
-
-                break;
-        }
-    }
 }

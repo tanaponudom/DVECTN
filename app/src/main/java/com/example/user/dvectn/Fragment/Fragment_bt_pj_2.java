@@ -45,6 +45,7 @@ public class Fragment_bt_pj_2 extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.av_bt_pj_2,container, false);
         context = getContext();
+
         spn1 = view.findViewById(R.id.spinner21);
         ArrayAdapter adapter = new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_item,nameList);
         spn1.setAdapter(adapter);
@@ -161,8 +162,8 @@ public class Fragment_bt_pj_2 extends Fragment implements View.OnClickListener {
 
         if(tmpSpn != null){
 
-            if (!tmpSpn[0].equals("-") || !tmpSpn[1].equals("-") || !tmpSpn[2].equals("-") || !tmpSpn[3].equals("-") || !tmpSpn[4].equals("-")
-                    || !tmpSpn[5].equals("-") || !tmpSpn[6].equals("-") || !tmpSpn[7].equals("-") ){
+            if ((!tmpSpn[0].equals("-")) && (!tmpSpn[1].equals("-")) && (!tmpSpn[2].equals("-")) && (!tmpSpn[3].equals("-")) && (!tmpSpn[4].equals("-"))
+                    && (!tmpSpn[5].equals("-")) && (!tmpSpn[6].equals("-")) && (!tmpSpn[7].equals("-")) ){
 //                Toast.makeText(getContext(), ""+tmpSpn[0]
 //                        +" , "+tmpSpn[1]+" , "+tmpSpn[2]+" , "+tmpSpn[3]+" , "+tmpSpn[4]+" , "+tmpSpn[5]
 //                        +" , "+tmpSpn[6]+" , "+tmpSpn[7], Toast.LENGTH_SHORT).show();
@@ -171,6 +172,9 @@ public class Fragment_bt_pj_2 extends Fragment implements View.OnClickListener {
                         ),Integer.parseInt(tmpSpn[6]),Integer.parseInt(tmpSpn[7]));
             }else {
                 Toast.makeText(getContext(),"กรุณากรอกให้ครบ",Toast.LENGTH_SHORT).show();
+                if(progressDialog.isShowing()){
+                    progressDialog.dismiss();
+                }
             }
 
 

@@ -41,7 +41,7 @@ public class Fragment_bt_pd1 extends Fragment {
     RecycleViewAdapter4 recycleViewAdapter;
     List<String> Data_ftname , Data_ltname ;
     List<Integer> Data_member_id , Data_Score;
-    String ScoreList [] = {"-","น้อยที่สุด","น้อย","ปานกลาง","มาก","มากที่สุด"};
+    String ScoreList [] = {"-","ต้องปรับปรุง","พอใช้","ดี","ดีมาก"};
     String dep_id = "";
     SharedPreferences.Editor editor;
     ProgressDialog progressDialog;
@@ -63,7 +63,7 @@ public class Fragment_bt_pd1 extends Fragment {
 
 
         dep_id = sharedPreferences.getString(Fragment_login.KEY_dep_id,null);
-        Toast.makeText(context, ""+dep_id, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(context, ""+dep_id, Toast.LENGTH_SHORT).show();
         memberId = sharedPreferences.getInt(Fragment_login.KEY_member_id,0);
 
         recycleView = view2.findViewById(R.id.LV_bt_pd);
@@ -95,7 +95,7 @@ public class Fragment_bt_pd1 extends Fragment {
                 progressDialog.dismiss();
             }
 
-                Toast.makeText(context, ""+getstu.get(0).getFirstname(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, ""+getstu.get(0).getFirstname(), Toast.LENGTH_SHORT).show();
 
             for (int i = 0; i< getstu.size() ;i++){
 
@@ -118,8 +118,6 @@ public class Fragment_bt_pd1 extends Fragment {
             recycleView.setLayoutManager(new LinearLayoutManager(getContext()));
             recycleView.setHasFixedSize(true);
             recycleView.setAdapter(recycleViewAdapter);
-
-
 
         }
 

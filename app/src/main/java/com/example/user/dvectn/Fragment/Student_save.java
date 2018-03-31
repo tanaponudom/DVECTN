@@ -164,8 +164,8 @@ public class Student_save extends Fragment implements View.OnClickListener {
             String state = user.getStatus();
 
             if (state.equals("success")) {
-                Toast.makeText(context, "Upload successfully.", Toast.LENGTH_SHORT).show();
-                showImg(user.getUrl());
+                Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
+//                showImg(user.getUrl());
 
             } else {
                 Toast.makeText(context, "Upload Fail.", Toast.LENGTH_SHORT).show();
@@ -175,10 +175,6 @@ public class Student_save extends Fragment implements View.OnClickListener {
                 progressDialog.dismiss();
 
             }
-
-
-            System.out.println(user.getUrl());
-
 
         }
 

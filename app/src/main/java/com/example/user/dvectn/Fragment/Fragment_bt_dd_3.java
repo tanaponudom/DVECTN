@@ -2,6 +2,7 @@ package com.example.user.dvectn.Fragment;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -34,16 +35,12 @@ public class Fragment_bt_dd_3 extends Fragment implements View.OnClickListener  
     String frg;
     String nameList[] = {"-","1","2","3","4","5"};
     Spinner spn1, spn2 , spn3 , spn4 , spn5 , spn6 , spn7 ;
+    String dep_id = "";
+    SharedPreferences.Editor editor;
+    SharedPreferences sharedPreferences;
     public  static  final String TAG_HEW4 = "HEW4";
 
-    int memberId = 0,
-            ex31 = -1 ,
-            ex32 = -1 ,
-            ex33 = -1 ,
-            ex34 = -1 ,
-            ex35 = -1 ,
-            ex36 = -1 ,
-            ex37 = -1 ;
+    int memberId = 0;
 
 
     @Nullable
@@ -85,28 +82,20 @@ public class Fragment_bt_dd_3 extends Fragment implements View.OnClickListener  
         ((AppCompatActivity) getActivity()).getSupportActionBar().show();
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("ด้านสมรรถนะวิชาชีพ");
 
+        view.findViewById(R.id.bbbtn20).setOnClickListener(this);
+
+        sharedPreferences = getActivity().getSharedPreferences(Fragment_login.MyPer, Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
+        dep_id = sharedPreferences.getString(Fragment_login.KEY_dep_id,null);
+        memberId = sharedPreferences.getInt(Fragment_login.KEY_member_id,0);
 
 
 
 
-        view.findViewById(R.id.bbbtn2_0).setOnClickListener(this);
         return view;
     }
 
-    private  void ConfirmDD3(int ex31,int ex32,int ex33,int ex34 ,int ex35,int ex36,int ex37){
-
-        progressDialog = new ProgressDialog(context);
-        progressDialog.setMessage("Loading......");
-        progressDialog.show();
-
-        if(memberId > 0 ){
-            new NetworkConnectionManager().callServer_dd_p3(onCallbackList,memberId,ex31,ex32,ex33,ex34,ex35,ex36,ex37);
-        }else {
-            Toast.makeText(context, "กรุราตรวจสอบข้อมูล", Toast.LENGTH_SHORT).show();
-        }
-
-//        ArrayAdapter
-    }
     OnNetworkCallback_DD_P3 onCallbackList = new OnNetworkCallback_DD_P3() {
         @Override
         public void onResponse(POJO_DD_P3 status) {
@@ -162,30 +151,39 @@ public class Fragment_bt_dd_3 extends Fragment implements View.OnClickListener  
     }
 
     private void senddata (){
-
         String[] tmpSpn = {spn1.getSelectedItem().toString(),spn2.getSelectedItem().toString(),spn3.getSelectedItem().toString(),
                 spn4.getSelectedItem().toString(),spn5.getSelectedItem().toString(),spn6.getSelectedItem().toString(),spn7.getSelectedItem().toString()};
 
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setMessage("Loading......");
+        progressDialog.show();
+
+
         if(tmpSpn != null){
-            if (!tmpSpn[0].equals("-") || !tmpSpn[1].equals("-") || !tmpSpn[2].equals("-") || !tmpSpn[3].equals("-") || !tmpSpn[4].equals("-")
-                    || !tmpSpn[5].equals("-") || !tmpSpn[6].equals("-") ){
+            if ((!tmpSpn[0].equals("-")) && (!tmpSpn[1].equals("-")) && (!tmpSpn[2].equals("-")) && (!tmpSpn[3].equals("-")) && (!tmpSpn[4].equals("-"))
+                    && (!tmpSpn[5].equals("-")) && (!tmpSpn[6].equals("-")) ){
 
                 new NetworkConnectionManager().callServer_dd_p3(onCallbackList,memberId,Integer.parseInt(tmpSpn[0]),Integer.parseInt(tmpSpn[1]),Integer.parseInt(tmpSpn[2]),Integer.parseInt(tmpSpn[3])
                         ,Integer.parseInt(tmpSpn[4]),Integer.parseInt(tmpSpn[5]),Integer.parseInt(tmpSpn[6]));
 
             }else {
                 Toast.makeText(getContext(),"กรุณากรอกให้ครบ",Toast.LENGTH_SHORT).show();
+                if(progressDialog.isShowing()){
+                    progressDialog.dismiss();}
+
             }
 
 
         }else {
             Toast.makeText(getContext(), "wrong", Toast.LENGTH_SHORT).show();
+            if(progressDialog.isShowing()){
+                progressDialog.dismiss();}
         }
     }
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.bbbtn2_0:
+            case R.id.bbbtn20:
 
                 senddata();
                 break;

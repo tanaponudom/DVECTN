@@ -68,7 +68,7 @@ public class RecycleViewAdapter4 extends RecyclerView.Adapter<RecycleViewAdapter
     }
 
     @Override
-    public void onBindViewHolder(RecycleViewAdapter4.MyHoder holder, int position) {
+    public void onBindViewHolder(final RecycleViewAdapter4.MyHoder holder, int position) {
 
 
         holder.ux_1.setText(testwae.get(position));
@@ -77,6 +77,27 @@ public class RecycleViewAdapter4 extends RecyclerView.Adapter<RecycleViewAdapter
 
         int spinnerPosition = adp.getPosition(getStatusStr(testwaeScore.get(position)-1));
         holder.ux_3.setSelection(spinnerPosition);
+        holder.ux_3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                if(!holder.ux_3.getSelectedItem().toString().equals("-")){
+
+//                    progressDialog = new ProgressDialog(coconut);
+//                    progressDialog.setMessage("Loading......");
+//                    progressDialog.show();
+
+                    new NetworkConnectionManager().callServer_Checkdaily(onCallbackList,holder.ux_1.getText().toString()
+                            ,getStatus(holder.ux_3.getSelectedItem().toString()));
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
     }
 
@@ -85,7 +106,7 @@ public class RecycleViewAdapter4 extends RecyclerView.Adapter<RecycleViewAdapter
         @Override
         public void onResponse(POJO_Checkdaily getstu) {
 
-            Toast.makeText(coconut, "บันทึกข้อมูลสำเร็จ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(coconut, "จัดการข้อมูลสำเร็จ", Toast.LENGTH_SHORT).show();
 
             if (progressDialog.isShowing()) {
                 progressDialog.dismiss();
@@ -149,26 +170,7 @@ public class RecycleViewAdapter4 extends RecyclerView.Adapter<RecycleViewAdapter
 
             this.coconut = context;
 
-            ux_3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                    if(!ux_3.getSelectedItem().toString().equals("-")){
-
-                        progressDialog = new ProgressDialog(coconut);
-                        progressDialog.setMessage("Loading......");
-                        progressDialog.show();
-
-                        new NetworkConnectionManager().callServer_Checkdaily(onCallbackList,ux_1.getText().toString(),getStatus(ux_3.getSelectedItem().toString()));
-
-                    }
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-
-                }
-            });
         }
         public void setIMG(String url) {
 //            Toast.makeText(context, ""+url, Toast.LENGTH_SHORT).show();

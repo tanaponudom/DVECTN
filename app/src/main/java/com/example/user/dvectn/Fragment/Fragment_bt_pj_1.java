@@ -109,6 +109,9 @@ public class Fragment_bt_pj_1 extends Fragment implements OnClickListener{
             new NetworkConnectionManager().callServer_pj_p1(onCallbackList,memberId,ex11,ex12);
         }else {
             Toast.makeText(context, "กรุราตรวจสอบข้อมูล", Toast.LENGTH_SHORT).show();
+            if(progressDialog.isShowing()){
+                progressDialog.dismiss();
+            }
         }
 
 //        ArrayAdapter
