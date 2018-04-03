@@ -19,10 +19,12 @@ import android.widget.Toast;
 
 import com.example.user.dvectn.Fragment.Fragment_login;
 import com.example.user.dvectn.Fragment.Teacher_spy_save;
+import com.example.user.dvectn.POJO.POJO_Stu_naja_gogo;
 import com.example.user.dvectn.POJO.POJO_getstu;
 import com.example.user.dvectn.R;
 import com.example.user.dvectn.Retrofit.NetworkConnectionManager;
 import com.example.user.dvectn.Retrofit.OnNetworkCallBackGetStd;
+import com.example.user.dvectn.Retrofit.OnNetworkCallback_Stu_naja_gogo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,7 +81,7 @@ public class Fragment_Teacher_Trainer extends Fragment {
 
 
 
-        new NetworkConnectionManager().getStudentName(onCallbackList,dep_id);
+        new NetworkConnectionManager().callServer_stu_naja_gogo(onCallbackList,dep_id);
 
 
         return viewtcher;
@@ -90,9 +92,9 @@ public class Fragment_Teacher_Trainer extends Fragment {
 
 
 
-    OnNetworkCallBackGetStd onCallbackList = new OnNetworkCallBackGetStd() {
+    OnNetworkCallback_Stu_naja_gogo onCallbackList = new OnNetworkCallback_Stu_naja_gogo() {
         @Override
-        public void onResponse(List<POJO_getstu> getstu) {
+        public void onResponse(List<POJO_Stu_naja_gogo> getstu) {
 
 //            if(progressDialog.isShowing()){
 //                progressDialog.dismiss();

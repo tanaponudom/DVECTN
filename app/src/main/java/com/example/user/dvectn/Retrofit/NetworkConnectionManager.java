@@ -1146,7 +1146,7 @@ public void callServer_test1_in_ag(final OnNetworkCallback_test1_in_ag listener,
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public void callSrever_AF_teacher(final OnNetworkCallback_AF_teacher listener, String member_id) {
+    public void callSrever_AF_teacher(final OnNetworkCallback_AF_teacher listener, String member_id ) {
 
         Gson gson = new GsonBuilder()
                 .setLenient()
@@ -1274,7 +1274,7 @@ public void callServer_test1_in_ag(final OnNetworkCallback_test1_in_ag listener,
         });
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////  ////////////////////////////////////////////////////////////////////////////////////////////////
-    public void callServer_row_teacher (final OnNetworkCallback_row_teacher listener, int member_id , int score) {
+    public void callServer_row_teacher (final OnNetworkCallback_row_teacher listener, int member_id , String score,int spn) {
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
@@ -1286,7 +1286,7 @@ public void callServer_test1_in_ag(final OnNetworkCallback_test1_in_ag listener,
 
         APISERVER callapi = retrofit.create(APISERVER.class);
 
-        Call call = callapi.get_away_font_me(member_id,score);
+        Call call = callapi.get_away_font_me(member_id,score,spn);
         call.enqueue(new Callback<POJO_row_teacher>() {
 
 
@@ -1336,4 +1336,71 @@ public void callServer_test1_in_ag(final OnNetworkCallback_test1_in_ag listener,
             }
         });
     }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void callSrever_suppervision(final OnNetworkCallback_AF_teacher listener, String member_id , int suppervision ) {
+
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
+        final Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Fragment_login.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+
+        APISERVER callapi = retrofit.create(APISERVER.class);
+
+        Call call = callapi.get_dawae_now(member_id,suppervision);
+
+
+        call.enqueue(new Callback<List<POJO_AF_teacher>>() {
+
+            @Override
+            public void onResponse(Call<List<POJO_AF_teacher>> call, Response<List<POJO_AF_teacher>> response) {
+//                Log.e("onResponse",""+response.body());
+
+                try {
+
+                    List<POJO_AF_teacher> supervision = (List<POJO_AF_teacher>) response.body();
+
+                    if (response.code() != 200) {
+//                        Log.e("Network connected","Response code = "+response.code());
+
+                        ResponseBody responseBody = response.errorBody();
+
+                        if (responseBody != null) {
+                            listener.onBodyError(responseBody);
+                        } else if (responseBody == null) {
+                            listener.onBodyErrorIsNull();
+                        }
+
+//                        Toast.makeText(, ""+loginRes.getAccesstoken(), Toast.LENGTH_SHORT).show();
+//                        Log.e("Network connected","Response code = "+loginRes.getAccesstoken());
+                    } else {
+                        listener.onResponse(supervision);
+                    }
+
+                } catch (Exception e) {
+                    Log.e("Network connect error",e.getMessage());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<POJO_AF_teacher>> call, Throwable t) {
+                Log.e("NT", t.getMessage());
+                try {
+
+                    listener.onFailure(t);
+
+                } catch (Exception e) {
+
+                    listener.onFailure(t);
+//                    Log.e("Network connectLogin",t.getMessage());
+                }
+
+            }
+        });
+    }
+
 }

@@ -14,11 +14,13 @@ import android.widget.Toast;
 import com.example.user.dvectn.POJO.POJO_Checkdaily;
 import com.example.user.dvectn.POJO.POJO_Stu_naja_gogo;
 import com.example.user.dvectn.POJO.POJO_getstu;
+import com.example.user.dvectn.POJO.POJO_row_teacher;
 import com.example.user.dvectn.R;
 import com.example.user.dvectn.Retrofit.NetworkConnectionManager;
 import com.example.user.dvectn.Retrofit.OnNetworkCallBackGetStd;
 import com.example.user.dvectn.Retrofit.OnNetworkCallback_Checkdaily_D1;
 import com.example.user.dvectn.Retrofit.OnNetworkCallback_Stu_naja_gogo;
+import com.example.user.dvectn.Retrofit.OnNetworkCallback_row_teacher;
 
 import java.util.List;
 
@@ -34,7 +36,8 @@ public class RecycleViewAdapter5teacher extends RecyclerView.Adapter<RecycleView
     List<String> name1;
     List<String> name2;
     List<String> score;
-
+    List<Integer> data_member;
+    int spn;
     ArrayAdapter adp2 ;
 
     public  RecycleViewAdapter5teacher(Context context){
@@ -42,14 +45,16 @@ public class RecycleViewAdapter5teacher extends RecyclerView.Adapter<RecycleView
         this.contex = context;
     }
 
-    public  void  Dataname(List<String> name2,List<String> score,ArrayAdapter adp2){
+    public  void  Dataname(List<String> name2,List<String> score,List<Integer> data_member,int spn, ArrayAdapter adp2){
 
-
+        this.spn = spn;
         this.name2 = name2;
         this.score = score;
+        this.data_member = data_member;
         this.adp2 = adp2;
 
     }
+
     @Override
     public RecycleViewAdapter5teacher.MyHoder onCreateViewHolder(ViewGroup parent, int viewType) {
 //        return null;
@@ -60,17 +65,17 @@ public class RecycleViewAdapter5teacher extends RecyclerView.Adapter<RecycleView
     }
 
     @Override
-    public void onBindViewHolder(final RecycleViewAdapter5teacher.MyHoder holder, int position) {
+    public void onBindViewHolder(final RecycleViewAdapter5teacher.MyHoder holder, final int index) {
 
 
 
-        holder.tx_2.setText(name2.get(position));
+        holder.tx_2.setText(name2.get(index));
         holder.tx_5.setAdapter(adp2);
 
-        if(score.get(position) != null)
+        if(score.get(index) != null)
         {
 //                    Toast.makeText(context, ""+score.get(position), Toast.LENGTH_SHORT).show();
-            int spinnerPosition = adp2.getPosition(getStatusStr(Integer.parseInt(score.get(position))));
+            int spinnerPosition = adp2.getPosition(getStatusStr(Integer.parseInt(score.get(index))));
             holder.tx_5.setSelection(spinnerPosition);
         }
 
@@ -79,10 +84,12 @@ public class RecycleViewAdapter5teacher extends RecyclerView.Adapter<RecycleView
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+//                Toast.makeText(view.getContext(), " id = "+data_member.get(index), Toast.LENGTH_SHORT).show();
+
                 if(!holder.tx_5.getSelectedItem().toString().equals("-") )
                 {
 
-                    new NetworkConnectionManager().callServer_stu_naja_gogo(onCallbackList,holder.tx_5.getSelectedItem().toString());
+                    new NetworkConnectionManager().callServer_row_teacher(onCallbackList,data_member.get(index),holder.tx_5.getSelectedItem().toString(),spn);
 
                 }
 
@@ -94,17 +101,13 @@ public class RecycleViewAdapter5teacher extends RecyclerView.Adapter<RecycleView
             }
         });
 
-
-
-
-
     }
 
-    OnNetworkCallback_Stu_naja_gogo onCallbackList = new OnNetworkCallback_Stu_naja_gogo() {
+    OnNetworkCallback_row_teacher onCallbackList = new OnNetworkCallback_row_teacher() {
 
 
         @Override
-        public void onResponse(List<POJO_Stu_naja_gogo> stu_naja_gogo) {
+        public void onResponse(POJO_row_teacher stu_naja_gogo) {
             Toast.makeText(contex, "จัดการข้อมูลสำเร็จ", Toast.LENGTH_SHORT).show();
         }
 

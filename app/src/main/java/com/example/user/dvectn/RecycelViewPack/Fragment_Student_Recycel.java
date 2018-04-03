@@ -2,6 +2,7 @@ package com.example.user.dvectn.RecycelViewPack;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +11,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,6 +23,7 @@ import android.widget.Toast;
 
 import com.example.user.dvectn.Fragment.Fragment_login;
 import com.example.user.dvectn.Fragment.Student_save;
+import com.example.user.dvectn.MainActivity;
 import com.example.user.dvectn.POJO.POJOGetDaily;
 import com.example.user.dvectn.POJO.POJO_Stu_naja;
 import com.example.user.dvectn.R;
@@ -67,6 +70,7 @@ public class Fragment_Student_Recycel extends Fragment {
         dep_id = sharedPreferences.getString(Fragment_login.KEY_dep_id,null);
 
         FloatingActionButton fab = viewtt.findViewById(R.id.fab);
+        FloatingActionButton fab1 = viewtt.findViewById(R.id.fab12);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +89,29 @@ public class Fragment_Student_Recycel extends Fragment {
                         replaceFragment(student_save, bnq);
                         break;
 
+
+
+
+
+                }
+            }
+
+        });
+
+        fab1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switch (view.getId()) {
+
+                    case R.id.fab12:
+
+                        Logout();
+
+//                        Fragment_login fragment_login = new Fragment_login();
+//                        fragment_login.setArguments(null);
+//                        replaceFragment(fragment_login,null);
+
+                        break;
                 }
             }
 
@@ -158,6 +185,36 @@ public class Fragment_Student_Recycel extends Fragment {
         frgTran.replace(R.id.content,fragment).addToBackStack(null).commit();
 
 
+    }
+
+    private void Logout(){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("คำเตือน");
+        builder.setMessage("Logout ?");
+
+        builder.setPositiveButton("ตกลง", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                fragmentManager.popBackStack(null,FragmentManager.POP_BACK_STACK_INCLUSIVE);
+//                fragmentManager.popBackStack();
+
+                Fragment_login fragment_login = new Fragment_login();
+                replaceFragment(fragment_login,null);
+
+
+            }
+        });
+
+        builder.setNegativeButton("ยกเลิก", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        builder.show();
     }
 
 

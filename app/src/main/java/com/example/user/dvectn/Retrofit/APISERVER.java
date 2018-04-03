@@ -96,7 +96,7 @@ public interface APISERVER {
 
     @FormUrlEncoded
     @POST("getstu/")
-    Call<POJO_getstu> getDataPJP5(@Field("member_id") int first);
+    Call<POJO_getstu> getDataPJP5(@Field("member_id") int first,@Field("score") String score);
 
 //    @FormUrlEncoded
 //    @POST("getdata-ebs/")
@@ -152,9 +152,14 @@ public interface APISERVER {
     @POST("teacher-af/")
     Call<List<POJO_AF_teacher>> getDataAF_teacher_company(@Field("member_id") String first);
 
+
+    @FormUrlEncoded
+    @POST("getstu-supervision/")
+    Call<List<POJO_AF_teacher>> get_dawae_now (@Field("dep_id") String first,@Field("supervision") int supervision);
+
     @FormUrlEncoded
     @POST("save-nite/")
-    Call<POJO_row_teacher> get_away_font_me (@Field("member_id") int first , @Field("score") int sec);
+    Call<POJO_row_teacher> get_away_font_me (@Field("member_id") int first , @Field("score") String sec,@Field("supervision") int supervision);
 
 
 

@@ -58,6 +58,7 @@ public class Fragment_Teacher_Recycle extends Fragment {
     List<String> Data_name1;
     List<String> Data_name2;
     List<String> Data_score;
+    List<Integer> Data_member_ID;
     List<Integer> score;
     Button bbb;
     Spinner spn_name_stu1,spn_name_stu31,spn_name_stu41 ;
@@ -65,6 +66,7 @@ public class Fragment_Teacher_Recycle extends Fragment {
     Context context;
     String dep_id = "8";
     int memberId = 0;
+    int spn  = -1;
     SharedPreferences.Editor editor;
     ProgressDialog progressDialog;
     SharedPreferences sharedPreferences;
@@ -81,9 +83,11 @@ public class Fragment_Teacher_Recycle extends Fragment {
 
         sharedPreferences = getActivity().getSharedPreferences(Fragment_login.MyPer, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
-               dep_id = sharedPreferences.getString(Fragment_login.KEY_dep_id,null);
+        dep_id = sharedPreferences.getString(Fragment_login.KEY_dep_id,null);
 //        Toast.makeText(context, ""+dep_id, Toast.LENGTH_SHORT).show();
+
         memberId = sharedPreferences.getInt(Fragment_login.KEY_member_id,0);
+        spn = sharedPreferences.getInt(Fragment_login.KEY_SUPERVISION,-1);
 
 //        str_tch = bd_tch.getString(Fragment_login.TAG_user);
 
@@ -96,6 +100,7 @@ public class Fragment_Teacher_Recycle extends Fragment {
         Data_name1 = new ArrayList<>();
         Data_name2 = new ArrayList<>();
         Data_score = new ArrayList<>();
+        Data_member_ID = new ArrayList<>();
 
 
 
@@ -106,7 +111,7 @@ public class Fragment_Teacher_Recycle extends Fragment {
 
 
         new NetworkConnectionManager().callServer_stu_naja_gogo(onCallbackList,dep_id);
-        new NetworkConnectionManager().callServer_row_teacher(onCallbackList2,score);
+//        new NetworkConnectionManager().callServer_row_teacher(onCallbackList2,score);
 
 
 //        Toast.makeText(context, ""+Data_name, Toast.LENGTH_SHORT).show();
@@ -116,27 +121,27 @@ public class Fragment_Teacher_Recycle extends Fragment {
 
 
     }
-    OnNetworkCallback_row_teacher onCallbackList2 =new OnNetworkCallback_row_teacher() {
-        @Override
-        public void onResponse(POJO_row_teacher save_nite) {
-
-        }
-
-        @Override
-        public void onBodyError(ResponseBody responseBodyError) {
-
-        }
-
-        @Override
-        public void onBodyErrorIsNull() {
-
-        }
-
-        @Override
-        public void onFailure(Throwable t) {
-
-        }
-    };
+//    OnNetworkCallback_row_teacher onCallbackList2 =new OnNetworkCallback_row_teacher() {
+//        @Override
+//        public void onResponse(POJO_row_teacher save_nite) {
+//
+//        }
+//
+//        @Override
+//        public void onBodyError(ResponseBody responseBodyError) {
+//
+//        }
+//
+//        @Override
+//        public void onBodyErrorIsNull() {
+//
+//        }
+//
+//        @Override
+//        public void onFailure(Throwable t) {
+//
+//        }
+//    };
 
     OnNetworkCallback_Stu_naja_gogo onCallbackList = new OnNetworkCallback_Stu_naja_gogo() {
         @Override
@@ -153,6 +158,7 @@ public class Fragment_Teacher_Recycle extends Fragment {
 
 //                Data_name1.add(stu_naja_gogo.get(i).getFirstname());
 //                Data_name2.add(getstu.get(i).getLastnamename());
+                Data_member_ID.add(Integer.parseInt(stu_naja_gogo.get(i).getMemberId()));
                 Data_score.add(stu_naja_gogo.get(i).getScore());
                 Data_name.add(stu_naja_gogo.get(i).getFirstname()+"\t"+stu_naja_gogo.get(i).getLastnamename());
 
@@ -162,11 +168,10 @@ public class Fragment_Teacher_Recycle extends Fragment {
 
 //            adp2 =  new ArrayAdapter(context,android.R.layout.simple_spinner_dropdown_item,nameList);
 
-            recycleViewAdapter5.Dataname(Data_name,Data_score,adp2);
+            recycleViewAdapter5.Dataname(Data_name,Data_score,Data_member_ID,spn,adp2);
             recyclerView5.setLayoutManager(new LinearLayoutManager(getContext()));
             recyclerView5.setHasFixedSize(true);
             recyclerView5.setAdapter(recycleViewAdapter5);
-
 
 
         }
@@ -211,7 +216,7 @@ public class Fragment_Teacher_Recycle extends Fragment {
 //      Data_url_th.add("https://images.pexels.com/photos/52710/matterhorn-zermatt-switzerland-snow-52710.jpeg?w=940&h=650&auto=compress&cs=tinysrgb");
 
 
-        adp2 = new ArrayAdapter(getContext(),android.R.layout.simple_dropdown_item_1line ,nameList);
+        adp2 = new ArrayAdapter(getContext(),android.R.layout.simple_spinner_dropdown_item ,nameList);
 
         recyclerView5 = view.findViewById(R.id.LV_th_1);
 

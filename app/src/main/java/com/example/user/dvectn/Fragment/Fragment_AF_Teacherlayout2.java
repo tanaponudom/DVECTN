@@ -21,12 +21,14 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.user.dvectn.POJO.POJO_AF_teacher;
+import com.example.user.dvectn.POJO.POJO_Stu_naja_gogo;
 import com.example.user.dvectn.POJO.POJO_getstu;
 import com.example.user.dvectn.R;
 import com.example.user.dvectn.RecycelViewPack.Fragment_Teacher_Recycle;
 import com.example.user.dvectn.Retrofit.NetworkConnectionManager;
 import com.example.user.dvectn.Retrofit.OnNetworkCallBackGetStd;
 import com.example.user.dvectn.Retrofit.OnNetworkCallback_AF_teacher;
+import com.example.user.dvectn.Retrofit.OnNetworkCallback_Stu_naja_gogo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +52,7 @@ public class Fragment_AF_Teacherlayout2 extends Fragment {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     String dep_id = "";
+    int suppvision = -1;
 
     ListView listView;
 
@@ -73,11 +76,11 @@ public class Fragment_AF_Teacherlayout2 extends Fragment {
         sharedPreferences = getActivity().getSharedPreferences(Fragment_login.MyPer, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
+        suppvision = sharedPreferences.getInt(Fragment_login.KEY_SUPERVISION,-1);
+
         dep_id = ""+sharedPreferences.getInt(Fragment_login.KEY_member_id,0);
-        Toast.makeText(context, ""+dep_id, Toast.LENGTH_SHORT).show();
 
-
-
+//        Toast.makeText(context, "dep = "+dep_id+" sp = "+suppvision, Toast.LENGTH_SHORT).show();
 
         getStd();
         return v4;
@@ -109,8 +112,7 @@ public class Fragment_AF_Teacherlayout2 extends Fragment {
 
             }
 
-
-            ListViewAdapter = new ArrayAdapter(getContext(),android.R.layout.simple_list_item_1,nameStd);
+            ListViewAdapter = new ArrayAdapter(context,android.R.layout.simple_list_item_1,nameStd);
             listView.setAdapter(ListViewAdapter);
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override

@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.user.dvectn.R;
 import com.example.user.dvectn.RecycelViewPack.Fragment_Teacher_Recycle;
+import com.example.user.dvectn.RecycelViewPack.Fragment_Teacher_Trainer;
 
 public class Fragment_AF_Tea_LIstOLO extends Fragment {
 
@@ -44,7 +45,7 @@ public class Fragment_AF_Tea_LIstOLO extends Fragment {
 
 
 //                Fragment_AF_Tea_LIstStu teacher_layout = new Fragment_AF_Tea_LIstStu();
-                replaceFragment(new Fragment_AF_Tea_LIstStu() , null);
+                replaceFragment(new Fragment_Teacher_Trainer() , null);
 
 
 

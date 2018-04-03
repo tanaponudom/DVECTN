@@ -43,6 +43,7 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
     public static final String KEY_member_email = "member_email";
     public static final String KEY_dep_id = "dep_id";
     public static final String KEY_member_type = "member_type";
+    public static final String KEY_SUPERVISION = "spn";
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
@@ -62,11 +63,17 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
         et_user = view.findViewById(R.id.et_user);
         et_pass = view.findViewById(R.id.et_pass);
 
-        et_user.setText("admin");
-        et_pass.setText("0850400151");
+//        et_user.setText("admin");
+//        et_pass.setText("0850400151");
 
 //        et_user.setText("dve07");
 //        et_pass.setText("dve07");
+
+//        et_user.setText("5921280020");
+//        et_pass.setText("5921280020");
+//
+        et_user.setText("test2");
+        et_pass.setText("0850400151");
 
         //init session
         sharedPreferences = getActivity().getSharedPreferences(MyPer, Context.MODE_PRIVATE);
