@@ -46,6 +46,7 @@ public class Fragment_AF_Teacherlayout2 extends Fragment {
     ProgressDialog progressDialog;
     List<String> nameStd;
     List<String> idStd;
+    List<String> list_dep_id;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     String dep_id = "";
@@ -65,6 +66,7 @@ public class Fragment_AF_Teacherlayout2 extends Fragment {
 
         listView = v4.findViewById(R.id.list_af_th);
         nameStd = new ArrayList<>();
+        list_dep_id = new ArrayList<>();
         idStd = new ArrayList<>();
         context = getContext();
 
@@ -102,7 +104,7 @@ public class Fragment_AF_Teacherlayout2 extends Fragment {
 
             for (int i = 0; i<af_teacher.size() ;i++){
 
-
+                list_dep_id.add(af_teacher.get(i).getDepId());
                 nameStd.add(af_teacher.get(i).getName());
 
             }
@@ -115,6 +117,7 @@ public class Fragment_AF_Teacherlayout2 extends Fragment {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 //                    Toast.makeText(context, ""+idStd.get(position), Toast.LENGTH_SHORT).show();
+                    editor.putString(Fragment_login.KEY_dep_id,list_dep_id.get(position));
                     editor.putString(KEY_STD_ID,nameStd.get(position));
                     editor.commit();
 

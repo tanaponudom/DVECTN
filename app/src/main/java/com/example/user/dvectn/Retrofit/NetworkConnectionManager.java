@@ -19,6 +19,7 @@ import com.example.user.dvectn.POJO.POJO_Stu_naja;
 import com.example.user.dvectn.POJO.POJO_Stu_naja_gogo;
 import com.example.user.dvectn.POJO.POJO_getstu;
 import com.example.user.dvectn.POJO.POJO_login;
+import com.example.user.dvectn.POJO.POJO_row_teacher;
 import com.example.user.dvectn.POJO.POJO_test1_in_ag;
 import com.example.user.dvectn.POJO.ResPOJO;
 import com.google.gson.Gson;
@@ -1258,6 +1259,69 @@ public void callServer_test1_in_ag(final OnNetworkCallback_test1_in_ag listener,
 
             @Override
             public void onFailure(Call<List<POJO_Stu_naja_gogo>> call, Throwable t) {
+                Log.e("NT", t.getMessage());
+                try {
+
+                    listener.onFailure(t);
+
+                } catch (Exception e) {
+
+                    listener.onFailure(t);
+//                    Log.e("Network connectLogin",t.getMessage());
+                }
+
+            }
+        });
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////  ////////////////////////////////////////////////////////////////////////////////////////////////
+    public void callServer_row_teacher (final OnNetworkCallback_row_teacher listener, int member_id , int score) {
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
+        final Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Fragment_login.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+
+        APISERVER callapi = retrofit.create(APISERVER.class);
+
+        Call call = callapi.get_away_font_me(member_id,score);
+        call.enqueue(new Callback<POJO_row_teacher>() {
+
+
+            @Override
+            public void onResponse(Call<POJO_row_teacher> call, Response<POJO_row_teacher> response) {
+//                Log.e("onResponse",""+response.body());
+
+                try {
+
+                    POJO_row_teacher row_roi = (POJO_row_teacher) response.body();
+
+                    if (response.code() != 200) {
+//                        Log.e("Network connected","Response code = "+response.code());
+
+                        ResponseBody responseBody = response.errorBody();
+
+                        if (responseBody != null) {
+                            listener.onBodyError(responseBody);
+                        } else if (responseBody == null) {
+                            listener.onBodyErrorIsNull();
+                        }
+
+//                        Toast.makeText(, ""+loginRes.getAccesstoken(), Toast.LENGTH_SHORT).show();
+//                        Log.e("Network connected","Response code = "+loginRes.getAccesstoken());
+                    } else {
+                        listener.onResponse(row_roi);
+                    }
+
+                } catch (Exception e) {
+//                    Log.e("Network connect error",e.getMessage());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<POJO_row_teacher> call, Throwable t) {
                 Log.e("NT", t.getMessage());
                 try {
 

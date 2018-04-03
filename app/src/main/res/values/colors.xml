@@ -10,5 +10,6 @@
     <color name="text_w">#ffffff</color>
     <color name="text_p">#ffbdbd</color>
     <color name="text_bb">#a5c8f9</color>
+    <color name="boder_spinner">#c6c6c6</color>
 
 </resources>

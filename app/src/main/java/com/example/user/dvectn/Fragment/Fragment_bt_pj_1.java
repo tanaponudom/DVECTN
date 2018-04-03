@@ -44,6 +44,7 @@ public class Fragment_bt_pj_1 extends Fragment implements OnClickListener{
     SharedPreferences.Editor editor;
     ProgressDialog progressDialog;
     SharedPreferences sharedPreferences;
+    List<Integer> pornhub;
     Context context;
 
     //checkbox
@@ -119,7 +120,15 @@ public class Fragment_bt_pj_1 extends Fragment implements OnClickListener{
     OnNetworkCallback_PJ_P1 onCallbackList = new OnNetworkCallback_PJ_P1() {
         @Override
         public void onResponse(POJO_PJ_P1 getstu) {
+
+
+//            editor.putInt(KEY_pjp1_ID, Integer.parseInt());
+            editor.commit();
+
+
             Toast.makeText(context, "บันทึกข้อมูลสำเร็จ", Toast.LENGTH_SHORT).show();
+
+
             if(progressDialog.isShowing()){
                 progressDialog.dismiss();
             }

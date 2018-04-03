@@ -129,11 +129,11 @@
 
         </LinearLayout>
 
-        <Spinner
-            android:id="@+id/spn_checklist"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@color/text_p" />
+    <Spinner
+        android:id="@+id/spn_checklist"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/spinnerrrrrrrr" />
 
         <LinearLayout
             android:layout_width="match_parent"

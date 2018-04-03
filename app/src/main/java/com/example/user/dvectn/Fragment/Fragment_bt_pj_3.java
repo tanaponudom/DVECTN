@@ -156,11 +156,17 @@ public class Fragment_bt_pj_3 extends Fragment implements View.OnClickListener {
                         ),Integer.parseInt(tmpSpn[6]));
             }else {
                 Toast.makeText(getContext(),"กรุณากรอกให้ครบ",Toast.LENGTH_SHORT).show();
+                if(progressDialog.isShowing()){
+                    progressDialog.dismiss();
+                }
             }
 
 
         }else {
             Toast.makeText(getContext(), "wrong", Toast.LENGTH_SHORT).show();
+            if(progressDialog.isShowing()){
+                progressDialog.dismiss();
+            }
         }
     }
 

@@ -90,7 +90,7 @@
                         android:id="@+id/CB1"
                         android:layout_width="105dp"
                         android:layout_height="wrap_content"
-                        android:text="ขาย" />
+                        android:text="ชาย" />
 >
 
                     <CheckBox

@@ -83,6 +83,8 @@ public class Fragment_AF_pj extends Fragment {
         dep_id = sharedPreferences.getString(Fragment_login.KEY_dep_id,null);
 //        Toast.makeText(context, ""+dep_id, Toast.LENGTH_SHORT).show();
 
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+
         getStd();
 
         return v4;

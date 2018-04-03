@@ -29,12 +29,14 @@ import com.example.user.dvectn.POJO.POJOGetDaily;
 import com.example.user.dvectn.POJO.POJO_AF_teacher;
 import com.example.user.dvectn.POJO.POJO_Stu_naja_gogo;
 import com.example.user.dvectn.POJO.POJO_getstu;
+import com.example.user.dvectn.POJO.POJO_row_teacher;
 import com.example.user.dvectn.R;
 import com.example.user.dvectn.Retrofit.NetworkConnectionManager;
 import com.example.user.dvectn.Retrofit.OnNetworkCallBackGetStd;
 import com.example.user.dvectn.Retrofit.OnNetworkCallback_AF_teacher;
 import com.example.user.dvectn.Retrofit.OnNetworkCallback_GetStdDaily;
 import com.example.user.dvectn.Retrofit.OnNetworkCallback_Stu_naja_gogo;
+import com.example.user.dvectn.Retrofit.OnNetworkCallback_row_teacher;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,11 +58,12 @@ public class Fragment_Teacher_Recycle extends Fragment {
     List<String> Data_name1;
     List<String> Data_name2;
     List<String> Data_score;
+    List<Integer> score;
     Button bbb;
     Spinner spn_name_stu1,spn_name_stu31,spn_name_stu41 ;
     ArrayAdapter adp2;
     Context context;
-    String dep_id = "";
+    String dep_id = "8";
     int memberId = 0;
     SharedPreferences.Editor editor;
     ProgressDialog progressDialog;
@@ -78,7 +81,7 @@ public class Fragment_Teacher_Recycle extends Fragment {
 
         sharedPreferences = getActivity().getSharedPreferences(Fragment_login.MyPer, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
-        dep_id = sharedPreferences.getString(Fragment_login.KEY_dep_id,null);
+               dep_id = sharedPreferences.getString(Fragment_login.KEY_dep_id,null);
 //        Toast.makeText(context, ""+dep_id, Toast.LENGTH_SHORT).show();
         memberId = sharedPreferences.getInt(Fragment_login.KEY_member_id,0);
 
@@ -103,6 +106,7 @@ public class Fragment_Teacher_Recycle extends Fragment {
 
 
         new NetworkConnectionManager().callServer_stu_naja_gogo(onCallbackList,dep_id);
+        new NetworkConnectionManager().callServer_row_teacher(onCallbackList2,score);
 
 
 //        Toast.makeText(context, ""+Data_name, Toast.LENGTH_SHORT).show();
@@ -112,6 +116,27 @@ public class Fragment_Teacher_Recycle extends Fragment {
 
 
     }
+    OnNetworkCallback_row_teacher onCallbackList2 =new OnNetworkCallback_row_teacher() {
+        @Override
+        public void onResponse(POJO_row_teacher save_nite) {
+
+        }
+
+        @Override
+        public void onBodyError(ResponseBody responseBodyError) {
+
+        }
+
+        @Override
+        public void onBodyErrorIsNull() {
+
+        }
+
+        @Override
+        public void onFailure(Throwable t) {
+
+        }
+    };
 
     OnNetworkCallback_Stu_naja_gogo onCallbackList = new OnNetworkCallback_Stu_naja_gogo() {
         @Override
@@ -121,7 +146,7 @@ public class Fragment_Teacher_Recycle extends Fragment {
 //                progressDialog.dismiss();
 //            }
 
-                Toast.makeText(context, ""+stu_naja_gogo.size(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, ""+stu_naja_gogo.size(), Toast.LENGTH_SHORT).show();
 
             for (int i = 0; i< stu_naja_gogo.size() ;i++){
 
