@@ -39,6 +39,8 @@
 
     <Spinner
         android:id="@+id/spn_point"
+        android:gravity="center"
+        android:popupTheme="@drawable/logo2"
         android:layout_width="match_parent"
         android:layout_height="45dp" />
 

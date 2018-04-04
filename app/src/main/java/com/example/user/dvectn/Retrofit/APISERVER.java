@@ -15,9 +15,12 @@ import com.example.user.dvectn.POJO.POJO_PJ_P6;
 import com.example.user.dvectn.POJO.POJO_Stu_naja;
 import com.example.user.dvectn.POJO.POJO_Stu_naja_gogo;
 import com.example.user.dvectn.POJO.POJO_getstu;
+import com.example.user.dvectn.POJO.POJO_getstuemp;
 import com.example.user.dvectn.POJO.POJO_login;
 import com.example.user.dvectn.POJO.POJO_row_teacher;
 import com.example.user.dvectn.POJO.POJO_test1_in_ag;
+import com.example.user.dvectn.POJO.POJO_trainer;
+import com.example.user.dvectn.POJO.POJO_trainer2;
 import com.example.user.dvectn.POJO.ResPOJO;
 
 import java.util.List;
@@ -26,6 +29,7 @@ import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -131,7 +135,7 @@ public interface APISERVER {
     @Multipart
     @POST("upload/")
     Call<ResPOJO> updateImageProfile(@Part MultipartBody.Part image,
-                                     @Part("memberid") String memberid,
+                                     @Part("member_id") int member_id,
                                      @Part("app_name") String name,
                                      @Part("app_detail") String detail);
 
@@ -161,6 +165,17 @@ public interface APISERVER {
     @POST("save-nite/")
     Call<POJO_row_teacher> get_away_font_me (@Field("member_id") int first , @Field("score") String sec,@Field("supervision") int supervision);
 
+
+    @GET("em-api/")
+    Call<List<POJO_trainer>> get_trainer ();
+
+
+    @GET("apprentice/")
+    Call<List<POJO_trainer2>> get_trainer2 ();
+
+    @FormUrlEncoded
+    @POST("getstuemp/")
+    Call<List<POJO_getstuemp>> get_getstuemp (@Field("dep_id")String first);
 
 
 }

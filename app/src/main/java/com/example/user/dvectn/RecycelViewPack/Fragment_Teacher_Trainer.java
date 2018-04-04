@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -18,13 +16,10 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.user.dvectn.Fragment.Fragment_login;
-import com.example.user.dvectn.Fragment.Teacher_spy_save;
-import com.example.user.dvectn.POJO.POJO_Stu_naja_gogo;
-import com.example.user.dvectn.POJO.POJO_getstu;
+import com.example.user.dvectn.POJO.POJO_getstuemp;
 import com.example.user.dvectn.R;
 import com.example.user.dvectn.Retrofit.NetworkConnectionManager;
-import com.example.user.dvectn.Retrofit.OnNetworkCallBackGetStd;
-import com.example.user.dvectn.Retrofit.OnNetworkCallback_Stu_naja_gogo;
+import com.example.user.dvectn.Retrofit.OnNetworkCallback_getstuemp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,8 +35,14 @@ public class Fragment_Teacher_Trainer extends Fragment {
     RecyclerView recyclerView2;
     RecycleViewAdapter2 recycleViewAdapter2;
     List<String> Data_flstr;
-    List<String> Data_lsstr;
+    List<String> Data_member_ID;
+    List<String> Data_dep_id;
     List<Integer> Data_state;
+
+    List<String> Data_img;
+    List<String> Data_detail;
+    List<String> Data_score;
+
 
     Context context;
     String dep_id = "";
@@ -49,10 +50,6 @@ public class Fragment_Teacher_Trainer extends Fragment {
     ProgressDialog progressDialog;
     SharedPreferences sharedPreferences;
     int memberId = 0;
-    String str_thch;
-
-
-
     public static final String TAG_TCH1 ="TCH";
 
     @Nullable
@@ -61,8 +58,7 @@ public class Fragment_Teacher_Trainer extends Fragment {
         View viewtcher = inflater.inflate(R.layout.teacher_fusionjob,container,false);
         context = getContext();
 
-        sharedPreferences = getActivity().getSharedPreferences(Fragment_login.MyPer, Context.MODE_PRIVATE);
-        editor = sharedPreferences.edit();
+
 
         sharedPreferences = getActivity().getSharedPreferences(Fragment_login.MyPer, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -71,30 +67,34 @@ public class Fragment_Teacher_Trainer extends Fragment {
 //        Toast.makeText(context, ""+dep_id, Toast.LENGTH_SHORT).show();
         memberId = sharedPreferences.getInt(Fragment_login.KEY_member_id,0);
 
+
+
+
         recyclerView2 = viewtcher.findViewById(R.id.LV_thnaja_1);
 
         Data_flstr = new ArrayList<>();
-        Data_lsstr = new ArrayList<>();
         Data_state = new ArrayList<>();
+        Data_member_ID = new ArrayList<>();
+        Data_dep_id = new ArrayList<>();
+
+        Data_img = new ArrayList<>();
+        Data_detail = new ArrayList<>();
+        Data_score = new ArrayList<>();
 
 
+        recycleViewAdapter2 = new RecycleViewAdapter2(getContext());
 
-
-
-        new NetworkConnectionManager().callServer_stu_naja_gogo(onCallbackList,dep_id);
-
+        new NetworkConnectionManager().callSrever_getstuemp(onCallbackList,dep_id);
 
         return viewtcher;
-
-
 
     }
 
 
 
-    OnNetworkCallback_Stu_naja_gogo onCallbackList = new OnNetworkCallback_Stu_naja_gogo() {
+    OnNetworkCallback_getstuemp onCallbackList = new OnNetworkCallback_getstuemp() {
         @Override
-        public void onResponse(List<POJO_Stu_naja_gogo> getstu) {
+        public void onResponse(List<POJO_getstuemp> getstuemp) {
 
 //            if(progressDialog.isShowing()){
 //                progressDialog.dismiss();
@@ -102,23 +102,33 @@ public class Fragment_Teacher_Trainer extends Fragment {
 //            Toast.makeText(context, "Fuckkkkkkkkkkkkkkkkkkkkkkk", Toast.LENGTH_SHORT).show();
 //            Toast.makeText(context, ""+getstu.get(0).getFirstname(), Toast.LENGTH_SHORT).show();
 
+//        Toast.makeText(context, "dep ="+dep_id+"memberId ="+memberId, Toast.LENGTH_SHORT).show();
 
 
-            for (int i = 0; i< getstu.size() ;i++){
+            for (int i = 0; i< getstuemp.size() ;i++){
+
+                Data_dep_id.add(getstuemp.get(i).getMemberId());
+                Data_member_ID.add(getstuemp.get(i).getMemberId());
+                Data_flstr.add(getstuemp.get(i).getFirstname()+"\t"+getstuemp.get(i).getLastname());
 
 
-                Data_flstr.add(getstu.get(i).getFirstname());
-                Data_lsstr.add(getstu.get(i).getLastnamename());
+                Data_detail.add(getstuemp.get(i).getDetail());
+                Data_score.add(getstuemp.get(i).getScore());
+                Data_img.add(getstuemp.get(i).getImg());
+//                Data_lsstr.add(getstu.get(i).getLastnamename());
                 Data_state.add(i);
 //                Data_member_id.add(Integer.parseInt(getstu.get(i).getMemberId()));   // get member id
 
             }
 
-            recycleViewAdapter2 = new RecycleViewAdapter2(getContext());
-            recycleViewAdapter2.Update_teacher_data(Data_flstr,Data_lsstr,Data_state);
+//            recycleViewAdapter2 = new RecycleViewAdapter2(getContext());
+            recycleViewAdapter2.Update_teacher_data(Data_flstr,Data_state,Data_img,Data_detail,Data_score,Data_member_ID);
             recyclerView2.setLayoutManager(new LinearLayoutManager(getContext()));
             recyclerView2.setHasFixedSize(true);
             recyclerView2.setAdapter(recycleViewAdapter2);
+
+//            editor.putString(Fragment_login.KEY_dep_id,Data_dep_id.get(Fragment_Teacher_Trainer));
+//            editor.commit();
 
 
         }

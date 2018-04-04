@@ -12,26 +12,20 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:gravity="center">
-    <TextView
-        android:id="@+id/tv_th_1"
-        android:layout_width="125dp"
-        android:layout_height="30dp"
-        android:gravity=""
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="TextView"/>
 
-    <TextView
-        android:id="@+id/tv_th_2"
-        android:layout_width="125dp"
-        android:layout_height="30dp"
-        android:gravity=""
-        android:text="TextView"/>
+        <TextView
+            android:id="@+id/tv_th_1"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:gravity=""
+            android:text="TextView" />
 
 
-    <Button
+        <Button
         android:id="@+id/btn_ap"
         android:layout_width="wrap_content"
         android:layout_height="50dp"

@@ -3,8 +3,10 @@ package com.example.user.dvectn.Fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -35,7 +37,6 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
     EditText et_user,et_pass;
     String str_user,str_pass;
     public static String BASE_URL = "http://43.228.87.219/";
-    public static final String TAG_user = "tokenData";
     public static final String MyPer = "myPer";
     public static final String KEY_member_id = "member_id";
     public static final String KEY_member_firstname = "member_firstname";
@@ -60,6 +61,17 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
 
         view.findViewById(R.id.btn_login).setOnClickListener(this);
 
+
+
+//        myLayuot = view.findViewById(R.id.myLayout);
+//
+//        animationDrawable = (AnimationDrawable) myLayuot.getBackground();
+//        animationDrawable.setEnterFadeDuration(4500);
+//        animationDrawable.setExitFadeDuration(4500);
+//        animationDrawable.start();
+
+
+
         et_user = view.findViewById(R.id.et_user);
         et_pass = view.findViewById(R.id.et_pass);
 
@@ -69,9 +81,9 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
 //        et_user.setText("dve07");
 //        et_pass.setText("dve07");
 
-//        et_user.setText("5921280020");
-//        et_pass.setText("5921280020");
-//
+//        et_user.setText("5921280017");
+//        et_pass.setText("5921280017");
+
         et_user.setText("test2");
         et_pass.setText("0850400151");
 

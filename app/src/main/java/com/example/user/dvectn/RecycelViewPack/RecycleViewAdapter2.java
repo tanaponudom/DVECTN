@@ -30,9 +30,13 @@ public class RecycleViewAdapter2 extends RecyclerView.Adapter<RecycleViewAdapter
 
     Context context ;
     List<String> flthData;
-    List<String> lsthData;
+//    List<String> lsthData;
     List<Integer> State;
 
+    List<String> Data_img;
+    List<String> Data_detail;
+    List<String> Data_score;
+    List<String> Data_member_ID;
 
     public RecycleViewAdapter2(Context context){
 
@@ -40,18 +44,23 @@ public class RecycleViewAdapter2 extends RecyclerView.Adapter<RecycleViewAdapter
 
     }
 
-    public  void Update_teacher_data(List<String>flthData,  List<String> lsthData,List<Integer>State){
+    public  void Update_teacher_data(List<String>flthData ,List<Integer>State,   List<String> Data_img, List<String> Data_detail,
+            List<String> Data_score,List<String> Data_member_ID){
 
         this.flthData = flthData;
-        this.lsthData = lsthData;
+//        this.lsthData = lsthData;
         this.State  = State;
 
+        this.Data_img = Data_img;
+        this.Data_detail = Data_detail;
+        this.Data_score = Data_score;
+        this.Data_member_ID = Data_member_ID;
     }
 
-    public  void  Update_str_work (List<String>flthData,  List<String> lsthData,List<Integer>State){
+    public  void  Update_str_work (List<String>flthData ,List<Integer>State){
 
         this.flthData = flthData;
-        this.lsthData = lsthData;
+//        this.lsthData = lsthData;
         this.State = State;
     }
 
@@ -69,11 +78,11 @@ public class RecycleViewAdapter2 extends RecyclerView.Adapter<RecycleViewAdapter
     public void onBindViewHolder(MyHoder holder, final int position) {
 
         holder.dataview.setText(flthData.get(position));
-        holder.dataview2.setText(lsthData.get(position));
+//        holder.dataview2.setText(lsthData.get(position));
         holder.setOnClickRecycleView(new OnClickRecycleView() {
             @Override
             public void onClick(View view, int position, boolean isLongClick, MotionEvent motionEvent) {
-                showCustomDialog("50999"+position,"ลง windows","http://2.bp.blogspot.com/-6_khqkp_IYc/Vm3LCXRwdvI/AAAAAAAA3i8/jYteC-WQXRE/s1000/header.jpg");
+                showCustomDialog(Data_member_ID.get(position),Data_detail.get(position),Data_img.get(position),Data_score.get(position));
 
             }
         });
@@ -83,7 +92,7 @@ public class RecycleViewAdapter2 extends RecyclerView.Adapter<RecycleViewAdapter
             public void onClick(View v) {
                 Toast.makeText(context, ""+ flthData.get(position), Toast.LENGTH_SHORT).show();
 
-                showCustomDialog(""+position,"ลง windows 25","http://2.bp.blogspot.com/-6_khqkp_IYc/Vm3LCXRwdvI/AAAAAAAA3i8/jYteC-WQXRE/s1000/header.jpg");
+                showCustomDialog(Data_member_ID.get(position),Data_detail.get(position),Data_img.get(position),Data_score.get(position));
 
             }
         });
@@ -125,7 +134,7 @@ public class RecycleViewAdapter2 extends RecyclerView.Adapter<RecycleViewAdapter
 
             btn_state = itemView.findViewById(R.id.btn_ap);
             dataview = itemView.findViewById(R.id.tv_th_1);
-            dataview2 = itemView.findViewById(R.id.tv_th_2);
+
 
             this.context = context;
 
@@ -163,7 +172,7 @@ public class RecycleViewAdapter2 extends RecyclerView.Adapter<RecycleViewAdapter
 
         }
 
-    private void showCustomDialog(final String member_id, String detail, String url){
+    private void showCustomDialog(final String member_id, String detail, String url,String score){
 
         String[] DataSp = {"-","0","1","2","3"};  // คะแนน
 
@@ -178,11 +187,16 @@ public class RecycleViewAdapter2 extends RecyclerView.Adapter<RecycleViewAdapter
 
         //set detail
         tv_detail.setText(detail);
-        // set image from url
-         if (!url.isEmpty())
-        Picasso.with(context).load(url).into(imageView);
-        else
-            imageView.setImageDrawable(context.getDrawable(R.drawable.logo2));
+        try {
+            // set image from url
+            if (!url.isEmpty())
+                Picasso.with(context).load(url).into(imageView);
+            else
+                imageView.setImageDrawable(context.getDrawable(R.drawable.logo2));
+        }catch (Exception e){
+            
+        }
+
 
         ArrayAdapter adt = new ArrayAdapter(context,android.R.layout.simple_spinner_dropdown_item,DataSp);
         spinner.setAdapter(adt);

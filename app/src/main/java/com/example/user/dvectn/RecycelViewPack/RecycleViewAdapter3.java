@@ -27,7 +27,7 @@ import okhttp3.ResponseBody;
  * Created by User on 9/3/2561.
  */
 
-public class RecycleViewAdapter3 extends RecyclerView.Adapter<RecycleViewAdapter3.MyHoder> {
+public class          RecycleViewAdapter3 extends RecyclerView.Adapter<RecycleViewAdapter3.MyHoder> {
     ProgressDialog progressDialog;
     Context context;
     List<String> namelist;

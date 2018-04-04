@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -55,6 +56,7 @@ import static android.app.Activity.RESULT_OK;
 public class Student_save extends Fragment implements View.OnClickListener {
     String Detail;
     EditText et_ins;
+    EditText et_title;
     String frg_sa;
     ImagePicker imagePicker;
     ImageView imageView;
@@ -64,7 +66,8 @@ public class Student_save extends Fragment implements View.OnClickListener {
     RequestBody name;
     ProgressDialog progressDialog;
     Button btn_up;
-
+    SharedPreferences.Editor editor;
+    SharedPreferences sharedPreferences;
     public static final String TAG_STUSA = "STUSAVE";
 
     @Nullable
@@ -93,6 +96,7 @@ public class Student_save extends Fragment implements View.OnClickListener {
 
     private void init(View view) {
 
+        et_title=view.findViewById(R.id.et_title);
         et_ins=view.findViewById(R.id.et_in);
         view.findViewById(R.id.btn_se).setOnClickListener(this);
         view.findViewById(R.id.btn_up).setOnClickListener(this);
@@ -102,6 +106,11 @@ public class Student_save extends Fragment implements View.OnClickListener {
 
         imageView = view.findViewById(R.id.img_1);
 
+        sharedPreferences = getActivity().getSharedPreferences(Fragment_login.MyPer, Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
+        user_id = ""+ sharedPreferences.getInt(Fragment_login.KEY_member_id,0);
+
         context = getContext();
 
         imagePicker = new ImagePicker(this);
@@ -109,8 +118,6 @@ public class Student_save extends Fragment implements View.OnClickListener {
         imagePicker.allowMultiple(); //เลือกหลายภาพ
 
         imagePicker.setImagePickerCallback(new ImagePickerCallback() {
-
-
 
                                                @Override
                                                public void onImagesChosen(List<ChosenImage> list) {
@@ -125,7 +132,6 @@ public class Student_save extends Fragment implements View.OnClickListener {
                                                        Bitmap myBitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
                                                        imageView.setImageBitmap(myBitmap);
 
-                                                       user_id = "1233";
 //                          img = RequestBody.create(MediaType.parse("image/jpeg"), file);
 
                                                        RequestBody reqFile = RequestBody.create(MediaType.parse("image/*"), file);
@@ -150,11 +156,12 @@ public class Student_save extends Fragment implements View.OnClickListener {
 
 
     private void callServerUploadImageProfile(MultipartBody.Part img,
-                                              String user_id
+                                              int member_id
                                              , String app_name
                                                 , String app_detail) {
+//        Toast.makeText(context, ""+member_id, Toast.LENGTH_SHORT).show();
 
-        new NetworkConnectionManager().pushImage(listener, img, user_id, app_name, "tets");
+        new NetworkConnectionManager().pushImage(listener, img, member_id, app_name, app_detail);
     }
 
     OnNetworkCallbackListener listener = new OnNetworkCallbackListener() {
@@ -162,13 +169,13 @@ public class Student_save extends Fragment implements View.OnClickListener {
         public void onResponse(ResPOJO user, Retrofit retrofit) {
 
             String state = user.getStatus();
-
+            Toast.makeText(context, ""+state, Toast.LENGTH_SHORT).show();
             if (state.equals("success")) {
-                Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "บันทึกข้อมูลสำเร็จ", Toast.LENGTH_SHORT).show();
 //                showImg(user.getUrl());
 
             } else {
-                Toast.makeText(context, "Upload Fail.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "บันทึกข้อมูลล้มเหลว", Toast.LENGTH_SHORT).show();
             }
 
             if (progressDialog.isShowing()) {
@@ -227,7 +234,7 @@ public class Student_save extends Fragment implements View.OnClickListener {
             progressDialog.setMessage("Loading.......");
             progressDialog.show();
 
-            callServerUploadImageProfile(body, user_id, "Name", Detail);
+            callServerUploadImageProfile(body, Integer.parseInt(user_id), et_title.getText().toString(), Detail);
 
         }
 

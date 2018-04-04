@@ -2,4 +2,5 @@
 <resources>
     <item name="btn_bbs" type="id" />
     <item name="btn_bs" type="id" />
+    <item name="myLayuot" type="id" />
 </resources>

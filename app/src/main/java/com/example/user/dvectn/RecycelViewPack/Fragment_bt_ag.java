@@ -120,15 +120,14 @@ public class Fragment_bt_ag extends Fragment {
             for (int i = 0; i< getstu.size() ;i++){
 
 
-                Data_flstr.add(getstu.get(i).getFirstname());
-                Data_lsstr.add(getstu.get(i).getLastnamename());
+                Data_flstr.add(getstu.get(i).getFirstname()+"\t"+getstu.get(i).getLastnamename());
                 Data_state.add(i);
 //                Data_member_id.add(Integer.parseInt(getstu.get(i).getMemberId()));   // get member id
 
             }
 
             recycleViewAdapter6 = new RecycleViewAdapter2(getContext());
-            recycleViewAdapter6.Update_str_work(Data_flstr,Data_lsstr,Data_state);
+            recycleViewAdapter6.Update_str_work(Data_flstr,Data_state);
             recycleView6.setLayoutManager(new LinearLayoutManager(getContext()));
             recycleView6.setHasFixedSize(true);
             recycleView6.setAdapter(recycleViewAdapter6);

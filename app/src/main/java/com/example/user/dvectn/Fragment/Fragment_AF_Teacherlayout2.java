@@ -42,7 +42,7 @@ import okhttp3.ResponseBody;
 public class Fragment_AF_Teacherlayout2 extends Fragment {
 
 
-    String [] chataterNaJa ={ "ร้าน พี พาวเวอร์","ร้าน ท็อบวิวพอย์","ศาลากลางจังหวัด" };
+
     Context context;
     ArrayAdapter ListViewAdapter;
     ProgressDialog progressDialog;
@@ -56,8 +56,6 @@ public class Fragment_AF_Teacherlayout2 extends Fragment {
 
     ListView listView;
 
-    String scoreTmp="";
-    public static final String TAG_OHNOTH = "OHNOTH";
     public static final String KEY_STD_ID = "id_std_res";
 
     @Nullable

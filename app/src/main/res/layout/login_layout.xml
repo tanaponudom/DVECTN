@@ -2,9 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/text_w"
+    android:background="#ffffff"
     android:gravity="center"
     android:orientation="vertical"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ScrollView
@@ -77,7 +78,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/style_button_test"
-            android:text="Login"
+            android:text="เข้าสู่ระบบ"
             android:textColor="@color/text_w"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"

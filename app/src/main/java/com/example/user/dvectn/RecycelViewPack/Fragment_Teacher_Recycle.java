@@ -48,8 +48,8 @@ import okhttp3.ResponseBody;
  */
 
 public class Fragment_Teacher_Recycle extends Fragment {
+
     String str_tch;
-    //List<String> Data_th;
     List<String> Data_url_th;
     RecyclerView recyclerView5;
     RecycleViewAdapter5teacher recycleViewAdapter5;
@@ -60,8 +60,6 @@ public class Fragment_Teacher_Recycle extends Fragment {
     List<String> Data_score;
     List<Integer> Data_member_ID;
     List<Integer> score;
-    Button bbb;
-    Spinner spn_name_stu1,spn_name_stu31,spn_name_stu41 ;
     ArrayAdapter adp2;
     Context context;
     String dep_id = "8";

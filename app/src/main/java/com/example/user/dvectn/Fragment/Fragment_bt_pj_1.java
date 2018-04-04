@@ -123,6 +123,7 @@ public class Fragment_bt_pj_1 extends Fragment implements OnClickListener{
 
 
 //            editor.putInt(KEY_pjp1_ID, Integer.parseInt());
+
             editor.commit();
 
 
