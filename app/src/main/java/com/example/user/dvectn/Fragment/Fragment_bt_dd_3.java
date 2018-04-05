@@ -40,7 +40,7 @@ public class Fragment_bt_dd_3 extends Fragment implements View.OnClickListener  
     SharedPreferences sharedPreferences;
     public  static  final String TAG_HEW4 = "HEW4";
 
-    int memberId = 0;
+    String memberId = "";
 
 
     @Nullable
@@ -88,7 +88,7 @@ public class Fragment_bt_dd_3 extends Fragment implements View.OnClickListener  
         editor = sharedPreferences.edit();
 
         dep_id = sharedPreferences.getString(Fragment_login.KEY_dep_id,null);
-        memberId = sharedPreferences.getInt(Fragment_login.KEY_member_id,0);
+        memberId = sharedPreferences.getString(Fragment_AF_dd.KEY_STD_ID,"");
 
 
 
@@ -163,7 +163,7 @@ public class Fragment_bt_dd_3 extends Fragment implements View.OnClickListener  
             if ((!tmpSpn[0].equals("-")) && (!tmpSpn[1].equals("-")) && (!tmpSpn[2].equals("-")) && (!tmpSpn[3].equals("-")) && (!tmpSpn[4].equals("-"))
                     && (!tmpSpn[5].equals("-")) && (!tmpSpn[6].equals("-")) ){
 
-                new NetworkConnectionManager().callServer_dd_p3(onCallbackList,memberId,Integer.parseInt(tmpSpn[0]),Integer.parseInt(tmpSpn[1]),Integer.parseInt(tmpSpn[2]),Integer.parseInt(tmpSpn[3])
+                new NetworkConnectionManager().callServer_dd_p3(onCallbackList,Integer.parseInt(memberId),Integer.parseInt(tmpSpn[0]),Integer.parseInt(tmpSpn[1]),Integer.parseInt(tmpSpn[2]),Integer.parseInt(tmpSpn[3])
                         ,Integer.parseInt(tmpSpn[4]),Integer.parseInt(tmpSpn[5]),Integer.parseInt(tmpSpn[6]));
 
             }else {

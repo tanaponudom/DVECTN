@@ -51,8 +51,8 @@ public class Fragment_bt_pj_1 extends Fragment implements OnClickListener{
      CheckBox CB1,CB2,CB3,CB4;
 
 
-    int memberId = 0,
-            ex11_tmp = -1 ,
+    String memberId = "" ;
+     int    ex11_tmp = -1 ,
             ex12_tmp = -1 ;
 
     public static final String TAG_KONAMI = "KOKO";
@@ -90,7 +90,7 @@ public class Fragment_bt_pj_1 extends Fragment implements OnClickListener{
         editor = sharedPreferences.edit();
 
         dep_id = sharedPreferences.getString(Fragment_login.KEY_dep_id,null);
-        memberId = sharedPreferences.getInt(Fragment_login.KEY_member_id,0);
+        memberId = sharedPreferences.getString(Fragment_AF_pj.KEY_STD_ID,"");
 //        Toast.makeText(context, ""+dep_id, Toast.LENGTH_SHORT).show();
 
 //        getStd();
@@ -106,8 +106,8 @@ public class Fragment_bt_pj_1 extends Fragment implements OnClickListener{
         progressDialog.setMessage("Loading......");
         progressDialog.show();
 
-        if(memberId > 0 ){
-            new NetworkConnectionManager().callServer_pj_p1(onCallbackList,memberId,ex11,ex12);
+        if(Integer.parseInt(memberId) > 0 ){
+            new NetworkConnectionManager().callServer_pj_p1(onCallbackList,Integer.parseInt(memberId),ex11,ex12);
         }else {
             Toast.makeText(context, "กรุราตรวจสอบข้อมูล", Toast.LENGTH_SHORT).show();
             if(progressDialog.isShowing()){
@@ -123,7 +123,6 @@ public class Fragment_bt_pj_1 extends Fragment implements OnClickListener{
 
 
 //            editor.putInt(KEY_pjp1_ID, Integer.parseInt());
-
             editor.commit();
 
 
@@ -205,12 +204,12 @@ public void replaceFragment(Fragment fragment, Bundle bundle) {
             break;
         case R.id.btn_confirm:
 
+
+//            new NetworkConnectionManager().callServer_pj_p1(onCallbackList,Integer.parseInt(memberId),ex11_tmp,ex12_tmp);
+
             if(ex11_tmp != -1 && ex12_tmp != -1 && (CB1.isChecked() || CB2.isChecked()) && (CB3.isChecked() || CB4.isChecked())  ){
                 ConfirmEx(ex11_tmp,ex12_tmp);
-
             }
-
-
             else {
                 Toast.makeText(context, "กรุณาเลือกข้อมูล", Toast.LENGTH_SHORT).show();
             }

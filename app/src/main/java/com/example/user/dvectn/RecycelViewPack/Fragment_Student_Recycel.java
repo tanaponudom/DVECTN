@@ -191,7 +191,7 @@ public class Fragment_Student_Recycel extends Fragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("คำเตือน");
-        builder.setMessage("Logout ?");
+        builder.setMessage("คุณต้องการออกจากระบบ ?");
 
         builder.setPositiveButton("ตกลง", new DialogInterface.OnClickListener() {
             @Override

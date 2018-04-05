@@ -38,7 +38,7 @@ public class Fragment_bt_pj_4 extends Fragment implements View.OnClickListener {
     ProgressDialog progressDialog;
     SharedPreferences sharedPreferences;
     Context context;
-    int memberId = 0;
+    String memberId = "";
 
     @Nullable
     @Override
@@ -84,7 +84,7 @@ public class Fragment_bt_pj_4 extends Fragment implements View.OnClickListener {
         editor = sharedPreferences.edit();
 
         dep_id = sharedPreferences.getString(Fragment_login.KEY_dep_id,null);
-        memberId = sharedPreferences.getInt(Fragment_login.KEY_member_id,0);
+        memberId = sharedPreferences.getString(Fragment_AF_pj.KEY_STD_ID,"");
         return view;
 
     }
@@ -157,7 +157,7 @@ public class Fragment_bt_pj_4 extends Fragment implements View.OnClickListener {
 //                Toast.makeText(getContext(), ""+tmpSpn[0]
 //                        +" , "+tmpSpn[1]+" , "+tmpSpn[2]+" , "+tmpSpn[3]+" , "+tmpSpn[4]+" , "+tmpSpn[5]
 //                        +" , "+tmpSpn[6], Toast.LENGTH_SHORT).show();
-                new NetworkConnectionManager().callServer_pj_p4(onCallbackList,memberId,Integer.parseInt(tmpSpn[0]),Integer.parseInt(tmpSpn[1])
+                new NetworkConnectionManager().callServer_pj_p4(onCallbackList,Integer.parseInt(memberId),Integer.parseInt(tmpSpn[0]),Integer.parseInt(tmpSpn[1])
                         ,Integer.parseInt(tmpSpn[2]),Integer.parseInt(tmpSpn[3]),Integer.parseInt(tmpSpn[4]),Integer.parseInt(tmpSpn[5]
                         ),Integer.parseInt(tmpSpn[6]));
             }else {

@@ -14,10 +14,13 @@ import com.example.user.dvectn.POJO.POJO_PJ_P5;
 import com.example.user.dvectn.POJO.POJO_PJ_P6;
 import com.example.user.dvectn.POJO.POJO_Stu_naja;
 import com.example.user.dvectn.POJO.POJO_Stu_naja_gogo;
+import com.example.user.dvectn.POJO.POJO_confirm_AG;
 import com.example.user.dvectn.POJO.POJO_getstu;
 import com.example.user.dvectn.POJO.POJO_getstuemp;
 import com.example.user.dvectn.POJO.POJO_login;
 import com.example.user.dvectn.POJO.POJO_row_teacher;
+import com.example.user.dvectn.POJO.POJO_save_AG;
+import com.example.user.dvectn.POJO.POJO_save_data_trainer;
 import com.example.user.dvectn.POJO.POJO_test1_in_ag;
 import com.example.user.dvectn.POJO.POJO_trainer;
 import com.example.user.dvectn.POJO.POJO_trainer2;
@@ -114,11 +117,11 @@ public interface APISERVER {
 
     @FormUrlEncoded
     @POST("affective-2/")
-    Call<POJO_DD_P2> getDataDDP2(@Field("member_id") int first, @Field("ex22") int Sec,
-                                 @Field("ex23") int Thrir, @Field("ex24") int four,
-                                 @Field("ex25") int five, @Field("ex26") int six,
-                                 @Field("ex27") int seven, @Field("ex28") int eight,
-                                 @Field("ex29") int nine);
+    Call<POJO_DD_P2> getDataDDP2(@Field("member_id") int first, @Field("ex21") int Sec,
+                                 @Field("ex22") int Thrir, @Field("ex23") int four,
+                                 @Field("ex24") int five, @Field("ex25") int six,
+                                 @Field("ex26") int seven, @Field("ex27") int eight,
+                                 @Field("ex28") int nine);
 
     @FormUrlEncoded
     @POST("affective-3/")
@@ -174,10 +177,22 @@ public interface APISERVER {
     Call<List<POJO_trainer2>> get_trainer2 ();
 
     @FormUrlEncoded
-    @POST("getstuemp/")
-    Call<List<POJO_getstuemp>> get_getstuemp (@Field("dep_id")String first);
+    @POST("apprentice/")
+    Call<List<POJO_getstuemp>> get_getstuemp (@Field("dep_id") String first);
 
 
+    @FormUrlEncoded
+    @POST("save-data/")
+    Call<List<POJO_save_data_trainer>> get_save_data_trainer (@Field("member_id") int first , @Field("score") int sec , @Field("check_dep") int check_nited);
+
+
+    @FormUrlEncoded
+    @POST("save-cf/")
+    Call<List<POJO_confirm_AG>> get_comfirm_ag (@Field("dep_id") int first);
+
+    @FormUrlEncoded
+    @POST("save-ag/")
+    Call<List<POJO_save_AG>> get_save_ag (@Field("member_id") int first, @Field("check_dep") int sec);
 }
 
 

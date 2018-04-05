@@ -184,16 +184,14 @@ public class RecycleViewAdapter4 extends RecyclerView.Adapter<RecycleViewAdapter
 
         if(input.equals("-")){
             return 0;
-        }else if (input.equals("น้อยที่สุด")){
+        }else if (input.equals("ต้องปรับปรุง")){
             return 1;
-        }else if (input.equals("น้อย")){
+        }else if (input.equals("พอใช้")){
             return 2;
-        }else if (input.equals("ปานกลาง")){
+        }else if (input.equals("ดี")){
             return 3;
-        }else if (input.equals("มาก")){
+        }else if (input.equals("ดีมาก")){
             return 4;
-        }else if (input.equals("มากที่สุด")){
-            return 5;
         }else {
             return -1;
         }
@@ -207,15 +205,13 @@ public class RecycleViewAdapter4 extends RecyclerView.Adapter<RecycleViewAdapter
         if(input == 0 ){
             return "-";
         }else if (input== 1){
-            return "น้อยที่สุด";
+            return "ต้องปรับปรุง";
         }else if (input == 2 ){
-            return "น้อย";
+            return "พอใช้";
         }else if (input == 3){
-            return "ปานกลาง";
+            return "ดี";
         }else if (input == 4){
-            return "มาก";
-        }else if (input == 5){
-            return "มากที่สุด";
+            return "ดีมาก";
         }else {
             return "-";
         }

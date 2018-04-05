@@ -38,6 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
+            android:id="@+id/tv_lbl_score"
             android:text="คะแนน"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

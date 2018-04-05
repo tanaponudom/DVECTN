@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -69,8 +70,31 @@ public class Fragment_AF_Teacherlayout extends Fragment {
 
             }
         });
+        FloatingActionButton fab = v4.findViewById(R.id.fab144);
 
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switch (view.getId()) {
+                    case R.id.fab144:
+                        Logout();
+//                new CountDownTimer(3000,1000){
+//                    @Override
+//                    public void onTick(long millisUntilFinished) {
+////                        Toast.makeText(context, ""+millisUntilFinished, Toast.LENGTH_SHORT).show();
+//                    }
+//
+//                    @Override
+//                    public void onFinish() {
+//                        Toast.makeText(context, "Logout finish.", Toast.LENGTH_SHORT).show();
+//                    }
+//                }.start();
+//
+//                }
+                }
+            }
 
+        });
         return v4;
     }
 
@@ -84,6 +108,37 @@ public class Fragment_AF_Teacherlayout extends Fragment {
         frgTran.replace(R.id.content,fragment).addToBackStack(null).commit();
 
     }
+    private void Logout(){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("คำเตือน");
+        builder.setMessage("คุณต้องการออกจากระบบ ?");
+
+        builder.setPositiveButton("ตกลง", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                fragmentManager.popBackStack(null,FragmentManager.POP_BACK_STACK_INCLUSIVE);
+//                fragmentManager.popBackStack();
+
+                Fragment_login fragment_login = new Fragment_login();
+                replaceFragment(fragment_login,null);
+
+
+            }
+        });
+
+        builder.setNegativeButton("ยกเลิก", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        builder.show();
+
+    }
+
 
 
 

@@ -38,7 +38,7 @@ public class Fragment_bt_pj_6 extends Fragment implements View.OnClickListener {
     SharedPreferences sharedPreferences;
     Context context;
     public  static  final String TAG_NA = "WHATTHEHECK";
-    int memberId = 0;
+    String memberId = "";
 
     @Nullable
     @Override
@@ -78,7 +78,7 @@ public class Fragment_bt_pj_6 extends Fragment implements View.OnClickListener {
         editor = sharedPreferences.edit();
 
         dep_id = sharedPreferences.getString(Fragment_login.KEY_dep_id,null);
-        memberId = sharedPreferences.getInt(Fragment_login.KEY_member_id,0);
+        memberId = sharedPreferences.getString(Fragment_AF_pj.KEY_STD_ID,"");
         return view;
     }
     OnNetworkCallback_PJ_P6 onCallbackList = new OnNetworkCallback_PJ_P6() {
@@ -150,7 +150,7 @@ public class Fragment_bt_pj_6 extends Fragment implements View.OnClickListener {
 //                        +" , "+tmpSpn[1]+" , "+tmpSpn[2]+" , "+tmpSpn[3]+" , "+tmpSpn[4]+" , "+tmpSpn[5]
 //                        , Toast.LENGTH_SHORT).show();
 
-                new NetworkConnectionManager().callServer_pj_p6(onCallbackList,memberId,Integer.parseInt(tmpSpn[0]),Integer.parseInt(tmpSpn[1])
+                new NetworkConnectionManager().callServer_pj_p6(onCallbackList,Integer.parseInt(memberId),Integer.parseInt(tmpSpn[0]),Integer.parseInt(tmpSpn[1])
                         ,Integer.parseInt(tmpSpn[2]),Integer.parseInt(tmpSpn[3]),Integer.parseInt(tmpSpn[4]),Integer.parseInt(tmpSpn[5]
                         ));
             }else {

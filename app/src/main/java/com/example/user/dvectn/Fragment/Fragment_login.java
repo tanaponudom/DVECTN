@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,8 +73,8 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
 
 
 
-        et_user = view.findViewById(R.id.et_user);
-        et_pass = view.findViewById(R.id.et_pass);
+//        et_user = view.findViewById(R.id.et_user);
+//        et_pass = view.findViewById(R.id.et_pass);
 
 //        et_user.setText("admin");
 //        et_pass.setText("0850400151");
@@ -83,9 +84,9 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
 
 //        et_user.setText("5921280017");
 //        et_pass.setText("5921280017");
-
-        et_user.setText("test2");
-        et_pass.setText("0850400151");
+//
+//        et_user.setText("test2");
+//        et_pass.setText("0850400151");
 
         //init session
         sharedPreferences = getActivity().getSharedPreferences(MyPer, Context.MODE_PRIVATE);
@@ -136,11 +137,8 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
             editor.putString(KEY_member_type, loginRes.getMemberType());
             editor.commit();
 
-//            Toast.makeText(getContext(), ""+loginRes.getDepId(), Toast.LENGTH_SHORT).show();
-
-
             String Member_Type = loginRes.getMemberType();
-//            Toast.makeText(getContext(), "Member type= " + Member_Type, Toast.LENGTH_SHORT).show();
+
 
             if (Member_Type.equals("establishment")) {
 
@@ -246,4 +244,5 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
                 break;
         }
     }
+
 }

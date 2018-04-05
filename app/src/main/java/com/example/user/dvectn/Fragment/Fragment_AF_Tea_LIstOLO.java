@@ -2,12 +2,16 @@ package com.example.user.dvectn.Fragment;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,8 +70,38 @@ public class Fragment_AF_Tea_LIstOLO extends Fragment {
 
         getStd();
 
+//        Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show();
+
+
+        FloatingActionButton fab = v4.findViewById(R.id.fab7);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switch (view.getId()) {
+                    case R.id.fab7:
+                        Logout();
+//                new CountDownTimer(3000,1000){
+//                    @Override
+//                    public void onTick(long millisUntilFinished) {
+////                        Toast.makeText(context, ""+millisUntilFinished, Toast.LENGTH_SHORT).show();
+//                    }
+//
+//                    @Override
+//                    public void onFinish() {
+//                        Toast.makeText(context, "Logout finish.", Toast.LENGTH_SHORT).show();
+//                    }
+//                }.start();
+//
+//                }
+                }
+            }
+
+        });
+
         return v4;
     }
+
     private  void getStd(){
 
         progressDialog = new ProgressDialog(context);
@@ -153,6 +187,37 @@ public class Fragment_AF_Tea_LIstOLO extends Fragment {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction frgTran = fragmentManager.beginTransaction();
         frgTran.replace(R.id.content,fragment).addToBackStack(null).commit();
+
+    }
+
+    private void Logout(){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("คำเตือน");
+        builder.setMessage("คุณต้องการออกจากระบบ ?");
+
+        builder.setPositiveButton("ตกลง", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                fragmentManager.popBackStack(null,FragmentManager.POP_BACK_STACK_INCLUSIVE);
+//                fragmentManager.popBackStack();
+
+                Fragment_login fragment_login = new Fragment_login();
+                replaceFragment(fragment_login,null);
+
+
+            }
+        });
+
+        builder.setNegativeButton("ยกเลิก", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        builder.show();
 
     }
 

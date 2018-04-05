@@ -37,8 +37,9 @@ public class Fragment_bt_pj_2 extends Fragment implements View.OnClickListener {
     ProgressDialog progressDialog;
     SharedPreferences sharedPreferences;
     Context context;
+
     public  static  final String TAG_KONAMIJUNG = "KOKOJUNG";
-    int memberId = 0;
+    String memberId = "";
 
     @Nullable
     @Override
@@ -90,13 +91,16 @@ public class Fragment_bt_pj_2 extends Fragment implements View.OnClickListener {
         editor = sharedPreferences.edit();
 
         dep_id = sharedPreferences.getString(Fragment_login.KEY_dep_id,null);
-        memberId = sharedPreferences.getInt(Fragment_login.KEY_member_id,0);
+        memberId = sharedPreferences.getString(Fragment_AF_pj.KEY_STD_ID,"");
         return view;
     }
 
     OnNetworkCallback_PJ_P2 onCallbackList = new OnNetworkCallback_PJ_P2() {
         @Override
         public void onResponse(POJO_PJ_P2 getstu) {
+
+
+
             Toast.makeText(context, "บันทึกข้อมูลสำเร็จ", Toast.LENGTH_SHORT).show();
             if(progressDialog.isShowing()){
                 progressDialog.dismiss();
@@ -166,8 +170,8 @@ public class Fragment_bt_pj_2 extends Fragment implements View.OnClickListener {
                     && (!tmpSpn[5].equals("-")) && (!tmpSpn[6].equals("-")) && (!tmpSpn[7].equals("-")) ){
 //                Toast.makeText(getContext(), ""+tmpSpn[0]
 //                        +" , "+tmpSpn[1]+" , "+tmpSpn[2]+" , "+tmpSpn[3]+" , "+tmpSpn[4]+" , "+tmpSpn[5]
-//                        +" , "+tmpSpn[6]+" , "+tmpSpn[7], Toast.LENGTH_SHORT).show();
-                new NetworkConnectionManager().callServer_pj_p2(onCallbackList,memberId,Integer.parseInt(tmpSpn[0]),Integer.parseInt(tmpSpn[1])
+//                        +" , "+tmpSpn[6]+" , "+tmpSpn[7]+" , "+memberId, Toast.LENGTH_SHORT).show();
+                new NetworkConnectionManager().callServer_pj_p2(onCallbackList,Integer.parseInt(memberId),Integer.parseInt(tmpSpn[0]),Integer.parseInt(tmpSpn[1])
                         ,Integer.parseInt(tmpSpn[2]),Integer.parseInt(tmpSpn[3]),Integer.parseInt(tmpSpn[4]),Integer.parseInt(tmpSpn[5]
                         ),Integer.parseInt(tmpSpn[6]),Integer.parseInt(tmpSpn[7]));
             }else {

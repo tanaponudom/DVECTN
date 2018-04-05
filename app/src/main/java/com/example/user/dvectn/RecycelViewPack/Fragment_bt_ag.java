@@ -23,10 +23,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.dvectn.Fragment.Fragment_login;
+import com.example.user.dvectn.POJO.POJO_confirm_AG;
 import com.example.user.dvectn.POJO.POJO_getstu;
 import com.example.user.dvectn.R;
 import com.example.user.dvectn.Retrofit.NetworkConnectionManager;
 import com.example.user.dvectn.Retrofit.OnNetworkCallBackGetStd;
+import com.example.user.dvectn.Retrofit.OnNetworkCallback_confirm_AG;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -45,9 +47,13 @@ public class Fragment_bt_ag extends Fragment {
     RecyclerView recycleView6;
     RecycleViewAdapter2 recycleViewAdapter6;
     List<String> Data_flstr;
-    List<String> Data_lsstr;
+    List<String> Data_member_ID;
+    List<String> Data_dep_id;
     List<Integer> Data_state;
-    List<Integer> Data_member_id;
+
+    List<String> Data_img;
+    List<String> Data_detail;
+    List<String> Data_score;
 
     Context context;
     String dep_id = "";
@@ -56,6 +62,7 @@ public class Fragment_bt_ag extends Fragment {
     SharedPreferences sharedPreferences;
     int memberId = 0;
     public static final String TAG_KAW = "KAW";
+    String userType = "";
 
 
 
@@ -65,69 +72,62 @@ public class Fragment_bt_ag extends Fragment {
         View view2 = inflater.inflate(R.layout.av_bt_ag, container, false);
         context = getContext();
 
-
-
-
         sharedPreferences = getActivity().getSharedPreferences(Fragment_login.MyPer, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
+
+        userType = sharedPreferences.getString(Fragment_login.KEY_member_type,null);
         dep_id = sharedPreferences.getString(Fragment_login.KEY_dep_id,null);
 //        Toast.makeText(context, ""+dep_id, Toast.LENGTH_SHORT).show();
         memberId = sharedPreferences.getInt(Fragment_login.KEY_member_id,0);
 
         recycleView6 = view2.findViewById(R.id.LV_str_naja);
 
-        Data_flstr = new ArrayList<>();
-        Data_lsstr = new ArrayList<>();
-        Data_state = new ArrayList<>();
 
-//        Data_flstr.add("Hew");
-//        Data_lsstr.add("kaw");
-//        Data_state.add(1);
-//
-//
-//        Data_flstr.add("Hew");
-//        Data_lsstr.add("kaw");
-//        Data_state.add(1);
-//
-//
-//        Data_flstr.add("Hew");
-//        Data_lsstr.add("kaw");
-//        Data_state.add(1);
-//        Data_member_id.add(55);
+        Data_flstr = new ArrayList<>();
+        Data_state = new ArrayList<>();
+        Data_member_ID = new ArrayList<>();
+        Data_dep_id = new ArrayList<>();
+
+        Data_img = new ArrayList<>();
+        Data_detail = new ArrayList<>();
+        Data_score = new ArrayList<>();
+
+
 
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
 
-        new NetworkConnectionManager().getStudentName(onCallbackList,dep_id);
+        new NetworkConnectionManager().callSrever_confirm_AG(onCallbackList,Integer.parseInt(dep_id));
 
         return view2;
     }
 
 
 
-    OnNetworkCallBackGetStd onCallbackList = new OnNetworkCallBackGetStd() {
+    OnNetworkCallback_confirm_AG onCallbackList = new OnNetworkCallback_confirm_AG() {
         @Override
-        public void onResponse(List<POJO_getstu> getstu) {
-
-//            if(progressDialog.isShowing()){
-//                progressDialog.dismiss();
-//            }
-//            Toast.makeText(context, "Fuckkkkkkkkkkkkkkkkkkkkkkk", Toast.LENGTH_SHORT).show();
-//            Toast.makeText(context, ""+getstu.get(0).getFirstname(), Toast.LENGTH_SHORT).show();
-
+        public void onResponse(List<POJO_confirm_AG> getstu) {
 
 
             for (int i = 0; i< getstu.size() ;i++){
 
 
-                Data_flstr.add(getstu.get(i).getFirstname()+"\t"+getstu.get(i).getLastnamename());
+                Data_dep_id.add(getstu.get(i).getMemberId());
+                Data_member_ID.add(getstu.get(i).getMemberId());
+
+                Data_flstr.add(getstu.get(i).getFirstname()+"\t"+getstu.get(i).getLastname());
+
+                Data_detail.add(getstu.get(i).getDetail());
+                Data_score.add(getstu.get(i).getScore());
+                Data_img.add(getstu.get(i).getImg());
+
                 Data_state.add(i);
-//                Data_member_id.add(Integer.parseInt(getstu.get(i).getMemberId()));   // get member id
 
             }
 
+
             recycleViewAdapter6 = new RecycleViewAdapter2(getContext());
-            recycleViewAdapter6.Update_str_work(Data_flstr,Data_state);
+            recycleViewAdapter6.Update_teacher_data(Data_flstr,Data_state,Data_img,Data_detail,Data_score,Data_member_ID,userType);
             recycleView6.setLayoutManager(new LinearLayoutManager(getContext()));
             recycleView6.setHasFixedSize(true);
             recycleView6.setAdapter(recycleViewAdapter6);
@@ -137,9 +137,6 @@ public class Fragment_bt_ag extends Fragment {
         @Override
         public void onBodyError(ResponseBody responseBodyError) {
             Toast.makeText(context, "responseBodyError", Toast.LENGTH_SHORT).show();
-            if(progressDialog.isShowing()){
-                progressDialog.dismiss();
-            }
 
         }
 
@@ -147,9 +144,7 @@ public class Fragment_bt_ag extends Fragment {
         public void onBodyErrorIsNull() {
 
             Toast.makeText(context, "res is null", Toast.LENGTH_SHORT).show();
-            if(progressDialog.isShowing()){
-                progressDialog.dismiss();
-            }
+
 
         }
 
@@ -157,9 +152,8 @@ public class Fragment_bt_ag extends Fragment {
         public void onFailure(Throwable t) {
 
             Toast.makeText(context, "Err "+t.getMessage(), Toast.LENGTH_SHORT).show();
-            if(progressDialog.isShowing()){
-                progressDialog.dismiss();
-            }
+
+
 
         }
     };

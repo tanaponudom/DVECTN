@@ -183,6 +183,9 @@ public class Student_save extends Fragment implements View.OnClickListener {
 
             }
 
+            FragmentManager fragmentManager =getActivity().getSupportFragmentManager();
+            fragmentManager.popBackStack();
+
         }
 
         @Override

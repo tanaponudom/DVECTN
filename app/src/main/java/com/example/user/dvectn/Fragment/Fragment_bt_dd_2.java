@@ -45,7 +45,7 @@ public class Fragment_bt_dd_2 extends Fragment implements View.OnClickListener
     SharedPreferences sharedPreferences;
     public  static  final String TAG_HEW4 = "HEW4";
 
-    int memberId = 0;
+    String memberId = "";
 
 
 
@@ -100,7 +100,7 @@ public class Fragment_bt_dd_2 extends Fragment implements View.OnClickListener
         editor = sharedPreferences.edit();
 
         dep_id = sharedPreferences.getString(Fragment_login.KEY_dep_id,null);
-        memberId = sharedPreferences.getInt(Fragment_login.KEY_member_id,0);
+        memberId = sharedPreferences.getString(Fragment_AF_dd.KEY_STD_ID,"");
 
 
 
@@ -183,7 +183,7 @@ public class Fragment_bt_dd_2 extends Fragment implements View.OnClickListener
 //                        +" , "+tmpSpn[1]+" , "+tmpSpn[2]+" , "+tmpSpn[3]+" , "+tmpSpn[4]+" , "+tmpSpn[5]
 //                        +" , "+tmpSpn[6]+" , "+tmpSpn[7], Toast.LENGTH_SHORT).show();
 
-                new NetworkConnectionManager().callServer_dd_p2(onCallbackList,memberId,Integer.parseInt(tmpSpn[0]),Integer.parseInt(tmpSpn[1]),Integer.parseInt(tmpSpn[2]),Integer.parseInt(tmpSpn[3])
+                new NetworkConnectionManager().callServer_dd_p2(onCallbackList,Integer.parseInt(memberId),Integer.parseInt(tmpSpn[0]),Integer.parseInt(tmpSpn[1]),Integer.parseInt(tmpSpn[2]),Integer.parseInt(tmpSpn[3])
                         ,Integer.parseInt(tmpSpn[4]),Integer.parseInt(tmpSpn[5]),Integer.parseInt(tmpSpn[6]),Integer.parseInt(tmpSpn[7]));
             }else {
                 Toast.makeText(getContext(),"กรุณากรอกให้ครบ",Toast.LENGTH_SHORT).show();

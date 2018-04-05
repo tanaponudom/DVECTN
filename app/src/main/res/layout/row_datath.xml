@@ -35,7 +35,7 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/style_button_test"
         android:gravity="center"
-        android:text="อนุมัติ"
+        android:text="รอการอนุมัติ"
         android:textAlignment="center"
         android:textColor="@color/text_w"
         android:textStyle="bold" />

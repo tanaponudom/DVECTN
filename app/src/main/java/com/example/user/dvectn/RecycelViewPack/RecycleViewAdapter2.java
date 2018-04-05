@@ -4,11 +4,16 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Build;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -16,11 +21,19 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.user.dvectn.Fragment.Fragment_login;
+import com.example.user.dvectn.POJO.POJO_save_AG;
+import com.example.user.dvectn.POJO.POJO_save_data_trainer;
 import com.example.user.dvectn.R;
+import com.example.user.dvectn.Retrofit.NetworkConnectionManager;
+import com.example.user.dvectn.Retrofit.OnNetworkCallback_save_AG;
+import com.example.user.dvectn.Retrofit.OnNetworkCallback_save_data_trainer;
 import com.squareup.picasso.Picasso;
 
 
 import java.util.List;
+
+import okhttp3.ResponseBody;
 
 /**
  * Created by User on 8/3/2561.
@@ -28,49 +41,46 @@ import java.util.List;
 
 public class RecycleViewAdapter2 extends RecyclerView.Adapter<RecycleViewAdapter2.MyHoder> {
 
-    Context context ;
+    Context context;
     List<String> flthData;
-//    List<String> lsthData;
+
     List<Integer> State;
 
     List<String> Data_img;
     List<String> Data_detail;
     List<String> Data_score;
     List<String> Data_member_ID;
+    String type = "";
 
-    public RecycleViewAdapter2(Context context){
+    public RecycleViewAdapter2(Context context) {
 
         this.context = context;
 
     }
 
-    public  void Update_teacher_data(List<String>flthData ,List<Integer>State,   List<String> Data_img, List<String> Data_detail,
-            List<String> Data_score,List<String> Data_member_ID){
+    public void Update_teacher_data(List<String> flthData, List<Integer> State, List<String> Data_img, List<String> Data_detail,
+                                    List<String> Data_score, List<String> Data_member_ID, String type) {
 
         this.flthData = flthData;
-//        this.lsthData = lsthData;
-        this.State  = State;
+
+
+        this.State = State;
 
         this.Data_img = Data_img;
         this.Data_detail = Data_detail;
         this.Data_score = Data_score;
         this.Data_member_ID = Data_member_ID;
+        this.type = type;
     }
 
-    public  void  Update_str_work (List<String>flthData ,List<Integer>State){
-
-        this.flthData = flthData;
-//        this.lsthData = lsthData;
-        this.State = State;
-    }
 
     @Override
     public RecycleViewAdapter2.MyHoder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View Y;
-            Y = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_datath,parent
-            , false);
-            return new MyHoder(Y, context);
+        Y = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_datath, parent
+                , false);
+        return new MyHoder(Y, context);
 
     }
 
@@ -79,20 +89,27 @@ public class RecycleViewAdapter2 extends RecyclerView.Adapter<RecycleViewAdapter
 
         holder.dataview.setText(flthData.get(position));
 //        holder.dataview2.setText(lsthData.get(position));
-        holder.setOnClickRecycleView(new OnClickRecycleView() {
-            @Override
-            public void onClick(View view, int position, boolean isLongClick, MotionEvent motionEvent) {
-                showCustomDialog(Data_member_ID.get(position),Data_detail.get(position),Data_img.get(position),Data_score.get(position));
 
-            }
-        });
+//        holder.setOnClickRecycleView(new OnClickRecycleView() {
+//            @Override
+//            public void onClick(View view, int position, boolean isLongClick, MotionEvent motionEvent) {
+//                showCustomDialog(Data_member_ID.get(position),Data_detail.get(position),Data_img.get(position),Data_score.get(position));
+//
+//            }
+//        });
 
         holder.btn_state.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, ""+ flthData.get(position), Toast.LENGTH_SHORT).show();
 
-                showCustomDialog(Data_member_ID.get(position),Data_detail.get(position),Data_img.get(position),Data_score.get(position));
+                try {
+
+                    showCustomDialog(Data_member_ID.get(position), Data_detail.get(position), Data_img.get(position), Data_score.get(position));
+
+                } catch (Exception e) {
+
+                }
+
 
             }
         });
@@ -113,22 +130,20 @@ public class RecycleViewAdapter2 extends RecyclerView.Adapter<RecycleViewAdapter
     }
 
 
-
     @Override
-    public int getItemCount(){return flthData.size();}
+    public int getItemCount() {
+        return flthData.size();
+    }
 
 
-    class MyHoder extends RecyclerView.ViewHolder implements  View.OnClickListener
-            , View.OnLongClickListener, View.OnTouchListener {
+    class MyHoder extends RecyclerView.ViewHolder {
 
-        private OnClickRecycleView onClickRecycleView;
         Button btn_state;
         TextView dataview;
-        TextView dataview2;
         Context context;
 
 
-        public MyHoder(View itemView,Context context) {
+        public MyHoder(View itemView, Context context) {
 
             super(itemView);
 
@@ -138,67 +153,103 @@ public class RecycleViewAdapter2 extends RecyclerView.Adapter<RecycleViewAdapter
 
             this.context = context;
 
-            itemView.setOnClickListener(this);
-            itemView.setOnLongClickListener(this);
 
         }
 
-        public void setOnClickRecycleView(OnClickRecycleView onClickRecycleView){
-            this.onClickRecycleView =  onClickRecycleView;
+    }
+
+    OnNetworkCallback_save_AG onNetworkCallback_save_ag = new OnNetworkCallback_save_AG() {
+        @Override
+        public void onResponse(List<POJO_save_AG> save_AG) {
 
         }
 
         @Override
-        public void onClick(View view) {
-            onClickRecycleView.onClick(view, getAdapterPosition(), false, null);
+        public void onBodyError(ResponseBody responseBodyError) {
+
         }
 
         @Override
-        public boolean onLongClick(View view) {
-            onClickRecycleView.onClick(view, getAdapterPosition(), false, null);
-            return true;
+        public void onBodyErrorIsNull() {
+
         }
 
         @Override
-        public boolean onTouch(View view, MotionEvent motionEvent) {
-            onClickRecycleView.onClick(view, getAdapterPosition(), false, null);
-            return true;
-        }
-//
-//        public void setIMG(String url){
-//            Toast.makeText(context, ""+url, Toast.LENGTH_SHORT).show();
-//            Picasso.with(context).load(url).into(imgUser);
-
+        public void onFailure(Throwable t) {
 
         }
+    };
 
-    private void showCustomDialog(final String member_id, String detail, String url,String score){
+    OnNetworkCallback_save_data_trainer onCallbackList = new OnNetworkCallback_save_data_trainer() {
+        @Override
+        public void onResponse(List<POJO_save_data_trainer> save_data_trainers) {
 
-        String[] DataSp = {"-","0","1","2","3"};  // คะแนน
+        }
+
+        @Override
+        public void onBodyError(ResponseBody responseBodyError) {
+
+        }
+
+        @Override
+        public void onBodyErrorIsNull() {
+
+        }
+
+        @Override
+        public void onFailure(Throwable t) {
+
+        }
+
+    };
+
+    private void showCustomDialog(final String member_id, String detail, String url, final String score) {
+
+//        final String[] DataSp = {"-", "0", "1", "2", "3"};  // คะแนน
+        String DataSp [] = {"-","ต้องปรับปรุง","พอใช้","ดี","ดีมาก"};
+//        Toast.makeText(context, "member_id = "+member_id+" detail = "+detail+" url = "+url +" score ="+score, Toast.LENGTH_SHORT).show();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
         LayoutInflater layoutInflater = LayoutInflater.from(context);
 
-        View handleView = layoutInflater.inflate(R.layout.custom_layout_dialog,null);
+        View handleView = layoutInflater.inflate(R.layout.custom_layout_dialog, null);
         TextView tv_detail = handleView.findViewById(R.id.tv_detail);
+        TextView tv_lbl_score = handleView.findViewById(R.id.tv_lbl_score);
         ImageView imageView = handleView.findViewById(R.id.img);
+
         final Spinner spinner = handleView.findViewById(R.id.spScore);
 
-        //set detail
-        tv_detail.setText(detail);
-        try {
-            // set image from url
-            if (!url.isEmpty())
-                Picasso.with(context).load(url).into(imageView);
-            else
-                imageView.setImageDrawable(context.getDrawable(R.drawable.logo2));
-        }catch (Exception e){
-            
+        if (type.equals("admin")) {
+            spinner.setVisibility(View.GONE);
+            tv_lbl_score.setVisibility(View.GONE);
+        } else {
+            spinner.setVisibility(View.VISIBLE);
+            tv_lbl_score.setVisibility(View.VISIBLE);
         }
 
 
-        ArrayAdapter adt = new ArrayAdapter(context,android.R.layout.simple_spinner_dropdown_item,DataSp);
+        //D/Member Type: admin
+        //D/Member Type: establishment
+
+
+        //set detail
+        tv_detail.setText(detail);
+
+        try {
+
+            // set image from url
+            if (!url.isEmpty())
+                Picasso.with(context).load(url).into(imageView);
+            else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                imageView.setImageDrawable(context.getDrawable(R.drawable.logo2));
+            }
+
+        } catch (Exception e) {
+
+        }
+
+        ArrayAdapter adt = new ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, DataSp);
         spinner.setAdapter(adt);
         builder.setTitle("ดูรายละเอียด");
         builder.setView(handleView);
@@ -206,27 +257,48 @@ public class RecycleViewAdapter2 extends RecyclerView.Adapter<RecycleViewAdapter
         builder.setPositiveButton("อนุมัติ", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                if (type.equals("establishment"))
+                    new NetworkConnectionManager().callSrever_save_data_trainer(onCallbackList,
+                            Integer.parseInt(member_id),
+                            getStatus(spinner.getSelectedItem().toString()),
+                            1);
 
-                Toast.makeText(context, "อนุมัติ", Toast.LENGTH_SHORT).show();
-
+                else  // establishment
+                    new NetworkConnectionManager().callSrever_save_AG(onNetworkCallback_save_ag, Integer.parseInt(member_id), 1);
+//                Toast.makeText(context, member_id + " อนุมัติ " + spinner.getSelectedItem(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, " อนุมัติเรียบร้อยแล้วครับ ", Toast.LENGTH_SHORT).show();
             }
         });
 
         builder.setNegativeButton("ไม่อนุมัติ", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
+                new NetworkConnectionManager().callSrever_save_data_trainer(onCallbackList, Integer.parseInt(member_id), spinner.getSelectedItemPosition() - 1,
+                        0);
                 Toast.makeText(context, "ไม่อนุมัติ", Toast.LENGTH_SHORT).show();
-
-
-
             }
         });
         builder.show();
-
-
     }
 
+    private int getStatus(String input){
+
+        if(input.equals("-")){
+            return 0;
+        }else if (input.equals("ต้องปรับปรุง")){
+            return 1;
+        }else if (input.equals("พอใช้")){
+            return 2;
+        }else if (input.equals("ดี")){
+            return 3;
+        }else if (input.equals("ดีมาก")){
+            return 4;
+        }else {
+            return -1;
+        }
     }
+
+}
+
 
 
