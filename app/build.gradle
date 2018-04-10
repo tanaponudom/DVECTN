@@ -3,12 +3,20 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.example.user.dvectn"
+        applicationId "ctn.example.user.dvectn"
         minSdkVersion 18
         targetSdkVersion 26
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    signingConfigs {
+        release {
+            storeFile file("release.keystore")
+            storePassword "******"
+            keyAlias "bcd8412"
+            keyPassword "bcd8421"
+        }
     }
     buildTypes {
         release {
