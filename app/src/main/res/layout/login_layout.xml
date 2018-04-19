@@ -5,89 +5,113 @@
     android:background="#ffffff"
     android:gravity="center"
     android:orientation="vertical"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="270dp"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/imgif_naja"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                app:srcCompat="@drawable/logo2" />
-        </LinearLayout>
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp">
+            android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/et_user"
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:gravity="top"
+                android:orientation="horizontal">
 
-                android:layout_width="225dp"
-                android:layout_height="55dp"
+                <Button
+                    android:id="@+id/Builder"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/style_button_test3"
+                    android:text="!"
+                    android:textColor="@color/title2"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:drawablePadding="10dp"
-                android:drawableRight="@drawable/us_test"
-                android:ems="10"
-                android:hint="Username"
-                android:inputType="textPersonName"
-                android:textColorHint="@color/color_text_login"/>
+            </LinearLayout>
 
-            <EditText
-                android:id="@+id/et_pass"
-                android:layout_width="225dp"
-                android:layout_height="55dp"
-                android:layout_marginTop="8dp"
-                android:drawableRight="@drawable/ps_test"
-                android:ems="10"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:textColorHint="@color/color_text_login" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="270dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/imgif_naja"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/logo2" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="0dp">
+
+                <EditText
+                    android:id="@+id/et_user"
+
+                    android:layout_width="225dp"
+                    android:layout_height="55dp"
+
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:drawablePadding="10dp"
+                    android:drawableRight="@drawable/us_test"
+                    android:ems="10"
+                    android:hint="Username"
+                    android:inputType="textPersonName"
+                    android:textColorHint="@color/color_text_login" />
+
+                <EditText
+                    android:id="@+id/et_pass"
+                    android:layout_width="225dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="8dp"
+                    android:drawableRight="@drawable/ps_test"
+                    android:ems="10"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:textColorHint="@color/color_text_login" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btn_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/style_button_test"
+                    android:text="เข้าสู่ระบบ"
+                    android:textColor="@color/text_w"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.825" />
+
+            </LinearLayout>
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center">
-        <Button
-            android:id="@+id/btn_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/style_button_test"
-            android:text="เข้าสู่ระบบ"
-            android:textColor="@color/text_w"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.825" />
-
-        </LinearLayout>
-    </LinearLayout>
     </ScrollView>
+
 </LinearLayout>

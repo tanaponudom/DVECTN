@@ -18,6 +18,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import ctn.example.user.dvectn.Fragment.Fragment_AF_Teacherlayout;
+import ctn.example.user.dvectn.Fragment.Fragment_AF_Teacherlayout2;
 import ctn.example.user.dvectn.Fragment.Fragment_login;
 import ctn.example.user.dvectn.POJO.POJO_Stu_naja_gogo;
 import ctn.example.user.dvectn.Retrofit.NetworkConnectionManager;
@@ -48,6 +50,7 @@ public class Fragment_Teacher_Recycle extends Fragment {
     ArrayAdapter adp2;
     Context context;
     String dep_id = "8";
+    int suppvision = -1;
     int memberId = 0;
     int spn  = -1;
     SharedPreferences.Editor editor;
@@ -67,7 +70,8 @@ public class Fragment_Teacher_Recycle extends Fragment {
         sharedPreferences = getActivity().getSharedPreferences(Fragment_login.MyPer, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         dep_id = sharedPreferences.getString(Fragment_login.KEY_dep_id,null);
-//        Toast.makeText(context, ""+dep_id, Toast.LENGTH_SHORT).show();
+        suppvision = sharedPreferences.getInt(Fragment_login.KEY_SUPERVISION,-1);
+//        Toast.makeText(context, ""+suppvision, Toast.LENGTH_SHORT).show();
 
         memberId = sharedPreferences.getInt(Fragment_login.KEY_member_id,0);
         spn = sharedPreferences.getInt(Fragment_login.KEY_SUPERVISION,-1);
@@ -85,15 +89,15 @@ public class Fragment_Teacher_Recycle extends Fragment {
         Data_score = new ArrayList<>();
         Data_member_ID = new ArrayList<>();
 
-
+//        Toast.makeText(context, ""+suppvision, Toast.LENGTH_SHORT).show();
 
 //        progressDialog = new ProgressDialog(context);
 //        progressDialog.setMessage("Loading......");
 //        progressDialog.show();
 
 
-
-        new NetworkConnectionManager().callServer_stu_naja_gogo(onCallbackList,dep_id);
+//        Toast.makeText(context, ""+suppvision, Toast.LENGTH_SHORT).show();
+        new NetworkConnectionManager().callServer_stu_naja_gogo(onCallbackList,dep_id,suppvision);
 //        new NetworkConnectionManager().callServer_row_teacher(onCallbackList2,score);
 
 
@@ -142,6 +146,7 @@ public class Fragment_Teacher_Recycle extends Fragment {
 //                Data_name1.add(stu_naja_gogo.get(i).getFirstname());
 //                Data_name2.add(getstu.get(i).getLastnamename());
                 Data_member_ID.add(Integer.parseInt(stu_naja_gogo.get(i).getMemberId()));
+
                 Data_score.add(stu_naja_gogo.get(i).getScore());
                 Data_name.add(stu_naja_gogo.get(i).getFirstname()+"\t"+stu_naja_gogo.get(i).getLastnamename());
 

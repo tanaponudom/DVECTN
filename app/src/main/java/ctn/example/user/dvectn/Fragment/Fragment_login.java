@@ -32,7 +32,7 @@ import okhttp3.ResponseBody;
 public class Fragment_login extends Fragment implements View.OnClickListener {
     EditText et_user,et_pass;
     String str_user,str_pass;
-    public static String BASE_URL = "http://movie-anime.com/";
+    public static String BASE_URL = "http://app.ctn-phrae.com/api/";
     public static final String MyPer = "myPer";
     public static final String KEY_member_id = "member_id";
     public static final String KEY_member_firstname = "member_firstname";
@@ -41,6 +41,7 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
     public static final String KEY_dep_id = "dep_id";
     public static final String KEY_member_type = "member_type";
     public static final String KEY_SUPERVISION = "spn";
+
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
@@ -56,6 +57,7 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
         ImageView img = view.findViewById(R.id.imgif_naja);
 
         view.findViewById(R.id.btn_login).setOnClickListener(this);
+        view.findViewById(R.id.Builder).setOnClickListener(this);
 
 
 
@@ -79,9 +81,12 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
 
 //        et_user.setText("5921280017");
 //        et_pass.setText("59212804545017");
-//
+
 //        et_user.setText("test2");
 //        et_pass.setText("0850400151");
+
+//        et_user.setText("suttipong");
+//        et_pass.setText(" ");
 
         //init session
         sharedPreferences = getActivity().getSharedPreferences(MyPer, Context.MODE_PRIVATE);
@@ -115,7 +120,10 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
 
         }
 
-
+//        if (progressDialog.isShowing()) {
+//            progressDialog.dismiss();
+//            Toast.makeText(getContext(), "รหัสไม่ถูกต้อง", Toast.LENGTH_SHORT).show();
+//        }
     }
 
 
@@ -167,12 +175,11 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
         public void onBodyError(ResponseBody responseBodyError) {
 
 //            Log.e("onBodyError",""+responseBodyError);
+
             if(progressDialog.isShowing()){
                 progressDialog.dismiss();
             }
-
         }
-
         @Override
         public void onBodyErrorIsNull() {
 //            Log.e("onBodyErrorIsNull","Data is Null");
@@ -184,7 +191,7 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
 
         @Override
         public void onFailure(Throwable t) {
-//            Log.e("onFailure",t.getMessage());
+//          Log.e("onFailure",t.getMessage());
             Toast.makeText(getContext(), "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง", Toast.LENGTH_SHORT).show();
             if(progressDialog.isShowing()){
                 progressDialog.dismiss();
@@ -236,6 +243,16 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
                 login();
 
                 break;
+
+            case  R.id.Builder:
+
+//                Toast.makeText(getContext(), "จัดทำโดย", Toast.LENGTH_SHORT).show();
+
+                Builder sec = new Builder();
+                replaceFragment(sec, null);
+
+                break;
+
         }
     }
 

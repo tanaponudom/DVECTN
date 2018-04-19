@@ -64,12 +64,15 @@ public class RecycleViewAdapter5teacher extends RecyclerView.Adapter<RecycleView
 
         holder.tx_2.setText(name2.get(index));
         holder.tx_5.setAdapter(adp2);
+        try {
+            if(score.get(index) != null)
+            {
+                int spinnerPosition = adp2.getPosition(getStatusStr(Integer.parseInt(score.get(index))));
+                holder.tx_5.setSelection(spinnerPosition);
+            }
 
-        if(score.get(index) != null)
-        {
-//                    Toast.makeText(context, ""+score.get(position), Toast.LENGTH_SHORT).show();
-            int spinnerPosition = adp2.getPosition(getStatusStr(Integer.parseInt(score.get(index))));
-            holder.tx_5.setSelection(spinnerPosition);
+        }catch (Exception e){
+
         }
 
 

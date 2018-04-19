@@ -1,5 +1,6 @@
 package ctn.example.user.dvectn.RecycelViewPack;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -9,23 +10,33 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
 import ctn.example.user.dvectn.Fragment.Fragment_login;
 import ctn.example.user.dvectn.POJO.POJOGetDaily;
+import ctn.example.user.dvectn.R;
 import ctn.example.user.dvectn.Retrofit.NetworkConnectionManager;
 import ctn.example.user.dvectn.Retrofit.OnNetworkCallback_GetStdDaily;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import okhttp3.ResponseBody;
 
@@ -51,8 +62,12 @@ public class Fragment_bt_d1 extends Fragment {
     SharedPreferences sharedPreferences;
     Context context;
     Spinner spn1;
+    Calendar myCalendar;
+    TextView tv_date;
+    Button btnSelectDate;
     ArrayAdapter adp2;
     public static final String TAG_HEW = "HEW";
+    String myFormat = "yyyy-MM-dd"; //In which you need put here
 
     List<String> nameStd;
     List<String> idStd;
@@ -62,7 +77,21 @@ public class Fragment_bt_d1 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view1 = inflater.inflate(ctn.example.user.dvectn.R.layout.av_bt_d, container, false);
-//
+
+        tv_date = view1.findViewById(R.id.tv_datetime2);
+        tv_date.setText(datenow());
+        myCalendar = Calendar.getInstance();
+        btnSelectDate = view1.findViewById(R.id.btnSelectDate2);
+        btnSelectDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(getContext(), date, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+
+                  }
+        });
+
 //        spn1 = view1.findViewById(R.id.spn_checklist);
 //        ArrayAdapter adapter = new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_item,CheckList);
 //        spn1.setAdapter(adapter);
@@ -93,9 +122,38 @@ public class Fragment_bt_d1 extends Fragment {
         progressDialog.setMessage("Loading......");
         progressDialog.show();
 
-        new NetworkConnectionManager().getDataStdDaily(onCallbackList,dep_id);
+        new NetworkConnectionManager().getDataStdDaily(onCallbackList,dep_id,tv_date.toString());
 
         return view1;
+
+    }
+
+    DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear,
+                              int dayOfMonth) {
+            // TODO Auto-generated method stub
+            myCalendar.set(Calendar.YEAR, year);
+            myCalendar.set(Calendar.MONTH, monthOfYear);
+            myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            sendData();
+        }
+
+    };
+
+    private String datenow() {
+        DateFormat dateFormat = new SimpleDateFormat(myFormat);
+        Date date = new Date();
+        return dateFormat.format(date);
+    }
+
+    private void sendData() {
+
+
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, new Locale("th", "TH"));
+        new NetworkConnectionManager().getDataStdDaily(onCallbackList,dep_id,tv_date.toString());
+        tv_date.setText(sdf.format(myCalendar.getTime()));
 
     }
 
@@ -108,11 +166,11 @@ public class Fragment_bt_d1 extends Fragment {
                     progressDialog.dismiss();
                 }
 
-//                Toast.makeText(context, ""+getstu.get(0).getFirstname(), Toast.LENGTH_SHORT).show();
+
 
                 for (int i = 0; i< getstu.size() ;i++){
 
-
+                    Toast.makeText(context, ""+getstu.get(i).getScore(), Toast.LENGTH_SHORT).show();
                     Data_name.add(getstu.get(i).getFirstname());
                     Data_ltname.add(getstu.get(i).getLastnamename());
                     Data_num.add(getstu.get(i).getMemberCode());
@@ -120,8 +178,10 @@ public class Fragment_bt_d1 extends Fragment {
                     Data_score.add(getstu.get(i).getScore());
                 }
 
+
                     adp2 =  new ArrayAdapter(context,android.R.layout.simple_spinner_dropdown_item,CheckList);
                     recycleViewAdapter5 = new RecycleViewAdapter3(getContext());
+
                     recycleViewAdapter5.DataStudent(Data_name, Data_ltname, Data_num,Data_score, adp2);
                     recyclerView5.setLayoutManager(new LinearLayoutManager(getContext()));
                     recyclerView5.setHasFixedSize(true);

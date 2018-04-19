@@ -180,7 +180,7 @@ public class RecycleViewAdapter2 extends RecyclerView.Adapter<RecycleViewAdapter
 
         @Override
         public void onBodyError(ResponseBody responseBodyError) {
-            Toast.makeText(context, "เกิดข้อผิดพลาด", Toast.LENGTH_SHORT).show();
+
         }
 
         @Override
@@ -190,7 +190,7 @@ public class RecycleViewAdapter2 extends RecyclerView.Adapter<RecycleViewAdapter
 
         @Override
         public void onFailure(Throwable t) {
-            Toast.makeText(context, "เกิดข้อผิดพลาด", Toast.LENGTH_SHORT).show();
+
         }
 
     };

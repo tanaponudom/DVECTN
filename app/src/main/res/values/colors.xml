@@ -11,5 +11,7 @@
     <color name="text_p">#ffbdbd</color>
     <color name="text_bb">#a5c8f9</color>
     <color name="boder_spinner">#d6d6d6</color>
+    <color name="title">#ffb2b2</color>
+    <color name="title2">#ffff</color>
 
 </resources>

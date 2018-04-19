@@ -121,6 +121,8 @@ public class NetworkConnectionManager {
             , int user_id
             , String app_name
             , String app_detail
+            , int dep_id
+
     ) {
 
 
@@ -130,7 +132,7 @@ public class NetworkConnectionManager {
                 .build();
 
         APISERVER git = retrofit.create(APISERVER.class);
-        Call call = git.updateImageProfile(img, user_id, app_name, app_detail);
+        Call call = git.updateImageProfile(img, user_id, app_name, app_detail , dep_id);
         call.enqueue(new Callback<ResPOJO>() {
 
             @Override
@@ -232,7 +234,7 @@ public class NetworkConnectionManager {
 
 
     // get data std
-    public void getDataStdDaily(final OnNetworkCallback_GetStdDaily listener, String depid) {
+    public void getDataStdDaily(final OnNetworkCallback_GetStdDaily listener, String depid , String date) {
 
         Gson gson = new GsonBuilder()
                 .setLenient()
@@ -245,7 +247,7 @@ public class NetworkConnectionManager {
 
         APISERVER callapi = retrofit.create(APISERVER.class);
 
-        Call call = callapi.getDatadaily(depid);
+        Call call = callapi.getDatadaily(depid,date);
 
 
         call.enqueue(new Callback<List<POJOGetDaily>>() {
@@ -1217,7 +1219,7 @@ public void callServer_test1_in_ag(final OnNetworkCallback_test1_in_ag listener,
         });
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    public void callServer_stu_naja_gogo (final OnNetworkCallback_Stu_naja_gogo listener, String dep_id) {
+    public void callServer_stu_naja_gogo (final OnNetworkCallback_Stu_naja_gogo listener, String dep_id , int suppervision) {
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
@@ -1229,7 +1231,7 @@ public void callServer_test1_in_ag(final OnNetworkCallback_test1_in_ag listener,
 
         APISERVER callapi = retrofit.create(APISERVER.class);
 
-        Call call = callapi.getDatastunajagogo(dep_id);
+        Call call = callapi.getDatastunajagogo(dep_id,suppervision);
         call.enqueue(new Callback<List<POJO_Stu_naja_gogo>>() {
 
 

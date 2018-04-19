@@ -57,7 +57,7 @@ public interface APISERVER {
 
     @FormUrlEncoded
     @POST("getCheckdaily/")
-    Call<List<POJOGetDaily>> getDatadaily(@Field("dep_id") String dep_id);
+    Call<List<POJOGetDaily>> getDatadaily(@Field("dep_id") String dep_id , @Field("date") String date);
 
 
     @FormUrlEncoded
@@ -140,7 +140,8 @@ public interface APISERVER {
     Call<ResPOJO> updateImageProfile(@Part MultipartBody.Part image,
                                      @Part("member_id") int member_id,
                                      @Part("app_name") String name,
-                                     @Part("app_detail") String detail);
+                                     @Part("app_detail") String detail,
+                                     @Part("dep_id") int dep_id);
 
 //    @FormUrlEncoded
 //    @POST("Ag_Accept/")
@@ -153,7 +154,7 @@ public interface APISERVER {
 
     @FormUrlEncoded
     @POST("getstu/")
-    Call<List<POJO_Stu_naja_gogo>> getDatastunajagogo(@Field("dep_id") String first);
+    Call<List<POJO_Stu_naja_gogo>> getDatastunajagogo(@Field("dep_id") String first , @Field("supervision") int supvision);
 
     @FormUrlEncoded
     @POST("teacher-af/")

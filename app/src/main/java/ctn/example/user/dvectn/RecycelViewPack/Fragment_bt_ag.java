@@ -1,5 +1,6 @@
 package ctn.example.user.dvectn.RecycelViewPack;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -14,15 +15,25 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.TextView;
 import android.widget.Toast;
+
 
 import ctn.example.user.dvectn.Fragment.Fragment_login;
 import ctn.example.user.dvectn.POJO.POJO_confirm_AG;
+import ctn.example.user.dvectn.R;
 import ctn.example.user.dvectn.Retrofit.NetworkConnectionManager;
 import ctn.example.user.dvectn.Retrofit.OnNetworkCallback_confirm_AG;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import okhttp3.ResponseBody;
 
@@ -44,6 +55,10 @@ public class Fragment_bt_ag extends Fragment {
     List<String> Data_detail;
     List<String> Data_score;
 
+    View view;
+    Calendar myCalendar;
+    TextView tv_date;
+    Button btnSelectDate;
     Context context;
     String dep_id = "";
     SharedPreferences.Editor editor;
@@ -52,7 +67,7 @@ public class Fragment_bt_ag extends Fragment {
     int memberId = 0;
     public static final String TAG_KAW = "KAW";
     String userType = "";
-
+    String myFormat = "yyyy-MM-dd"; //In which you need put here
 
 
     @Nullable
@@ -60,6 +75,19 @@ public class Fragment_bt_ag extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view2 = inflater.inflate(ctn.example.user.dvectn.R.layout.av_bt_ag, container, false);
         context = getContext();
+
+        tv_date = view2.findViewById(R.id.tv_datetime);
+        tv_date.setText(datenow());
+        myCalendar = Calendar.getInstance();
+        btnSelectDate = view2.findViewById(R.id.btnSelectDate);
+        btnSelectDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(getContext(), date, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
 
         sharedPreferences = getActivity().getSharedPreferences(Fragment_login.MyPer, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -82,7 +110,7 @@ public class Fragment_bt_ag extends Fragment {
         Data_detail = new ArrayList<>();
         Data_score = new ArrayList<>();
 
-
+        recycleViewAdapter6 = new RecycleViewAdapter2(getContext());
 
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
 
@@ -91,7 +119,34 @@ public class Fragment_bt_ag extends Fragment {
         return view2;
     }
 
+    DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear,
+                              int dayOfMonth) {
+            // TODO Auto-generated method stub
+            myCalendar.set(Calendar.YEAR, year);
+            myCalendar.set(Calendar.MONTH, monthOfYear);
+            myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            sendData();
+        }
+
+    };
+
+    private String datenow() {
+        DateFormat dateFormat = new SimpleDateFormat(myFormat);
+        Date date = new Date();
+        return dateFormat.format(date);
+    }
+
+    private void sendData() {
+
+
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, new Locale("th", "TH"));
+
+        tv_date.setText(sdf.format(myCalendar.getTime()));
+
+    }
 
     OnNetworkCallback_confirm_AG onCallbackList = new OnNetworkCallback_confirm_AG() {
         @Override
@@ -115,7 +170,8 @@ public class Fragment_bt_ag extends Fragment {
             }
 
 
-            recycleViewAdapter6 = new RecycleViewAdapter2(getContext());
+
+
             recycleViewAdapter6.Update_teacher_data(Data_flstr,Data_state,Data_img,Data_detail,Data_score,Data_member_ID,userType);
             recycleView6.setLayoutManager(new LinearLayoutManager(getContext()));
             recycleView6.setHasFixedSize(true);

@@ -67,6 +67,7 @@ public class Student_save extends Fragment implements View.OnClickListener {
     Button btn_up;
     SharedPreferences.Editor editor;
     SharedPreferences sharedPreferences;
+    String dep_id = "";
     public static final String TAG_STUSA = "STUSAVE";
 
     @Nullable
@@ -76,6 +77,8 @@ public class Student_save extends Fragment implements View.OnClickListener {
 
 
 
+
+//        Toast.makeText(context, ""+dep_id, Toast.LENGTH_SHORT).show();
         init(viewses);
 
         return viewses;
@@ -109,8 +112,11 @@ public class Student_save extends Fragment implements View.OnClickListener {
         editor = sharedPreferences.edit();
 
         user_id = ""+ sharedPreferences.getInt(Fragment_login.KEY_member_id,0);
+        dep_id = sharedPreferences.getString(Fragment_login.KEY_dep_id,null);
 
         context = getContext();
+
+//        Toast.makeText(context, ""+dep_id, Toast.LENGTH_SHORT).show();
 
         imagePicker = new ImagePicker(this);
 
@@ -157,10 +163,11 @@ public class Student_save extends Fragment implements View.OnClickListener {
     private void callServerUploadImageProfile(MultipartBody.Part img,
                                               int member_id
                                              , String app_name
-                                                , String app_detail) {
+                                                , String app_detail
+                                                , int dep_id) {
 //        Toast.makeText(context, ""+member_id, Toast.LENGTH_SHORT).show();
 
-        new NetworkConnectionManager().pushImage(listener, img, member_id, app_name, app_detail);
+        new NetworkConnectionManager().pushImage(listener, img, member_id, app_name, app_detail ,dep_id);
     }
 
     OnNetworkCallbackListener listener = new OnNetworkCallbackListener() {
@@ -235,7 +242,7 @@ public class Student_save extends Fragment implements View.OnClickListener {
             progressDialog.setMessage("Loading.......");
             progressDialog.show();
 
-            callServerUploadImageProfile(body, Integer.parseInt(user_id), et_title.getText().toString(), Detail);
+            callServerUploadImageProfile(body, Integer.parseInt(user_id), et_title.getText().toString(), Detail , Integer.parseInt(dep_id));
 
         }
 

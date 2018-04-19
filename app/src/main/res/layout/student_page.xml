@@ -11,7 +11,7 @@
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="120dp"
         android:background="@color/colorPrimary"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             android:text="DEV by CTN Phrae"
             android:textAlignment="center"
+            android:layout_marginTop="20dp"
             android:textColor="#FFF"
             android:textSize="24sp" />
 

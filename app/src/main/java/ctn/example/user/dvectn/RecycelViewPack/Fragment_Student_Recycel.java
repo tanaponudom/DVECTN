@@ -66,6 +66,8 @@ public class Fragment_Student_Recycel extends Fragment {
         FloatingActionButton fab = viewtt.findViewById(ctn.example.user.dvectn.R.id.fab);
         FloatingActionButton fab1 = viewtt.findViewById(ctn.example.user.dvectn.R.id.fab12);
 
+
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

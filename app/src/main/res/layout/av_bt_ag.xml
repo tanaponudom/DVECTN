@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.constraint.ConstraintLayout    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:background="@color/text_w"
     android:layout_height="match_parent">
 
@@ -45,6 +46,38 @@
                     android:textColor="#FFF"
                     android:textSize="24sp" />
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:background="@color/title"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_datetime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/text_w"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="hewkaw"/>
+
+            <Button
+                android:id="@+id/btnSelectDate"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="100dp"
+                android:background="@drawable/style_button_test2"
+                android:text="เลือกวันที่"
+                android:textColor="@color/text_w"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -65,5 +98,5 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+</ScrollView>
 
